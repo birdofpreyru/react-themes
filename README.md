@@ -13,12 +13,12 @@ on usage of your other tools of choice.
 - [Getting Started](#getting-started)
 - [API Reference](#api-reference)
   - [Theme Anatomy](#theme-anatomy)
-  - [`COMPOSE` &ndash; composition modes](#compose-composition-modes)
-  - [`PRIORITY` &ndash; theme priority modes](#priority-theme-priority-modes)
+  - [`COMPOSE` &ndash; composition modes](#compose--composition-modes)
+  - [`PRIORITY` &ndash; theme priority modes](#priority--theme-priority-modes)
   - [`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction`
-    (_default export_)](#themedcomponentname-defaulttheme-options-wrapperfunction-default-export)
+    (_default export_)](#themedcomponentname-defaulttheme-options--wrapperfunction-default-export)
   - [`<ThemeProvider themes={...}>{children}</ThemeProvider>`](#themeprovider-themeschildrenthemeprovider)
-  - [`COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries](#compatibility-modes-emulate-behavior-of-older-libraries)
+  - [`COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries](#compatibility_modes--emulate-behavior-of-older-libraries)
   - [`setCompatibilityMode(mode)`](#setcompatibilitymodemode)
 - [Migration from other libraries](#migration)
 
