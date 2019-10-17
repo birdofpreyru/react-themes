@@ -2,8 +2,6 @@ import React from 'react';
 
 import themed, {
   COMPATIBILITY_MODE,
-  COMPOSE,
-  PRIORITY,
   ThemeProvider,
   setCompatibilityMode,
 } from '../src';

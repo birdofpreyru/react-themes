@@ -1,3 +1,8 @@
+![Master Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/master.svg?label=master)
+![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/develop.svg?label=develop)
+![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg)
+![NPM Downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes.svg)
+
 # Dr. Pogodin's React Themes
 
 UI style themes for React components with CSS modules and theme composition.
@@ -8,6 +13,8 @@ CSS modules and core HTML/CSS mechanics: no unstable dependencies, no restrictio
 on usage of your other tools of choice.
 
 ![Library Purpose Illustration](illustration.svg)
+
+[**Live Example**](https://dr.pogodin.studio/react/react-themes)
 
 ### Content
 - [Getting Started](#getting-started)
