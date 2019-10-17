@@ -143,8 +143,8 @@ function compose(high, low, mode, tag) {
       case COMPOSE.DEEP: {
         const res = { ...low };
         const prefix = Array.isArray(tag)
-          ? `${high[tag[0]]} ${high[tag[1]]}`
-          : high[tag];
+          ? `${high[tag[0]] || ''} ${high[tag[1]] || ''}`
+          : (high[tag] || '');
         /* eslint-disable no-restricted-syntax */
         for (const key in high) {
           if (res[key]) res[key] = `${res[key]} ${prefix} ${high[key]}`;
