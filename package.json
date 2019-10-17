@@ -1,0 +1,53 @@
+{
+  "name": "@dr.pogodin/react-themes",
+  "version": "1.0.0",
+  "description": "UI theme composition with CSS Modules and React",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "rimraf build && BABEL_ENV=production babel src --out-dir build",
+    "lint": "eslint --ext .js,.jsx .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birdofpreyru/react-themes.git"
+  },
+  "keywords": [
+    "React",
+    "ReactJS",
+    "JS",
+    "JavaSript",
+    "UI",
+    "theme",
+    "CSS",
+    "Modules",
+    "Frontend"
+  ],
+  "author": "Dr. Sergey Pogodin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/birdofpreyru/react-themes/issues"
+  },
+  "homepage": "https://github.com/birdofpreyru/react-themes#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "rimraf": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "prop-types": "^15.7.2"
+  }
+}
