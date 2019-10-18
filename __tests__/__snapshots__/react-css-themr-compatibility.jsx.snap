@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 2`] = `
+<div>
+  <div>
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-b-legacy__container___3yC-4"
+>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div>
+  <div
+    className="theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-b-legacy__container___3yC-4"
+>
+  <div
+    className="theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_   theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 4`] = `
+<div
+  className="theme-b-legacy__container___3yC-4"
+>
+  <div
+    className="theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 2`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG   theme-b-legacy__container___3yC-4"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-b-legacy__container___3yC-4  theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_   theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-b-legacy__container___3yC-4  theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_   theme-c-legacy__content___1KriY"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-c-legacy__content___1KriY  theme-a-legacy__content___2exE_   theme-d-legacy__content___23l4L"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 01 - composeTheme 1`] = `
+<div
+  className="theme-a-legacy__container___3dJUG"
+>
+  <div
+    className="theme-a-legacy__content___2exE_"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
+Object {
+  "props": Object {
+    "ref": null,
+  },
+  "theme": Object {
+    "container": "theme-a-legacy__container___3dJUG",
+    "content": "theme-a-legacy__content___2exE_",
+  },
+}
+`;

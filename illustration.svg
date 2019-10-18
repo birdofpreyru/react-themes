@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="317.50003mm"
+   height="162.64891mm"
+   viewBox="0 0 317.50003 162.64891"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="illustration.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="1006.492"
+     inkscape:cy="94.2744"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(41.426773,-49.241142)">
+    <rect
+       style="opacity:1;fill:#f7e5c4;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect815"
+       width="317.5"
+       height="162.64891"
+       x="-41.426773"
+       y="49.241142" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="75.135155"
+       y="61.390812"
+       id="text819"><tspan
+         sodipodi:role="line"
+         id="tspan817"
+         x="75.135155"
+         y="61.390812"
+         style="stroke-width:0.26458332px">Dr. Pogodin's React Themes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-4.7102413"
+       y="73.385956"
+       id="text819-3"><tspan
+         sodipodi:role="line"
+         id="tspan817-6"
+         x="-4.7102413"
+         y="73.385956"
+         style="stroke-width:0.26458332px">Default Styles</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="100.6598"
+       y="73.385956"
+       id="text819-3-7"><tspan
+         sodipodi:role="line"
+         id="tspan817-6-5"
+         x="100.6598"
+         y="73.385956"
+         style="stroke-width:0.26458332px">Style Contexts</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="207.35039"
+       y="73.385956"
+       id="text819-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan817-6-56"
+         x="207.35039"
+         y="73.385956"
+         style="stroke-width:0.26458332px">Ad Hoc Styles</tspan></text>
+    <rect
+       style="opacity:1;fill:#4169e1;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect865-2"
+       width="211.66669"
+       height="47.625"
+       x="64.40657"
+       y="90.181702" />
+    <g
+       id="g921"
+       transform="translate(0,-4.5462621)">
+      <g
+         transform="translate(16.859247,-40.486433)"
+         id="g906">
+        <rect
+           style="opacity:1;fill:#4169e1;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect897"
+           width="61.232143"
+           height="10.583333"
+           x="-35.98542"
+           y="161.84595"
+           rx="5.2916665"
+           ry="5.2916665" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-27.781248"
+           y="169.01726"
+           id="text901"><tspan
+             sodipodi:role="line"
+             id="tspan899"
+             x="-27.781248"
+             y="169.01726"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px">Themed Component</tspan></text>
+      </g>
+      <text
+         id="text910"
+         y="108.84225"
+         x="-19.190056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;stroke-width:0.26458332px"
+           y="108.84225"
+           x="-19.190056"
+           id="tspan908"
+           sodipodi:role="line">Lorem ipsum dolor sit amet,</tspan><tspan
+           id="tspan912"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;stroke-width:0.26458332px"
+           y="115.04052"
+           x="-19.190056"
+           sodipodi:role="line">consectetur adipiscing elit.</tspan></text>
+    </g>
+    <rect
+       style="opacity:1;fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect865-2-1"
+       width="211.66669"
+       height="47.625"
+       x="64.40657"
+       y="153.68172" />
+    <g
+       id="g921-2"
+       transform="translate(105.83334,-4.5462621)">
+      <g
+         transform="translate(16.859247,-40.486433)"
+         id="g906-7">
+        <rect
+           style="opacity:1;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect897-0"
+           width="61.232143"
+           height="10.583333"
+           x="-35.98542"
+           y="161.84595"
+           rx="5.2916665"
+           ry="5.2916665" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#4169e1;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-27.781248"
+           y="169.01726"
+           id="text901-9"><tspan
+             sodipodi:role="line"
+             id="tspan899-3"
+             x="-27.781248"
+             y="169.01726"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#4169e1;fill-opacity:1;stroke-width:0.26458332px">Themed Component</tspan></text>
+      </g>
+      <text
+         id="text910-6"
+         y="108.84225"
+         x="-19.190056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="108.84225"
+           x="-19.190056"
+           id="tspan908-0"
+           sodipodi:role="line">Lorem ipsum dolor sit amet,</tspan><tspan
+           id="tspan912-6"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="115.04052"
+           x="-19.190056"
+           sodipodi:role="line">consectetur adipiscing elit.</tspan></text>
+    </g>
+    <g
+       id="g921-26"
+       transform="translate(0,58.953753)">
+      <g
+         transform="translate(16.859247,-40.486433)"
+         id="g906-1">
+        <rect
+           style="opacity:1;fill:#4169e1;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect897-8"
+           width="61.232143"
+           height="10.583333"
+           x="-35.98542"
+           y="161.84595"
+           rx="5.2916665"
+           ry="5.2916665" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-27.781248"
+           y="169.01726"
+           id="text901-7"><tspan
+             sodipodi:role="line"
+             id="tspan899-9"
+             x="-27.781248"
+             y="169.01726"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px">Themed Component</tspan></text>
+      </g>
+      <text
+         id="text910-2"
+         y="108.84225"
+         x="-19.190056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;stroke-width:0.26458332px"
+           y="108.84225"
+           x="-19.190056"
+           id="tspan908-02"
+           sodipodi:role="line">Lorem ipsum dolor sit amet,</tspan><tspan
+           id="tspan912-3"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;stroke-width:0.26458332px"
+           y="115.04052"
+           x="-19.190056"
+           sodipodi:role="line">consectetur adipiscing elit.</tspan></text>
+    </g>
+    <g
+       id="g921-7"
+       transform="translate(211.66668,-4.5462621)">
+      <g
+         transform="translate(16.859247,-40.486433)"
+         id="g906-5">
+        <rect
+           style="opacity:1;fill:#273f87;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect897-9"
+           width="61.232143"
+           height="10.583333"
+           x="-35.98542"
+           y="161.84595" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-27.781248"
+           y="169.01726"
+           id="text901-2"><tspan
+             sodipodi:role="line"
+             id="tspan899-2"
+             x="-27.781248"
+             y="169.01726"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px">Themed Component</tspan></text>
+      </g>
+      <text
+         id="text910-8"
+         y="108.84225"
+         x="-19.190056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="108.84225"
+           x="-19.190056"
+           id="tspan908-9"
+           sodipodi:role="line">Lorem ipsum dolor sit amet,</tspan><tspan
+           id="tspan912-7"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="115.04052"
+           x="-19.190056"
+           sodipodi:role="line">consectetur adipiscing elit.</tspan></text>
+    </g>
+    <g
+       id="g921-7-3"
+       transform="translate(211.66668,58.953753)">
+      <g
+         id="g1168"
+         transform="translate(0,-2.6982709)">
+        <g
+           id="g906-5-6"
+           transform="translate(16.859247,-40.486433)">
+          <rect
+             y="161.84595"
+             x="-35.98542"
+             height="15.583"
+             width="61.232143"
+             id="rect897-9-1"
+             style="opacity:1;fill:#f7c4c4;fill-opacity:1;stroke:#800000;stroke-width:0.79374999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text901-2-2"
+             y="171.51709"
+             x="-27.781248"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#90000f;fill-opacity:0.94117647;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#90000f;fill-opacity:0.94117647;stroke-width:0.26458332px"
+               y="171.51709"
+               x="-27.781248"
+               id="tspan899-2-9"
+               sodipodi:role="line">Themed Component</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-19.190056"
+           y="108.84225"
+           id="text910-8-3"><tspan
+             sodipodi:role="line"
+             id="tspan908-9-1"
+             x="-19.190056"
+             y="108.84225"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px">Lorem ipsum dolor sit amet,</tspan><tspan
+             sodipodi:role="line"
+             x="-19.190056"
+             y="115.04052"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+             id="tspan912-7-9">consectetur adipiscing elit.</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g921-26-4"
+       transform="translate(105.83334,58.953753)">
+      <g
+         transform="translate(16.859247,-40.486433)"
+         id="g906-1-7"
+         style="fill:#f5f5f5;fill-opacity:1">
+        <rect
+           style="opacity:1;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect897-8-8"
+           width="61.232143"
+           height="10.583333"
+           x="-35.98542"
+           y="161.84595"
+           rx="5.2916665"
+           ry="5.2916665" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="-27.781248"
+           y="169.01726"
+           id="text901-7-4"><tspan
+             sodipodi:role="line"
+             id="tspan899-9-5"
+             x="-27.781248"
+             y="169.01726"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#313131;fill-opacity:1;stroke-width:0.26458332px">Themed Component</tspan></text>
+      </g>
+      <text
+         id="text910-2-0"
+         y="108.84225"
+         x="-19.190056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:Oswald;-inkscape-font-specification:Oswald;letter-spacing:0px;word-spacing:0px;fill:#f5f5f5;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="108.84225"
+           x="-19.190056"
+           id="tspan908-02-3"
+           sodipodi:role="line">Lorem ipsum dolor sit amet,</tspan><tspan
+           id="tspan912-3-6"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332px"
+           y="115.04052"
+           x="-19.190056"
+           sodipodi:role="line">consectetur adipiscing elit.</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;word-spacing:0px;fill:#4169e1;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="132.95468"
+       y="87.566872"
+       id="text1141"><tspan
+         sodipodi:role="line"
+         id="tspan1139"
+         x="132.95468"
+         y="87.566872"
+         style="font-weight:bold;fill:#4169e1;fill-opacity:1;stroke-width:0.26458332px">Sample &quot;Blue Page&quot; Style Context</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:120.00000477%;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;word-spacing:0px;fill:#313131;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="128.81642"
+       y="151.06691"
+       id="text1141-1"><tspan
+         sodipodi:role="line"
+         id="tspan1139-0"
+         x="128.81642"
+         y="151.06691"
+         style="font-weight:bold;fill:#313131;fill-opacity:1;stroke-width:0.26458332px">Sample &quot;High Contrast&quot; Style Context</tspan></text>
+  </g>
+</svg>

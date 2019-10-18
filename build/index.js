@@ -171,7 +171,7 @@ function compose(high, low, mode, tag) {
         {
           const res = { ...low
           };
-          const prefix = Array.isArray(tag) ? `${high[tag[0]]} ${high[tag[1]]}` : high[tag];
+          const prefix = Array.isArray(tag) ? `${high[tag[0]] || ''} ${high[tag[1]] || ''}` : high[tag] || '';
           /* eslint-disable no-restricted-syntax */
 
           for (const key in high) {
