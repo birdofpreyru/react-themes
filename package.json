@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "UI theme composition with CSS Modules and React",
   "main": "build/index.js",
   "scripts": {
@@ -45,14 +45,14 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-test-renderer": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-test-renderer": "^16.11.0",
     "rimraf": "^3.0.0"
   },
   "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "prop-types": "^15.7.2"
   }
 }

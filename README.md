@@ -24,6 +24,7 @@ on usage of your other tools of choice.
   - [`PRIORITY` &ndash; theme priority modes](#priority-modes)
   - [`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction`
     (_default export_)](#theme-wrapper)
+  - [`themed(componentName, [themeSchema], [defaultTheme], [options])` &rArr; `WrapperFunction` (_default export_)](#theme-wrapper)
   - [`<ThemeProvider themes={...}>{children}</ThemeProvider>`](#theme-provider)
   - [`COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries](#compatibility-modes)
   - [`setCompatibilityMode(mode)`](#set-compatibility)
@@ -208,11 +209,13 @@ Here is the minimal example from the illustration above:
   modes explained here.
 
   ```jsx
-  import { COMPOSE } from '@dr.pogodin/react-themes`;
+  import { COMPOSE } from '@dr.pogodin/react-themes';
 
-  COMPOSE.DEEP // Equals `DEEP` - deep composition mode;
-  COMPOSE.SOFT // Equals `SOFT` - soft composition mode;
-  COMPOSE.SWAP // Equals `SWAP` - swap composition mode;
+  const {
+    DEEP, // Equals `DEEP` - deep composition mode.
+    SOFT, // Equals `SOFT` - soft composition mode.
+    SWAP, // Equals `SWAP` - swap composition mode.
+  } = COMPOSE;
   ```
 
   Two themes with lower (`L`) and higher (`H`) priorities can be merged in
@@ -238,8 +241,10 @@ Here is the minimal example from the illustration above:
   ```jsx
   import { PRIORITY } from '@dr.pogodin/react-themes';
 
-  PRIORITY.ADHOC_CONTEXT_DEFAULT // Equals 'ADHOC_CONTEXT_DEFAULT'
-  PRIORITY.ADHOC_DEFAULT_CONTEXT // Equals 'ADHOC_DEFAULT_CONTEXT'
+  const {
+    ADHOC_CONTEXT_DEFAULT, // Equals 'ADHOC_CONTEXT_DEFAULT'.
+    ADHOC_DEFAULT_CONTEXT, // Equals 'ADHOC_DEFAULT_CONTEXT'.
+  } = PRIORITY;
   ```
 
   - **ADHOC_CONTEXT_DEFAULT** (**default**) &ndash; _ad hoc_ theme has
@@ -248,14 +253,21 @@ Here is the minimal example from the illustration above:
   - **ADHOC_DEFAULT_CONTEXT** &ndash; _ad hoc_ theme has the highest priority,
     followed by default, then context theme.
 
-- **`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction` (_default export_)** <a name="theme-wrapper"></a>
+- **`themed(..)` (_default export_)** <a name="theme-wrapper"></a>
 
   Registers themed component with the specified name, and optional default
-  theme. It can be used as a decorator, or just execute returned `WrapperFunction`
-  with your component passed in:
+  theme. It can be used in two ways:
+  **`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction`** \
+  **`themed(componentName, [themeSchema], [defaultTheme], [options])` &rArr; `WrapperFunction`**\
+  which are distinguished by the second argument type: an array means it is
+  `themeSchema`, and thus the second use pattern, otherwise it is assumed to be
+  the `defaultTheme`. The second way, with `themeSchema` is recommended, while
+  the first way provides backward compatibility.
+
+  `themed(..)` can be used as a decorator, or in the following manner:
 
   ```jsx
-  import themed from '@dr.pogodin/react-themes`;
+  import themed from '@dr.pogodin/react-themes';
 
   import defaultTheme from './default.scss';
 
@@ -272,6 +284,14 @@ Here is the minimal example from the illustration above:
 
   - `componentName` (_String_) &ndash; name of your component, it will be used
     to specify context themes for your component via `<ThemeProvider />`.
+
+  - `[themeSchema]` (_String[]_) &ndash; array of valid theme keys, beside
+    the keys corresponding to adhoc and context tags (see below). It is used
+    by the theme verifier, attached to the
+    [`.themeType`](#theme-type) field of the created
+    themed component, and also by the
+    [`castTheme`](#cast-theme) feature of themed component
+    instances.
 
   - `[defaultTheme]` (_Object_) &ndash; optional default theme to apply to
     the component instances.
@@ -320,6 +340,10 @@ Here is the minimal example from the illustration above:
   allow to override settings of registered themed component for its individual
   instances. Any other props are forwared to the wrapped base component.
 
+  - `[castTheme]` (_Boolean_) &ndash; If `true` themed component will rely on
+    `themeSchema` provided to `themed(..)` to pick up from _ad hoc_ theme and
+    pass down only expected fields.
+
   - `[theme]` (_Object_) &ndash; _ad hoc_ theme to apply to the component
     instance.
 
@@ -332,6 +356,33 @@ Here is the minimal example from the illustration above:
   - `[themePriority]` (_String_) &ndash; allows to override theme priorities.
 
   - `[mapThemeProps]` (_Function_) &ndash; allows to override the props mapper.
+
+  The wrapped component also holds <a name="theme-type"></a> `.themeType`
+  function, which allows easy type checking of themes with React `prop-types`.
+  To work correctly it requires `themeSchema` specified for `themed(..)`,
+  without the schema it will assume empty theme is expected. Here is the
+  usage example:
+
+  ```jsx
+  import themed from '@dr.pogodin/react-themes';
+
+  function Component({ theme }) {
+    return <div className={theme.container} />;
+  }
+
+  export default const ThemedComponent = themed('Component', [
+    'container',
+  ])(Component);
+
+  Component.propTypes = {
+    theme: ThemedComponent.themeType,
+  };
+  ```
+  &uArr; This will warn you if theme is missing, contains unexpected fields,
+  or misses _ad hoc_, or context tag keys. In the case of _ad hoc_ styling you
+  may want to not have a dedicated stylesheet for the _ad hoc_ theme, and it
+  will be seen as an issue by this check. In such case the
+  [`castTheme`](#cast-theme) option comes handly.
 
 - **`<ThemeProvider themes={...}>{children}</ThemeProvider>`** <a name="theme-provider"></a>
 
@@ -353,7 +404,10 @@ Here is the minimal example from the illustration above:
   `setCompatibilityMode(mode)` function.
 
   ```jsx
-  import { COMPATIBILITY_MODES, setCompatibilityMode } from '@dr.pogodin/react-themes';
+  import {
+    COMPATIBILITY_MODES,
+    setCompatibilityMode,
+  } from '@dr.pogodin/react-themes';
 
   setCompatibilityMode(COMPATIBILITY_MODES.REACT_CSS_THEMR);
   ```
