@@ -12,21 +12,21 @@ contexts, modifying its look via default, context, and _ad hoc_ themes. Powered 
 CSS modules and core HTML/CSS mechanics: no unstable dependencies, no restriction
 on usage of your other tools of choice.
 
-![Library Purpose Illustration](illustration.svg)
+![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/illustration.png)
 
-[**Live Example**](https://dr.pogodin.studio/react/react-themes)
+[Live Example](https://dr.pogodin.studio/react/react-themes)
 
 ### Content
 - [Getting Started](#getting-started)
 - [API Reference](#api-reference)
   - [Theme Anatomy](#theme-anatomy)
-  - [`COMPOSE` &ndash; composition modes](#compose--composition-modes)
-  - [`PRIORITY` &ndash; theme priority modes](#priority--theme-priority-modes)
+  - [`COMPOSE` &ndash; composition modes](#compose-modes)
+  - [`PRIORITY` &ndash; theme priority modes](#priority-modes)
   - [`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction`
-    (_default export_)](#themedcomponentname-defaulttheme-options--wrapperfunction-default-export)
-  - [`<ThemeProvider themes={...}>{children}</ThemeProvider>`](#themeprovider-themeschildrenthemeprovider)
-  - [`COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries](#compatibility_modes--emulate-behavior-of-older-libraries)
-  - [`setCompatibilityMode(mode)`](#setcompatibilitymodemode)
+    (_default export_)](#theme-wrapper)
+  - [`<ThemeProvider themes={...}>{children}</ThemeProvider>`](#theme-provider)
+  - [`COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries](#compatibility-modes)
+  - [`setCompatibilityMode(mode)`](#set-compatibility)
 - [Migration from other libraries](#migration)
 
 ### Getting Started
@@ -149,11 +149,12 @@ Here is the minimal example from the illustration above:
 
 ### API Reference
 
-- #### Theme Anatomy
+- **Theme Anatomy** <a name="theme-anatomy"></a>
 
   Each theme is a regular SCSS style sheet with rules to apply to elements of
   your themed component. The only rule is: the top level selectors in theme
   stylesheet should be wrapped by a few extra selectors:
+
   ```scss
   // Style theme inside SCSS code
 
@@ -164,8 +165,10 @@ Here is the minimal example from the illustration above:
     &.yourClass2 { ... }
   }
   ```
+
   When such stylesheet is imported into JSX, your React CSS Modules setup
   transforms it into:
+
   ```jsx
   // Style theme imported into JSX
 
@@ -177,6 +180,7 @@ Here is the minimal example from the illustration above:
     yourClass2: '<Transformed name of `yourClass2`>',
   }
   ```
+
   To ensure the correct rule priority, without depending on CSS rules ordering
   in the compiled CSS bundle, this library will add `ad`, `hoc`, and `context`
   classes to elements of themed components if necessary to ensure the priority
@@ -191,7 +195,7 @@ Here is the minimal example from the illustration above:
   `themed(...)` decorator supports options to override the exact key names for
   auxiliary `ad.hoc` and `context` selectors.
 
-- #### `COMPOSE` &ndash; composition modes
+- **`COMPOSE` &ndash; composition modes** <a name="compose-modes"></a>
 
   There are three theme sources for your themed components: default theme, set
   upon the component registration, context theme, coming from the hierarchy of
@@ -225,7 +229,7 @@ Here is the minimal example from the illustration above:
   - **Swap composition** &ndash; `H` theme completely overrides `L`, i.e. only
     classes from `H` are applied.
 
-- #### `PRIORITY` &ndash; theme priority modes
+- **`PRIORITY` &ndash; theme priority modes** <a name="priority-modes"></a>
 
   There are three theme sources for you themed components: default themes,
   context, and _ad hoc_. When multiple themes are applied to a component instance,
@@ -244,7 +248,7 @@ Here is the minimal example from the illustration above:
   - **ADHOC_DEFAULT_CONTEXT** &ndash; _ad hoc_ theme has the highest priority,
     followed by default, then context theme.
 
-- #### `themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction` (_default export_)
+- **`themed(componentName, [defaultTheme], [options])` &rArr; `WrapperFunction` (_default export_)** <a name="theme-wrapper"></a>
 
   Registers themed component with the specified name, and optional default
   theme. It can be used as a decorator, or just execute returned `WrapperFunction`
@@ -264,7 +268,7 @@ Here is the minimal example from the illustration above:
   the `className` attributes of your component elements, as shown in
   the [Getting Started](#getting-started) example.
 
-  #### `themed(..)` arguments:
+  **`themed(..)` arguments:**
 
   - `componentName` (_String_) &ndash; name of your component, it will be used
     to specify context themes for your component via `<ThemeProvider />`.
@@ -310,7 +314,7 @@ Here is the minimal example from the illustration above:
     - `[composeTheme]` (_String_)
     - `[mapThemrProps]` (_Function_)
 
-  #### Additional ThemedComponent props
+  **Additional ThemedComponent props**
 
   The wrapped themed component accepts the following aditional properties. They
   allow to override settings of registered themed component for its individual
@@ -329,7 +333,7 @@ Here is the minimal example from the illustration above:
 
   - `[mapThemeProps]` (_Function_) &ndash; allows to override the props mapper.
 
-- #### `<ThemeProvider themes={...}>{children}</ThemeProvider>`
+- **`<ThemeProvider themes={...}>{children}</ThemeProvider>`** <a name="theme-provider"></a>
 
   Defines style contexts. It accepts a single property `themes` (`theme` in
   compatibility modes).
@@ -343,7 +347,7 @@ Here is the minimal example from the illustration above:
   the closest context, but it is set in an outer context, the theme from outer
   context will be applied.
 
-- #### `COMPATIBILITY_MODES` &ndash; emulate behavior of older libraries
+- **`COMPATIBILITY_MODES`** <a name="compatibility-modes"></a> &ndash; emulate behavior of older libraries
 
   The library can be switched to compatibility modes by
   `setCompatibilityMode(mode)` function.
@@ -366,7 +370,7 @@ Here is the minimal example from the illustration above:
     library. It will deduce all other settings, and sets defaults to match behavior
     of that lib.
 
-- #### `setCompatibilityMode(mode)`
+- **`setCompatibilityMode(mode)`** <a name="set-compatibility"></a>
 
   Switches the library into the specified compatibility mode.
 
@@ -376,12 +380,12 @@ There are similar older libraries out there, including
 [react-css-themr](https://www.npmjs.com/package/react-css-themr) &ndash;
 the original inspiration for this work, and
 [react-css-super-themr](https://www.npmjs.com/package/react-css-super-themr).
-The [`setCompatibilityMode(mode)`](#setcompatibilitymodemode) feature allows our
+The [`setCompatibilityMode(mode)`](#set-compatibility) feature allows our
 project to closely emulate behavior of those older libs (you will still have to
 upgrade your code to use the latest React 16). For a complete migration to our
 library, you will need to perform the following updates in your code:
 
-- #### Differences from `react-css-themr`
+- **Differences from `react-css-themr`**
 
   - Composition mode are renamed from `deeply`, `softly`, and **false**, to
     `DEEP`, `SOFT`, and `SWAP`.
@@ -399,7 +403,7 @@ library, you will need to perform the following updates in your code:
     fine without them, should keep on working fine, although correct deep theme
     merging won't work in complex scenarios).
 
-- #### Differences from `react-css-super-themr`
+- **Differences from `react-css-super-themr`**
 
   - Composition mode are renamed from `deeply`, `softly`, and **false**, to
     `DEEP`, `SOFT`, and `SWAP`. Allows any composition mode for any theme pair.
