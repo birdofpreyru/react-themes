@@ -208,11 +208,13 @@ Here is the minimal example from the illustration above:
   modes explained here.
 
   ```jsx
-  import { COMPOSE } from '@dr.pogodin/react-themes`;
+  import { COMPOSE } from '@dr.pogodin/react-themes';
 
-  COMPOSE.DEEP // Equals `DEEP` - deep composition mode;
-  COMPOSE.SOFT // Equals `SOFT` - soft composition mode;
-  COMPOSE.SWAP // Equals `SWAP` - swap composition mode;
+  const {
+    DEEP, // Equals `DEEP` - deep composition mode.
+    SOFT, // Equals `SOFT` - soft composition mode.
+    SWAP, // Equals `SWAP` - swap composition mode.
+  } = COMPOSE;
   ```
 
   Two themes with lower (`L`) and higher (`H`) priorities can be merged in
@@ -238,8 +240,10 @@ Here is the minimal example from the illustration above:
   ```jsx
   import { PRIORITY } from '@dr.pogodin/react-themes';
 
-  PRIORITY.ADHOC_CONTEXT_DEFAULT // Equals 'ADHOC_CONTEXT_DEFAULT'
-  PRIORITY.ADHOC_DEFAULT_CONTEXT // Equals 'ADHOC_DEFAULT_CONTEXT'
+  const {
+    ADHOC_CONTEXT_DEFAULT, // Equals 'ADHOC_CONTEXT_DEFAULT'.
+    ADHOC_DEFAULT_CONTEXT, // Equals 'ADHOC_DEFAULT_CONTEXT'.
+  } = PRIORITY;
   ```
 
   - **ADHOC_CONTEXT_DEFAULT** (**default**) &ndash; _ad hoc_ theme has
@@ -255,7 +259,7 @@ Here is the minimal example from the illustration above:
   with your component passed in:
 
   ```jsx
-  import themed from '@dr.pogodin/react-themes`;
+  import themed from '@dr.pogodin/react-themes';
 
   import defaultTheme from './default.scss';
 
@@ -353,7 +357,10 @@ Here is the minimal example from the illustration above:
   `setCompatibilityMode(mode)` function.
 
   ```jsx
-  import { COMPATIBILITY_MODES, setCompatibilityMode } from '@dr.pogodin/react-themes';
+  import {
+    COMPATIBILITY_MODES,
+    setCompatibilityMode,
+  } from '@dr.pogodin/react-themes';
 
   setCompatibilityMode(COMPATIBILITY_MODES.REACT_CSS_THEMR);
   ```
