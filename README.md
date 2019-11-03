@@ -3,7 +3,7 @@
 ![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg)
 ![NPM Downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes.svg)
 
-# Dr. Pogodin's React Themes
+# React Themes
 
 UI style themes for React components with CSS modules and theme composition.
 
