@@ -163,6 +163,7 @@ function compose(high, low, mode, tag) {
 /**
  * Themed object decorator.
  * @param {String} componentName Themed component name.
+ * @param {Array|Object} themeSchema_or_defaultTheme
  * @param {Object} [defaultTheme] Optional default theme.
  * @param {Object} [options] Optional parameters.
  * @param {String} [options.composeAdhocTheme] Optional. Composition type for
@@ -176,9 +177,13 @@ function compose(high, low, mode, tag) {
  *  mapper.
  * @return {ElementType} React element type.
  */
-export default function themed(
+function themed(
   componentName,
-  defaultTheme, {
+  themeSchema,
+  defaultTheme,
+  options,
+) {
+  const {
     adhocTag = 'ad.hoc',
     contextTag = 'context',
     composeAdhocTheme: oComposeAdhocTheme,
@@ -187,85 +192,171 @@ export default function themed(
     mapThemeProps: oMapThemeProps,
     mapThemrProps: oLegacyMapThemeProps,
     themePriority: oThemePriority,
-  } = {},
-) {
+  } = options || {};
+
   const aTag = adhocTag.split('.');
   if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
     throw new Error('Invalid adhoc theme tag');
   }
-  return (Component) => React.forwardRef(
-    (properties, ref) => {
-      const {
-        children,
-        composeAdhocTheme,
-        composeContextTheme,
-        theme,
-        themePriority,
-        mapThemeProps,
-        ...rest
-      } = properties;
-      const contextThemes = useContext(context);
 
-      /* Deduction of applicable theme composition and priority settings. */
-      let mapper;
-      let priority;
-      let composeAdhoc;
-      let composeContext;
-      switch (compatibilityMode) {
-        case COMPATIBILITY_MODE.REACT_CSS_THEMR:
-          mapper = oLegacyMapThemeProps;
-          priority = PRIORITY.ADHOC_DEFAULT_CONTEXT;
-          composeAdhoc = legacyCompose(
-            oLegacyComposeTheme,
-            COMPOSE.DEEP,
-          );
-          composeContext = composeAdhoc;
-          break;
-        case COMPATIBILITY_MODE.REACT_CSS_SUPER_THEMR:
-          mapper = oLegacyMapThemeProps;
-          priority = legacyPriority(
-            themePriority
-            || oThemePriority
-            || PRIORITY.ADHOC_CONTEXT_DEFAULT,
-          );
-          composeAdhoc = legacyCompose(
-            composeAdhocTheme,
-            oComposeAdhocTheme,
-            COMPOSE.DEEP,
-          );
-          composeContext = legacyCompose(
-            composeContext,
-            oComposeContextTheme,
-            COMPOSE.SOFT,
-          );
-          break;
-        default:
-          mapper = mapThemeProps || oMapThemeProps;
-          priority = themePriority || oThemePriority
-          || PRIORITY.ADHOC_CONTEXT_DEFAULT;
-          composeAdhoc = composeAdhocTheme
-          || oComposeAdhocTheme || COMPOSE.DEEP;
-          composeContext = composeContextTheme
-          || oComposeContextTheme || COMPOSE.DEEP;
+  const validThemeKeys = themeSchema ? [...themeSchema] : [];
+  validThemeKeys.push(aTag[0], aTag[1], contextTag);
+  const validThemeKeysSet = new Set(validThemeKeys);
+
+  return (Component) => {
+    const WrappedComponent = React.forwardRef(
+      (properties, ref) => {
+        const {
+          castTheme,
+          children,
+          composeAdhocTheme,
+          composeContextTheme,
+          theme,
+          themePriority,
+          mapThemeProps,
+          ...rest
+        } = properties;
+        const contextThemes = useContext(context);
+
+        /* Deduction of applicable theme composition and priority settings. */
+        let mapper;
+        let priority;
+        let composeAdhoc;
+        let composeContext;
+        switch (compatibilityMode) {
+          case COMPATIBILITY_MODE.REACT_CSS_THEMR:
+            mapper = oLegacyMapThemeProps;
+            priority = PRIORITY.ADHOC_DEFAULT_CONTEXT;
+            composeAdhoc = legacyCompose(
+              oLegacyComposeTheme,
+              COMPOSE.DEEP,
+            );
+            composeContext = composeAdhoc;
+            break;
+          case COMPATIBILITY_MODE.REACT_CSS_SUPER_THEMR:
+            mapper = oLegacyMapThemeProps;
+            priority = legacyPriority(
+              themePriority
+              || oThemePriority
+              || PRIORITY.ADHOC_CONTEXT_DEFAULT,
+            );
+            composeAdhoc = legacyCompose(
+              composeAdhocTheme,
+              oComposeAdhocTheme,
+              COMPOSE.DEEP,
+            );
+            composeContext = legacyCompose(
+              composeContext,
+              oComposeContextTheme,
+              COMPOSE.SOFT,
+            );
+            break;
+          default:
+            mapper = mapThemeProps || oMapThemeProps;
+            priority = themePriority || oThemePriority
+            || PRIORITY.ADHOC_CONTEXT_DEFAULT;
+            composeAdhoc = composeAdhocTheme
+            || oComposeAdhocTheme || COMPOSE.DEEP;
+            composeContext = composeContextTheme
+            || oComposeContextTheme || COMPOSE.DEEP;
+        }
+
+        /* Theme composition. */
+        const contextTheme = contextThemes[componentName];
+        let res = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
+          ? compose(defaultTheme, contextTheme, composeContext, contextTag)
+          : compose(contextTheme, defaultTheme, composeContext, contextTag);
+
+        let adhocTheme = theme;
+        if (castTheme && theme) {
+          adhocTheme = {};
+          validThemeKeys.forEach((key) => {
+            const clazz = theme[key];
+            if (clazz) adhocTheme[key] = clazz;
+          });
+        }
+
+        res = compose(adhocTheme, res, composeAdhoc, aTag) || {};
+
+        /* Props deduction. */
+        const p = mapper ? mapper({ ...properties, ref }, res) : {
+          ...rest,
+          theme: res,
+          ref,
+        };
+
+        /* eslint-disable react/jsx-props-no-spreading */
+        return <Component {...p}>{children}</Component>;
+        /* eslint-enable react/jsx-props-no-spreading */
+      },
+    );
+
+    /**
+     * `prop-types` compatible prop checker for `theme` prop.
+     */
+    WrappedComponent.themeType = (props, propName, name) => {
+      const theme = props[propName];
+      if (!theme) {
+        return new Error(`Theme is not provided to ${name} component`);
       }
+      let errors = [];
+      if (typeof theme[aTag[0]] !== 'string'
+      || typeof theme[aTag[1]] !== 'string') {
+        errors.push('- Misses adhoc tag classes');
+      }
+      if (typeof theme[contextTag] !== 'string') {
+        errors.push('- Misses context tag class');
+      }
+      Object.keys(theme).forEach((key) => {
+        if (!validThemeKeysSet.has(key)) {
+          errors.push(`- Unexpected theme key ${key}`);
+        }
+      });
+      validThemeKeys.forEach((key) => {
+        const type = typeof theme[key];
+        if (type !== 'undefined' && type !== 'string') {
+          errors.push(`- ${key} class is defined, but not a string`);
+        }
+      });
+      if (errors.length) {
+        errors = errors.join('\n');
+        return new Error(
+          `Theme given to ${name} has multiple issues:\n${errors}`,
+        );
+      }
+      return undefined;
+    };
 
-      /* Theme composition. */
-      const contextTheme = contextThemes[componentName];
-      let res = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
-        ? compose(defaultTheme, contextTheme, composeContext, contextTag)
-        : compose(contextTheme, defaultTheme, composeContext, contextTag);
-      res = compose(theme, res, composeAdhoc, aTag) || {};
+    return WrappedComponent;
+  };
+}
 
-      /* Props deduction. */
-      const p = mapper ? mapper({ ...properties, ref }, res) : {
-        ...rest,
-        theme: res,
-        ref,
-      };
-
-      /* eslint-disable react/jsx-props-no-spreading */
-      return <Component {...p}>{children}</Component>;
-      /* eslint-enable react/jsx-props-no-spreading */
-    },
-  );
+/**
+ * Exposes `themed(..)` as a function of either 3 or 4 arguments. In the first
+ * case it is:
+ * `themed(componentName, defaultTheme, options)`,
+ * in the second (recommended) case it is:
+ * `themed(componentName, themeSchema, defaultTheme, options)`
+ * @param  {...any} args
+ * @return {react.ElementType}
+ */
+export default function (
+  componentName,
+  themeSchemaOrdefaultTheme,
+  defaultThemeOrOptions,
+  options,
+) {
+  return Array.isArray(themeSchemaOrdefaultTheme)
+    ? themed(
+      componentName,
+      themeSchemaOrdefaultTheme,
+      defaultThemeOrOptions,
+      options,
+    )
+    : themed(
+      componentName,
+      null,
+      themeSchemaOrdefaultTheme,
+      defaultThemeOrOptions,
+    );
 }

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Theme verification Reports correct errors with invalid theme 1`] = `
+"Theme given to Component has multiple issues:
+- Misses adhoc tag classes
+- Misses context tag class
+- Unexpected theme key unexpectedField"
+`;
+
+exports[`Theme verification Theme casting works 1`] = `
+"{
+  \\"container\\": \\"theme-with-extra-styles__container___uGNeO\\",
+  \\"content\\": \\"theme-with-extra-styles__content___1rTpO\\",
+  \\"ad\\": \\"theme-with-extra-styles__ad___3UEqR\\",
+  \\"hoc\\": \\"theme-with-extra-styles__hoc___dOqew\\",
+  \\"context\\": \\"theme-with-extra-styles__context___3Cx_L\\"
+}"
+`;

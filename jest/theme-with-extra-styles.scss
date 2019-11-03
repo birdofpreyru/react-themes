@@ -1,0 +1,14 @@
+*,
+.ad.hoc,
+.context {
+  &.container {
+    color: white;
+  }
+  &.content {
+    color: red;
+  }
+}
+
+.unexpectedRule {
+  color: blue;
+}
