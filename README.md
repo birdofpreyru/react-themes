@@ -370,13 +370,15 @@ Here is the minimal example from the illustration above:
     return <div className={theme.container} />;
   }
 
-  export default const ThemedComponent = themed('Component', [
+  const ThemedComponent = themed('Component', [
     'container',
   ])(Component);
 
   Component.propTypes = {
-    theme: ThemedComponent.themeType,
+    theme: ThemedComponent.themeType.isRequired,
   };
+
+  export default ThemedComponent;
   ```
   &uArr; This will warn you if theme is missing, contains unexpected fields,
   or misses _ad hoc_, or context tag keys. In the case of _ad hoc_ styling you
