@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "UI theme composition with CSS Modules and React",
   "main": "build/index.js",
   "scripts": {

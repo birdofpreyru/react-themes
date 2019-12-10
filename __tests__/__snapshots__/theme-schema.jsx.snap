@@ -16,3 +16,5 @@ exports[`Theme verification Theme casting works 1`] = `
   \\"context\\": \\"theme-with-extra-styles__context___3Cx_L\\"
 }"
 `;
+
+exports[`Theme verification Theme is missing and is required 1`] = `"Theme is not provided to Component component"`;

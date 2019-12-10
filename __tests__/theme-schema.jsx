@@ -31,6 +31,24 @@ describe('Theme verification', () => {
     expect(res).toBe();
   });
 
+  test('Theme is missing and not required', () => {
+    const res = ThemedComponent.themeType(
+      {},
+      'theme',
+      'Component',
+    );
+    expect(res).toBe(undefined);
+  });
+
+  test('Theme is missing and is required', () => {
+    const res = ThemedComponent.themeType.isRequired(
+      {},
+      'theme',
+      'Component',
+    );
+    expect(res.message).toMatchSnapshot();
+  });
+
   test('Reports correct errors with invalid theme', () => {
     const res = ThemedComponent.themeType(
       { theme: invalidTheme },
