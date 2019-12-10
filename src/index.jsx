@@ -296,9 +296,7 @@ function themed(
      */
     WrappedComponent.themeType = (props, propName, name) => {
       const theme = props[propName];
-      if (!theme) {
-        return new Error(`Theme is not provided to ${name} component`);
-      }
+      if (!theme) return undefined;
       let errors = [];
       if (typeof theme[aTag[0]] !== 'string'
       || typeof theme[aTag[1]] !== 'string') {
@@ -326,6 +324,11 @@ function themed(
       }
       return undefined;
     };
+
+    WrappedComponent.themeType.isRequired = (props, propName, name) => (
+      props[propName] ? WrappedComponent.themeType(props, propName, name)
+        : Error(`Theme is not provided to ${name} component`)
+    );
 
     return WrappedComponent;
   };
