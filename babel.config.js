@@ -4,6 +4,6 @@ module.exports = {
     '@babel/react',
   ],
   plugins: [
-    ['css-modules-transform', { extensions: ['.css', '.scss'] }],
+    ['@dr.pogodin/css-modules-transform', { extensions: ['.css', '.scss'] }],
   ],
 };
