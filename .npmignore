@@ -1,0 +1,8 @@
+/.*
+/__coverage__
+/__tests__
+/babel.config.js
+/jest
+/src
+/illustration*
+/dr.pogodin-react-themes-*.tgz

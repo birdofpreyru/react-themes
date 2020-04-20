@@ -1,9 +1,0 @@
-{
-  "presets": [
-    ["@babel/env", { "targets": { "node": true }}],
-    "@babel/react"
-  ],
-  "plugins": [
-    ["css-modules-transform", { "extensions": [".css", ".scss"] }]
-  ]
-}
