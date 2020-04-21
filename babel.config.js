@@ -1,6 +1,6 @@
 module.exports = {
   presets: [
-    ['@babel/env', { targets: '> 0.25%' }],
+    ['@babel/env', { targets: 'defaults' }],
     '@babel/react',
   ],
   plugins: [
