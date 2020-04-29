@@ -15,12 +15,12 @@ module.exports = function preset(api, options = {}) {
   return {
     presets: [envPreset, '@babel/react'],
     plugins: [
-      '@babel/plugin-transform-runtime',
       ['@dr.pogodin/css-modules-transform', { extensions: ['.css', '.scss'] }],
       ['module-resolver', {
         extensions: ['.js', '.jsx'],
         root: ['./src', '.'],
       }],
+      '@babel/plugin-transform-runtime',
     ],
   };
 };
