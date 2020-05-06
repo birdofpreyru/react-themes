@@ -1,5 +1,5 @@
 ![Master Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/master.svg?label=master)
-![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/dev.svg?label=dev)
+![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/devel.svg?label=devel)
 ![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg)
 ![NPM Downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes.svg)
 
