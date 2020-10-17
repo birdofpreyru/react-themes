@@ -2,12 +2,12 @@
  * Dr. Pogodin's React Themes.
  */
 
-import React, { useContext } from 'react';
+import { createContext, forwardRef, useContext } from 'react';
 import PT from 'prop-types';
 
 const INVALID_COMPOSE = 'Invalid composition mode';
 
-const context = React.createContext({});
+const context = createContext({});
 
 let compatibilityMode = null;
 
@@ -204,7 +204,7 @@ function themed(
   const validThemeKeysSet = new Set(validThemeKeys);
 
   return (Component) => {
-    const WrappedComponent = React.forwardRef(
+    const WrappedComponent = forwardRef(
       (properties, ref) => {
         const {
           castTheme,

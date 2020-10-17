@@ -1,5 +1,3 @@
-import React from 'react';
-
 import themed, {
   COMPATIBILITY_MODE,
   ThemeProvider,

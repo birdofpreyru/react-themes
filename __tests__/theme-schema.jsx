@@ -2,8 +2,6 @@
  * Tests for theme schema verifier, and casting.
  */
 
-import React from 'react';
-
 import themed from '../src';
 
 import { snapshot } from '../jest/utils';
