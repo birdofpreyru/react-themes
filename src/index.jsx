@@ -343,7 +343,7 @@ function themed(
  * @param  {...any} args
  * @return {react.ElementType}
  */
-export default function (
+export default function themedWrapper(
   componentName,
   themeSchemaOrdefaultTheme,
   defaultThemeOrOptions,
