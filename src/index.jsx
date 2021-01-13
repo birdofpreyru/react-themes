@@ -113,7 +113,9 @@ export function ThemeProvider({
   theme: legacyThemes,
   themes,
 }) {
-  const value = compatibilityMode ? legacyThemes : themes;
+  const contextThemes = useContext(context);
+  let value = compatibilityMode ? legacyThemes : themes;
+  if (contextThemes) value = { ...contextThemes, ...value };
   return <context.Provider value={value}>{children}</context.Provider>;
 }
 

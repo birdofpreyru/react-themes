@@ -84,6 +84,21 @@ describe('01 - No default theme.', () => {
         )),
       ).toThrowErrorMatchingSnapshot();
     });
+
+    test(
+      '06 - Nested ThemeProvider does not shadow parent themes it does not override',
+      () => {
+        const Themed2 = themed('Themed2')(TestComponent);
+        snapshot((
+          <ThemeProvider themes={{ Themed: themeA, Themed2: themeA }}>
+            <ThemeProvider themes={{ Themed2: themeB }}>
+              <Themed />
+              <Themed2 />
+            </ThemeProvider>
+          </ThemeProvider>
+        ));
+      },
+    );
   });
 });
 
