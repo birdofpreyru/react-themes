@@ -1,4 +1,5 @@
-node_modules
-dr.pogodin-react-themes-*.tgz
-__coverage__
-/build
+/__coverage__/
+/build/
+/docs/
+/dr.pogodin-react-themes-*.tgz
+/node_modules/
