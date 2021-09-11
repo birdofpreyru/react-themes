@@ -1,0 +1,20 @@
+*,
+.context,
+.ad.hoc {
+  &.container {
+    color: white;
+    font-weight: bold;
+  }
+
+  &.headerCell {
+    border-bottom: 1px solid;
+  }
+
+  &.sunday {
+    color: lightgreen;
+  }
+
+  &.today {
+    color: blue;
+  }
+}

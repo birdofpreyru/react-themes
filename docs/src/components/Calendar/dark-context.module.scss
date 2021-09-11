@@ -1,0 +1,11 @@
+*,
+.context,
+.ad.hoc {
+  &.container {
+    color: white;
+  }
+
+  &.today {
+    color: blue;
+  }
+}

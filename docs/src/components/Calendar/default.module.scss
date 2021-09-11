@@ -1,0 +1,38 @@
+*,
+.context,
+.ad.hoc {
+  &.container {
+    margin: 1.2em;
+  }
+
+  &.grid {
+    display: grid;
+    grid-template: auto / repeat(7, max-content);
+  }
+
+  &.cell {
+    padding: 0.1em 0.3em;
+    text-align: center;
+  }
+
+  &.headerCell {
+    font-weight: bold;
+  }
+
+  &.title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &.today {
+    background-color: paleturquoise;
+    border: 1px solid blue;
+    z-index: 1;
+  }
+
+  &.sunday {
+    color: red;
+    font-weight: bold;
+  }
+}
