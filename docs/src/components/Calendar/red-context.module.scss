@@ -8,10 +8,15 @@
 
   &.headerCell {
     border-bottom: 1px solid;
+    color: black;
   }
 
   &.sunday {
     color: lightgreen;
+  }
+
+  &.title {
+    color: black;
   }
 
   &.today {

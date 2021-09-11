@@ -55,7 +55,10 @@ function HomepageHeader() {
 }
 
 const CODE_SNIPPLET_01 =
-`<div className={styles.columns}>
+`// "calendarWithGrid" and "darkContextCalendarTheme" are just
+// imported SCSS theme modules.
+
+<div className={styles.columns}>
   <div>
     <Calendar />
     <Calendar theme={calendarWithGrid} />
