@@ -1,0 +1,143 @@
+---
+sidebar_position: 1
+---
+
+# Getting Started
+
+## Setup
+
+1.  Install the library into your React project:
+    ```bash
+    npm install --save @dr.pogodin/react-themes
+    ```
+
+2.  Configure support of CSS Modules and SASS in your project:
+
+    1.  If you rely on [Create React App](https://create-react-app.dev/) follow
+        these instructions:
+        - [Adding a CSS Modules Stylesheet](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet)
+        - [Adding SASS Stylesheet](https://create-react-app.dev/docs/adding-a-sass-stylesheet)
+
+    2.  If you rely on alternative starting packs / frameworks, follow their
+        instructions.
+
+    3.  If you rely on a barebone React setup, or the starting pack / framework
+        you use does not suggest a way to set these up, follow these instructions:
+        - [babel-plugin-react-css-modules](https://www.npmjs.com/package/@dr.pogodin/babel-plugin-react-css-modules) (CSS Modules support via Babel)
+        - [sass](https://www.npmjs.com/package/sass)
+
+## Basic Themed Component
+
+As the most simple example, let's consider a trivial component that just renders
+a `<div>` element wrapping the text provided via `children` prop:
+
+```jsx title="/src/components/BasicExample/index.jsx"
+import React from 'react';
+
+export default function BasicExample({ children }) {
+  return <div>{children}</div>;
+}
+```
+
+Say, we want to style this component as a button, using React Themes library
+to make it easily themeable based on context. This is going to be our default
+theme:
+
+import CodeBlock from '@theme/CodeBlock';
+import defaultThemeCode from '!!raw-loader!../src/components/BasicExample/default.module.scss';
+
+<CodeBlock
+  className="language-scss"
+  title="src/components/BasicExample/default.module.scss"
+>{defaultThemeCode}</CodeBlock>
+
+It consists of `.component` class with default button styling we want to apply
+to the `<div>` element, and that class is wrapped into small boilerplate, which
+will be explained later. With this theme stylesheet at hands we update the
+`<BasicExample>` in the following way:
+
+import BasicExample from '../src/components/BasicExample';
+import basicExampleCode from '!!raw-loader!../src/components/BasicExample';
+
+<CodeBlock
+  className="language-jsx"
+  title="src/components/BasicExample/default.scss"
+>{basicExampleCode}</CodeBlock>
+
+At this point we can use the component to render a block appearing as a simple
+button:
+
+import Example01 from '../src/components/Example01';
+import Example01Code from '!!raw-loader!../src/components/Example01';
+
+<Example01 />
+<CodeBlock
+  className="language-jsx"
+  title="src/components/Example01.jsx"
+>{Example01Code}</CodeBlock>
+
+Now, say some part of your app uses a blue background, where our sample component
+as is does not look great:
+
+import Example02 from '../src/components/Example02';
+import Example02Code from '!!raw-loader!../src/components/Example02';
+
+<Example02 />
+<CodeBlock
+  className="language-jsx"
+  title="src/components/Example02.jsx"
+>{Example02Code}</CodeBlock>
+
+Let's use React Themes to apply additional "blue context" theme for our
+component within blue-background section of the app. This is our additional
+theme (note, we only define color overrides, and remaining layout styling
+will be inherited from the original default theme):
+
+import blueContextTheme from '!!raw-loader!../src/components/BasicExample/blue-context.module.scss';
+
+<CodeBlock
+  className="language-scss"
+  title="src/components/BasicExample/blue-context.module.scss"
+>{blueContextTheme}</CodeBlock>
+
+And we update the example using `<ThemeProvider>` component from React Themes.
+All `<BasicExample>` component instances anywhere within this `<ThemeProvider>`
+sub-tree will get the "blue context" theme automatically applied to them:
+
+import Example03 from '../src/components/Example03';
+import Example03Code from '!!raw-loader!../src/components/Example03';
+
+<Example03 />
+<CodeBlock
+  className="language-jsx"
+  title="src/components/Example03.jsx"
+>{Example03Code}</CodeBlock>
+
+Now, say we want to add some particular styling to a selected component
+instance, for example: a different label color, border, and some extra
+margin around the central component in our example (sure, it would be
+better to take care about correct horizontal margins inside the default
+theme, but for the sake of example here we use _ad hoc_ styling of particular
+component for that).
+
+Here is the sample _ad hoc_ theme we'll use:
+
+import adHocTheme from '!!raw-loader!../src/components/Example04/style.module.scss';
+
+<CodeBlock
+  className="language-scss"
+  title="src/components/Example04/style.module.scss"
+>{adHocTheme}</CodeBlock>
+
+And here is how we use it:
+
+import Example04 from '../src/components/Example04';
+import Example04Code from '!!raw-loader!../src/components/Example04';
+
+<Example04 />
+<CodeBlock
+  className="language-jsx"
+  title="src/components/Example04/index.jsx"
+>{Example04Code}</CodeBlock>
+
+

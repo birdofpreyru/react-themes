@@ -5,6 +5,8 @@
 
 # React Themes
 
+[**Documentation**](https://dr.pogodin.studio/docs/react-themes/index.html)
+
 Themeable UI styling of React components, with theme composition features,
 based on
 [react-css-themr](https://www.npmjs.com/package/@friendsofreactjs/react-css-themr)
@@ -18,6 +20,4 @@ your choice.
 
 ![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/illustration.png)
 
-[Live Example](https://dr.pogodin.studio/react/react-themes)
-
-[Documentation](https://dr.pogodin.studio/docs/react-themes/index.html)
+[**Documentation**](https://dr.pogodin.studio/docs/react-themes/index.html)

@@ -1,8 +1,10 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const DOCS_REPO = 'https://github.com/birdofpreyru/react-themes';
-const EDIT_BASE = `${DOCS_REPO}/edit/master/docs`;
+const CODE_REPO = 'https://github.com/birdofpreyru/react-themes';
+const EDIT_BASE = `${CODE_REPO}/edit/master/docs`;
+
+const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -60,7 +62,7 @@ const EDIT_BASE = `${DOCS_REPO}/edit/master/docs`;
           },
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'getting-started',
             position: 'left',
             label: 'Tutorial',
           },
@@ -75,8 +77,6 @@ const EDIT_BASE = `${DOCS_REPO}/edit/master/docs`;
           },
         ],
       },
-      /*
-        TODO: To be configured
       footer: {
         style: 'dark',
         links: [
@@ -89,6 +89,7 @@ const EDIT_BASE = `${DOCS_REPO}/edit/master/docs`;
               },
             ],
           },
+          /*
           {
             title: 'Community',
             items: [
@@ -106,23 +107,25 @@ const EDIT_BASE = `${DOCS_REPO}/edit/master/docs`;
               },
             ],
           },
+          */
           {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'GitHub',
+                href: CODE_REPO,
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'NPM',
+                href: NPM_URL,
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Dr. Pogodin Studio`,
+        copyright: `Copyright © ${new Date().getFullYear()}
+          <a href="https://dr.pogodin.studio" target="_blank">Dr. Pogodin Studio</a>
+        `,
       },
-      */
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

@@ -1,0 +1,10 @@
+*,
+.context,
+.ad.hoc {
+  &.component {
+    border: 1px solid red;
+    color: red;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}

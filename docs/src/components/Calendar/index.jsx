@@ -30,7 +30,11 @@ function Calendar({
     dates.push(<div className={className} key={`date-${i}`}>{i}</div>);
   }
   for (let i = lastDateInWeek; i < 6; ++i) {
-    dates.push(<div className={theme.cell} key={`end-spacer-${i}`} />)
+    let className = theme.cell;
+    if ((firstDateInWeek + last.date() + i - lastDateInWeek + 1) % 7 === 0) {
+      className += ` ${theme.sunday}`;
+    }
+    dates.push(<div className={className} key={`end-spacer-${i}`} />)
   }
 
   const headerClass = `${theme.cell} ${theme.headerCell}`;
