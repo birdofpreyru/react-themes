@@ -12,11 +12,11 @@ the original inspiration for this work
   was not maintained by its original author for quite some time, before getting
   new maintainers recently.
 
-
-{@link setCompatibilityMode} function feature allows `react-themes`
-to closely emulate behavior of those older libs (you will still have to
-upgrade your code to use the latest React 16+). For a complete migration to this
-library, you will need to patch your code to address the following points:
+[setCompatibilityMode()](/docs/api/functions#setCompatibilityMode) function
+allows `react-themes` to closely emulate behavior of those older libs (you will
+still have to upgrade your code to use the latest React 16+). For a complete
+migration to this library, you will need to patch your code to address
+the following points:
 
 ## `react-css-themr`
 

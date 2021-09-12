@@ -45,20 +45,21 @@ named by their original names, rather the transformed out):
 - `.context.yourClass1` - higher specifity;
 - `.ad.hoc.yourClass1` - the highest specifity.
 
-{@link themed} decorator supports options to override the exact key names for
-auxiliary `ad.hoc` and `context` selectors.
+[themed()()](/docs/api/functions#themed) decorator supports options to override
+the exact key names for auxiliary `ad.hoc` and `context` selectors.
 
 ## Theme Composition
 
 There are three theme sources for your themed components: default theme, set
 upon the component registration, context theme, coming from the hierarchy of
-{@link &lt;ThemeProvider&gt;} components, and the _ad hoc_ theme specified for
+[`<ThemeProvider>`](/docs/api/components#ThemeProvider) components, and
+the _ad hoc_ theme specified for
 each instance of the themed component. Any of these themes may be omit for
 a specific component instance.
 
 If several themes are applied to the same component instance, they are merged,
 according to their priorities, explained further below, and the composition
-modes provided by {@link COMPOSE} enum:
+modes provided by [COMPOSE](/docs/api/constants#compose) enum:
 
 ```jsx
 import { COMPOSE } from '@dr.pogodin/react-themes';
@@ -162,4 +163,5 @@ priority order can be changed either for selected themed components, or for
 their individual instances to _ad hoc_ (highest priority), followed by default
 theme, then context theme (lowest priority).
 
-(see {@link PRIORITY}, themed, ThemedComponent)
+See [PRIORITY](/docs/api/constants#priority), [themed()()](/docs/api/functions#themed),
+[`<ThemedComponent>`](/docs/api/components#ThemedComponent).

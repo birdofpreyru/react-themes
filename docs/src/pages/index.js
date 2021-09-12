@@ -122,7 +122,11 @@ export default function Home() {
               default theme
             </Link> implements necessary layout styling, and it looks good against
             a bright background. As the default style does not shine against dark
-            and red backgrounds, <code>&lt;ThemeProvider&gt;</code> is used to
+            and red backgrounds, &zwnj;
+            <Link to="/docs/api/components#ThemeProvider">
+              <code>&lt;ThemeProvider&gt;</code>
+            </Link>
+            &zwnj; is used to
             to instruct React Themes to apply additional &zwnj;
             <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/dark-context.module.scss">
               "black context theme"
@@ -157,7 +161,7 @@ export default function Home() {
           </p>
           <p>
             <strong>Read next:</strong> &zwnj;
-            <Link to="/docs/getting-started">Getting Started</Link>
+            <Link to="/docs/tutorial/getting-started">Getting Started</Link>
           </p>
         </div>
       </main>

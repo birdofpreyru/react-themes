@@ -26,13 +26,6 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: `${EDIT_BASE}/docs/`,
         },
-        /*
-          NOTE: No use for blog for now.
-        blog: {
-          showReadingTime: true,
-          editUrl: `${EDIT_BASE}/blog/`,
-        },
-        */
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -62,14 +55,16 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
           },
           {
             type: 'doc',
-            docId: 'getting-started',
+            docId: 'tutorial/getting-started',
             position: 'left',
             label: 'Tutorial',
           },
-          /*
-            NOTE: For now, no need for blog.
-            {to: '/blog', label: 'Blog', position: 'left'},
-          */
+          {
+            type: 'doc',
+            docId: 'api/overview',
+            position: 'left',
+            label: 'API',
+          },
           {
             href: 'https://github.com/birdofpreyru/react-themes',
             label: 'GitHub',
@@ -85,7 +80,7 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/tutorial/intro',
               },
             ],
           },

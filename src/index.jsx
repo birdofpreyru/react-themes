@@ -12,17 +12,7 @@ const context = createContext({});
 let compatibilityMode = null;
 
 /**
- * Compatibility modes supported by {@link setCompatibilityMode}.
- * @prop {string} REACT_CSS_THEMR Equals `REACT_CSS_THEMR`.
- * In this mode `react-themes` library emulates
- * [`react-css-themr`](https://www.npmjs.com/package/react-css-themr):
- * it will accept the same parameters, and use different default settings
- * to mimic `react-css-themr` behavior.
- * @prop {string} REACT_CSS_SUPER_THEMR Equals `REACT_CSS_SUPER_THEMR`.
- * In this mode `react-themes` library emulates
- * [`react-css-super-themr`](https://www.npmjs.com/package/react-css-super-themr):
- * it will accept the same parameters, and use different default settings
- * to mimic `react-css-themr` behavior.
+ * Compatibility modes supported by setCompatibilityMode().
  */
 export const COMPATIBILITY_MODE = {
   REACT_CSS_THEMR: 'REACT_CSS_THEMR',
@@ -34,8 +24,7 @@ const VALID_COMPATIBILITY_MODES = Object.values(COMPATIBILITY_MODE);
 /**
  * Switches `react-themes` library into a compatibility mode,
  * where it emulates behavior of other similar theming libraries.
- * @param {string} mode Compatibility mode, one of {@link COMPATIBILITY_MODE}
- * values.
+ * @param {string} mode COMPATIBILITY_MODE values.
  */
 export function setCompatibilityMode(mode) {
   if (mode && !VALID_COMPATIBILITY_MODES.includes(mode)) {
@@ -45,19 +34,7 @@ export function setCompatibilityMode(mode) {
 }
 
 /**
- * Supported theme composition modes. Two component themes with lower (`L`),
- * and higher (`H`) priorities can be merged in the following way:
- * @prop {string} DEEP Equals `DEEP`. In deep composition mode all classes from
- * `H` are applied with higher specifity, on top of all classes from `L`,
- * which are applied with lower specifity. Thus, in case of conflicting rules,
- * theme `H` overrides `L`, but otherwise rules from `L` are used as defaults.
- * It is default composition mode.
- * @prop {string} SOFT Equals `SOFT`. In soft composition mode all classes from
- * `H` are applied, and while classes from theme `L` are applied only if they
- * are absent in theme `H`. Thus, any classes defined in `H` completely override
- * corresponding classes from `L`.`
- * @prop {string} SWAP Equals `SWAP`. In swap mode only classes from theme `H`
- * are applied, thus theme `H` completely overrides `L`.
+ * Supported theme composition modes.
  */
 export const COMPOSE = {
   DEEP: 'DEEP',
@@ -97,12 +74,6 @@ function legacyCompose(...args) {
 
 /**
  * Supported theme priorities.
- * @prop {string} ADHOC_CONTEXT_DEFAULT Equals `ADHOC_CONTEXT_DEFAULT`.
- * In this mode _ad hoc_ theme has the highest priority, followed by context,
- * then by default theme. This is default prioty mode.
- * @prop {string} ADHOC_DEFAULT_CONTEXT Equals `ADHOC_DEFAULT_CONTEXT`.
- * In this mode _ad hoc_ theme has the highest priority, followed by default
- * theme, then by context theme.
  */
 export const PRIORITY = {
   ADHOC_CONTEXT_DEFAULT: 'ADHOC_CONTEXT_DEFAULT',
@@ -133,8 +104,7 @@ function legacyPriority(priority) {
 }
 
 /**
- * @category Components
- * @desc Theme provider defines style contexts. It accepts a single property
+ * Theme provider defines style contexts. It accepts a single property
  * `themes` (`theme` in compatibility modes).
  *
  * In case of nested context, the context theme from the closest context takes
@@ -143,9 +113,9 @@ function legacyPriority(priority) {
  * context will be applied.
  *
  * @prop {ReactNode} children React content to render in-place of
- * `<ThemeProvider>` component.
+ * <ThemeProvider> component.
  * @prop {object} themes The mapping of between themeable component names
- * (the first parameter passed into {@link themed} function for such components
+ * (the first parameter passed into themed() function for such components
  * registration), and context themes to apply to them within the context.
  * @prop {object} theme Fallback mapping for backward compatibility
  * with `react-css-themr` and `react-css-super-themr` libraries.
@@ -180,7 +150,6 @@ ThemeProvider.defaultProps = {
  * @param {String} mode Composition mode.
  * @param {String|String[]} tag Specifity tag(s).
  * @return {Object} Composed theme.
- * @ignore
  */
 function compose(high, low, mode, tag) {
   if (high && low) {
@@ -206,108 +175,14 @@ function compose(high, low, mode, tag) {
 }
 
 /**
- * @typedef {object} &lt;ThemeableComponent&gt; Themeable components created
- * by {@link themed} function.
- *
- * If `themeSchema` was provided to {@link themed}, the component function will
- * have `.themeType` field (function) attached, which can be passed into React's
- * `propTypes` to check _ad hoc_ theme passed into the component (without
- * `themeSchema` provided, it will expect empty `theme`).
- *
- * Here is an example of `theme` prop check:
- * ```jsx
- * import themed from '@dr.pogodin/react-themes';
- *
- * function Component({ theme }) {
- *   return <div className={theme.container} />;
- * }
- *
- * const ThemedComponent = themed('Component', [
- *   'container',
- * ])(Component);
- *
- * Component.propTypes = {
- *   theme: ThemedComponent.themeType.isRequired,
- * };
- *
- * export default ThemedComponent;
- * ```
- * &uArr; This will warn you if theme is missing, contains unexpected fields,
- * or misses _ad hoc_, or context tag keys. In the case of _ad hoc_ styling you
- * may want to not have a dedicated stylesheet for the _ad hoc_ theme, and it
- * will be seen as an issue by this check. In such case the
- * [`castTheme`](#cast-theme) option comes handly.
- *
- * `<ThemeableComponent>` instances accept the following properties,
- * in addition to any props accepted by the original wrapped components.
- * These properties allow override theming settings for individual instances of
- * themeable components. Any props unrecognized by `react-themes` library are
- * forwared down the original wrapped component.
- *
- * @prop {boolean} [castTheme] If `true`, the component will rely on
- * `themeSchema` provided to {@link themed} function upon the component
- * creation, to pick up from _ad hoc_ theme and pass down only expected
- * theme key/values.
- * @prop {object} [theme] _Ad hoc_ theme to apply to the component instance.
- * @prop {string} [composeAdhocTheme] Allows to override composition mode of
- * _ad hoc_ theme, specified via {@link themed} function. Must be one of
- * {@link COMPOSE} values.
- * @prop {string} [composeContextTheme] Allows to override composition mode of
- * context theme, specified via {@link themed} function. Must be one of
- * {@link COMPOSE} values.
- * @prop {string} [themePriority] Allows to override theme priorities, specified
- * via {@link themed} function. It must be one of {@link PRIORITY} values.
- * @prop {ThemePropsMapper} [mapThemeProps] Allows to verride the props mapper
- * specified via {@link themed}.
- */
-
-/**
- * @typedef {function} ThemePropsMapper
- * @desc Function signature accepted by `mapThemeProps` option of
- * {@link themed} function.
- * @param {object} props All props received by
- * {@link &lt;ThemeableComponent&gt;}.
- * @param {object} theme Composed theme.
- * @return {object} A map of properties to pass down the original component
- * wrapped into {@link &lt;ThemeableComponent&gt;}.
- */
-
-/**
  * Registers a themeable component under given name, and with an optional
  * default theme.
- *
- * The second argument (`themeSchema`) can be omitted, thus you can call this
- * function either as
- * `themed(componentName, [themeSchema], [defaultTheme], [options])`, or as
- * `themed(componentName, [defaultTheme], [options])`. The library distinguish
- * these two variants by the type of second argument: if an array, the form
- * with `themeSchema` is assumed; otherwise the second variant with three
- * arguments (two of which are optional). The first syntax is recommended,
- * while the second one is implemented mostly for compatibility with older
- * similar libraries.
- *
- * `themed()` can be used as a decorator, or in the following (recommended) way:
- * ```jsx
- * import themed from '@dr.pogodin/react-themes';
- * import defaultTheme from './default.scss';
- *
- * function Component() { ... }
- *
- * export default themed('ThemedComponent', [...], defaultTheme)(Component);
- * ```
- *
- *  When rendered, your component will receive the composed theme via its
- *  `theme` prop. You will just need to pass the values from `theme` into
- *  the `className` attributes of your component elements, as shown in
- *  the [Getting Started](#getting-started) example.
- *
  * @param {string} componentName Themed component name, which should be used to
- * provide its context theme via {@link &lt;ThemeProvider&gt;}.
+ * provide its context theme via <ThemeProvider>.
  * @param {string[]} themeSchema An array of valid theme keys
  * recognized by the wrapped component, beside the keys corresponding
  * to _ad hoc_ and context tags. It is used for theme validation, and
- * casting (if opted). See `.themeType` and `castTheme` in
- * {@link &lt;ThemeableComponent&gt;} documentation.
+ * casting (if opted).
  * @param {object} [defaultTheme] Default theme, in form of theme key to
  * CSS class name mapping. If you have CSS modules and SCSS loader correctly
  * configured, the import `import theme from 'some.theme.scss';` will result
@@ -316,12 +191,12 @@ function compose(high, low, mode, tag) {
  * @param {object} [options] Additional parameters.
  * @param {string} [options.composeAdhocTheme=COMPOSE.DEEP] Composition type for
  * _ad hoc_ theme, which is merged into the result of composition of lower
- * priority themes. Must be one of {@link COMPOSE} values.
+ * priority themes. Must be one of COMPOSE values.
  * @param {string} [options.composeContextTheme=COMPOSE.DEEP] Composition type
  * for context theme into default theme (or vice verca, if opted by
- * `themePriority` override). Must be one of {@link COMPOSE} values.
+ * `themePriority` override). Must be one of COMPOSE values.
  * @param {string} [options.themePriority=ADHOC_CONTEXT_DEFAULT] Theme
- * priorities. Must be one of {@link PRIORITY} values.
+ * priorities. Must be one of PRIORITY values.
  * @param {ThemePropsMapper} [options.mapThemeProps] By default, the themeable
  * component
  * created by `themed()` does not pass into the original wrapped component any
@@ -329,7 +204,7 @@ function compose(high, low, mode, tag) {
  * does not recognize, alongside the composed `theme`, and forwarded DOM `ref`.
  * In case a different behavior is needed, the property mapper can be
  * specified with this option. It should be a function with
- * {@link ThemePropsMapper} signature, and if present the result from this
+ * ThemePropsMapper signature, and if present the result from this
  * function will be passed down the wrapped component as its props.
  * @param {string} [options.contextTag=context] Override of `context` theme
  * key.
@@ -337,10 +212,7 @@ function compose(high, low, mode, tag) {
  * @param {string} [options.composeTheme] Compatibility compose mode.
  * @param {function} [options.mapThemrProps] Compatibility prop mapper.
  * @return {function} Themeable component, registered under
- * given name. See {@link &lt;ThemeableComponent&gt;} for theming related
- * properties
- * it will accept, on top of any other properties of the original component
- * wrapped by `themed()`.
+ * given name.
  */
 function themed(
   componentName,

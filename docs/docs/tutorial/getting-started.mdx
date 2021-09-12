@@ -44,7 +44,7 @@ to make it easily themeable based on context. This is going to be our default
 theme:
 
 import CodeBlock from '@theme/CodeBlock';
-import defaultThemeCode from '!!raw-loader!../src/components/BasicExample/default.module.scss';
+import defaultThemeCode from '!!raw-loader!../../src/components/BasicExample/default.module.scss';
 
 <CodeBlock
   className="language-scss"
@@ -56,8 +56,8 @@ to the `<div>` element, and that class is wrapped into small boilerplate, which
 will be explained later. With this theme stylesheet at hands we update the
 `<BasicExample>` in the following way:
 
-import BasicExample from '../src/components/BasicExample';
-import basicExampleCode from '!!raw-loader!../src/components/BasicExample';
+import BasicExample from '../../src/components/BasicExample';
+import basicExampleCode from '!!raw-loader!../../src/components/BasicExample';
 
 <CodeBlock
   className="language-jsx"
@@ -67,8 +67,8 @@ import basicExampleCode from '!!raw-loader!../src/components/BasicExample';
 At this point we can use the component to render a block appearing as a simple
 button:
 
-import Example01 from '../src/components/Example01';
-import Example01Code from '!!raw-loader!../src/components/Example01';
+import Example01 from '../../src/components/Example01';
+import Example01Code from '!!raw-loader!../../src/components/Example01';
 
 <Example01 />
 <CodeBlock
@@ -79,8 +79,8 @@ import Example01Code from '!!raw-loader!../src/components/Example01';
 Now, say some part of your app uses a blue background, where our sample component
 as is does not look great:
 
-import Example02 from '../src/components/Example02';
-import Example02Code from '!!raw-loader!../src/components/Example02';
+import Example02 from '../../src/components/Example02';
+import Example02Code from '!!raw-loader!../../src/components/Example02';
 
 <Example02 />
 <CodeBlock
@@ -93,19 +93,19 @@ component within blue-background section of the app. This is our additional
 theme (note, we only define color overrides, and remaining layout styling
 will be inherited from the original default theme):
 
-import blueContextTheme from '!!raw-loader!../src/components/BasicExample/blue-context.module.scss';
+import blueContextTheme from '!!raw-loader!../../src/components/BasicExample/blue-context.module.scss';
 
 <CodeBlock
   className="language-scss"
   title="src/components/BasicExample/blue-context.module.scss"
 >{blueContextTheme}</CodeBlock>
 
-And we update the example using `<ThemeProvider>` component from React Themes.
-All `<BasicExample>` component instances anywhere within this `<ThemeProvider>`
+And we update the example using [`<ThemeProvider>`](/docs/api/components#ThemeProvider) component from React Themes.
+All `<BasicExample>` component instances anywhere within this [`<ThemeProvider>`](/docs/api/components#ThemeProvider)
 sub-tree will get the "blue context" theme automatically applied to them:
 
-import Example03 from '../src/components/Example03';
-import Example03Code from '!!raw-loader!../src/components/Example03';
+import Example03 from '../../src/components/Example03';
+import Example03Code from '!!raw-loader!../../src/components/Example03';
 
 <Example03 />
 <CodeBlock
@@ -122,7 +122,7 @@ component for that).
 
 Here is the sample _ad hoc_ theme we'll use:
 
-import adHocTheme from '!!raw-loader!../src/components/Example04/style.module.scss';
+import adHocTheme from '!!raw-loader!../../src/components/Example04/style.module.scss';
 
 <CodeBlock
   className="language-scss"
@@ -131,8 +131,8 @@ import adHocTheme from '!!raw-loader!../src/components/Example04/style.module.sc
 
 And here is how we use it:
 
-import Example04 from '../src/components/Example04';
-import Example04Code from '!!raw-loader!../src/components/Example04';
+import Example04 from '../../src/components/Example04';
+import Example04Code from '!!raw-loader!../../src/components/Example04';
 
 <Example04 />
 <CodeBlock
