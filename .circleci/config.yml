@@ -16,19 +16,18 @@ jobs:
           paths:
             - node_modules
       - run: npm run build
-      - run: npm run docs
       - run: npm test
       - persist_to_workspace:
           root: .
           paths:
             - build
-            - docs
   release:
     <<: *defaults
     steps:
       - checkout
       - attach_workspace:
           at: .
+      - run: cd docs && npm install && npm run build
       - run: ./bin/release.sh
 
 workflows:

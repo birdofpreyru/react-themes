@@ -80,29 +80,10 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/tutorial/intro',
+                to: '/docs/tutorial/getting-started',
               },
             ],
           },
-          /*
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          */
           {
             title: 'More',
             items: [
