@@ -17,7 +17,10 @@ jobs:
             - node_modules
       - run: npm run build
       - run: npm test
-      - run: cd docs && npm install && npm run build && rm -rf node_modules
+      - run:
+          name: Documentation build
+          command: npm install && npm run build && rm -rf node_modules
+          working_directory: docs
       - persist_to_workspace:
           root: .
           paths:
