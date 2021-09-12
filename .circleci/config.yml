@@ -19,7 +19,7 @@ jobs:
       - run: npm test
       - run:
           name: Documentation build
-          command: npm install && npm run build && rm -rf node_modules
+          command: npm install && npm dedupe && npm run build && rm -rf node_modules
           working_directory: docs
       - persist_to_workspace:
           root: .
