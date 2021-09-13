@@ -66,8 +66,13 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
             label: 'API',
           },
           {
-            href: 'https://github.com/birdofpreyru/react-themes',
+            href: CODE_REPO,
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: NPM_URL,
+            label: 'NPM',
             position: 'right',
           },
         ],
@@ -78,6 +83,10 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
           {
             title: 'Docs',
             items: [
+              {
+                label: 'API',
+                to: '/docs/api/overview',
+              },
               {
                 label: 'Tutorial',
                 to: '/docs/tutorial/getting-started',
