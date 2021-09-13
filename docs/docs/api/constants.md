@@ -37,7 +37,7 @@ export const COMPOSE = {
 Supported theme composition modes. Two component themes with lower (`L`),
 and higher (`H`) priorities can be merged in the following ways
 
-- `.DEEP` &rarr; In deep composition mode all classes from `H` are applied with
+- `.DEEP` - In deep composition mode all classes from `H` are applied with
   higher specifity, on top of all classes from `L`, which are applied with lower
   specifity. Thus, in case of conflicting rules, theme `H` overrides `L`,
   but otherwise rules from `L` are used as defaults. It is the default
