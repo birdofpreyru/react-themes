@@ -54,7 +54,7 @@ import defaultThemeCode from '!!raw-loader!../../src/components/BasicExample/def
 It consists of `.component` class with default button styling we want to apply
 to the `<div>` element, and that class is wrapped into small boilerplate, which
 will be explained later. With this theme stylesheet at hands we update the
-`<BasicExample>` in the following way:
+`BasicExample` in the following way:
 
 import BasicExample from '../../src/components/BasicExample';
 import basicExampleCode from '!!raw-loader!../../src/components/BasicExample';
@@ -100,8 +100,8 @@ import blueContextTheme from '!!raw-loader!../../src/components/BasicExample/blu
   title="src/components/BasicExample/blue-context.module.scss"
 >{blueContextTheme}</CodeBlock>
 
-And we update the example using [`<ThemeProvider>`](/docs/api/components#ThemeProvider) component from React Themes.
-All `<BasicExample>` component instances anywhere within this [`<ThemeProvider>`](/docs/api/components#ThemeProvider)
+And we update the example using [ThemeProvider] component from React Themes.
+All `BasicExample` component instances anywhere within this [ThemeProvider]
 sub-tree will get the "blue context" theme automatically applied to them:
 
 import Example03 from '../../src/components/Example03';
@@ -140,4 +140,4 @@ import Example04Code from '!!raw-loader!../../src/components/Example04';
   title="src/components/Example04/index.jsx"
 >{Example04Code}</CodeBlock>
 
-
+[ThemeProvider]: /docs/api/components#themeprovider

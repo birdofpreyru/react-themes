@@ -45,15 +45,14 @@ named by their original names, rather the transformed out):
 - `.context.yourClass1` - higher specifity;
 - `.ad.hoc.yourClass1` - the highest specifity.
 
-[themed()()](/docs/api/functions#themed) decorator supports options to override
+[themed()] decorator supports options to override
 the exact key names for auxiliary `ad.hoc` and `context` selectors.
 
 ## Theme Composition
 
 There are three theme sources for your themed components: default theme, set
 upon the component registration, context theme, coming from the hierarchy of
-[`<ThemeProvider>`](/docs/api/components#ThemeProvider) components, and
-the _ad hoc_ theme specified for
+[ThemeProvider] components, and the _ad hoc_ theme specified for
 each instance of the themed component. Any of these themes may be omit for
 a specific component instance.
 
@@ -163,5 +162,8 @@ priority order can be changed either for selected themed components, or for
 their individual instances to _ad hoc_ (highest priority), followed by default
 theme, then context theme (lowest priority).
 
-See [PRIORITY](/docs/api/constants#priority), [themed()()](/docs/api/functions#themed),
-[`<ThemedComponent>`](/docs/api/components#ThemedComponent).
+See [PRIORITY](/docs/api/constants#priority), [themed()],
+[ThemedComponent](/docs/api/components#themedcomponent).
+
+[themed()]: /docs/api/functions#themed
+[ThemeProvider]: /docs/api/components#themeprovider

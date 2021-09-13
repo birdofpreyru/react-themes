@@ -15,13 +15,13 @@ jobs:
           key: node-modules-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      - run: npm run build
+      - run: npm run build && npm pack
       - run: npm test
       - restore_cache:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}
       - run:
           name: Documentation build
-          command: npm install && npm dedupe && npm run build
+          command: npm install && npm install ../dr.pogodin-react-themes-*.tgz && npm run build
           working_directory: docs
       - save_cache:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}

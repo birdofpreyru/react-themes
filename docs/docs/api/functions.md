@@ -13,11 +13,11 @@ export function setCompatibilityMode(mode)
 Switches React Themes library into a compatibility mode, in which it emulates
 behavior of different similar theming libraries.
 
-| Param | Type | Description |
-| - | - | - |
-| `mode` | `string` | Compatibility mode, one of [COMPATIBILITY_MODE](constants#compatibility_mode) values |
+**Params**
+- `mode` - **string** - Compatibility mode, one of
+  [COMPATIBILITY_MODE](constants#compatibility_mode) values.
 
-## themed()()
+## themed()
 
 ```jsx
 export default themed(
@@ -27,25 +27,23 @@ export default themed(
   options,
 )(BaseComponent): ThemedComponent
 ```
-Registers a themed component under given name, and with an optional default
+Registers a themed component under the given name, and with an optional default
 theme.
 
-The second argument (`themeSchema`) can be omitted, thus you can threat this
-function as `themed(componentName, defaultTheme, options)` as well. The library
-distinguish these two variants by the type of second argument: if an array,
-the form with `themeSchema` is assumed; otherwise the second variant with three
-arguments (two of which are optional). The first syntax is recommended,
-while the second one is implemented mostly for compatibility with older
-similar libraries.
+The second argument, `themeSchema`, can be omitted. The library recognizes it
+by its type: if second argument is an array, `themeSchema` is assumed, otherwise
+it considers it was omitted.
 
-`themed()` can be used as a decorator, or in the following (recommended) way:
+[themed()] can be used as a decorator, or in the following (recommended) way:
 ```jsx
 import themed from '@dr.pogodin/react-themes';
 import defaultTheme from './default.scss';
 
 function Component() { ... }
 
-export default themed('ThemedComponent', [...], defaultTheme)(Component);
+export default themed('ThemedComponent', [
+  ...
+], defaultTheme)(Component);
 ```
 
 When rendered, your component will receive the composed theme via its
@@ -54,42 +52,79 @@ the `className` attributes of your component elements, as shown in
 the [Getting Started](/docs/tutorial/getting-started#basic-themed-component)
 tutorial.
 
-| Param | Type | Description |
-| - | - | - |
-| `componentName` | `string` | **Required**. Themed component name, which should be used to provide its context theme via [`<ThemeProvider>`](components#ThemeProvider). |
-| `defaultTheme` | `object` | Default theme, in form of theme key to CSS class name mapping. If you have CSS modules and SCSS loader correctly configured, the import `import theme from 'some.theme.scss'` will result in `theme` object you can pass here. In some cases, it might be also legit to construct theme object in a diffent way. |
-| `themeSchema` | `string[]` | An array of valid theme keys recognized by the wrapped component, beside the keys corresponding to _ad hoc_ and context tags. It is used for theme validation, and casting (if opted). See `themeType` and `castTheme` in [`<ThemeableComponent>`](components#ThemeableComponent) documentation. |
-| `options` | `object` | [Additional options](#themed-options) |
+**Params**
 
-#### Options {#themed-options}
+- `componentName` - **string** - Themed component name, which should be used
+  to provide its context theme via [ThemeProvider].
 
-| Option | Type | Description |
-| - | - | - |
-| `adhocTag` | `string` | Overrides "ad.hoc" theme key. Defaults "`ad.hoc`". |
-| `composeAdhocTheme` | `string` | Composition type for _ad hoc_ theme, which is merged into the result of composition of lower priority themes. Must be one of [COMPOSE](constants#compose) values. Defaults `COMPOSE.DEEP`. |
-| `composeContextTheme` | `string` | Composition type for context theme into default theme (or vice verca, if opted by `themePriority` override). Must be one of [COMPOSE](constants#compose) values. Defaults `COMPOSE.DEEP`. |
-| `contextTag` | `string` | Overrides "context" theme key. Defaults "`context`". |
-| `mapThemeProps` | [`ThemePropsMapper`](#ThemePropsMapper) | By default, a themed component created by `themed()` does not pass into the original wrapped component any properties introduced by this library. It only passes down properties it does not recognize, alongside the composed `theme`, and forwarded DOM `ref`. In case a different behavior is needed, the property mapper can be specified with this option. It should be a function with [`ThemePropsMapper`](#ThemePropsMapper) signature, and if present the result from this function will be passed down the wrapped component as its props. |
-| `themePriority` | `string` | Theme priorities. Must be one of [PRIORITY](constants#priority) values. Defaults `PRIORITY.ADHOC_CONTEXT_DEFAULT`. |
-| `composeTheme` | `string` | **Deprecated**. Compatibility compose mode. |
-| `mapThemrProps` | `function` | **Deprecated**. Compatibility prop mapper. |
+- `themeSchema` - **string[]** - Optional. An array of valid theme keys
+  recognized by the wrapped component, beside the keys corresponding to _ad hoc_
+  and context tags. It is used for theme validation, and casting (if opted).
+  See `themeType` and `castTheme` in [ThemedComponent] documentation.
 
-See [`<ThemedComponent>`](components#ThemedComponent) for the description of
-themed components created by `themed()()` calls.
+- `defaultTheme` - **object** - Optional. Default theme, in the form of theme
+  key to CSS classname mapping.
+
+- `options` - **object** - Optional. Additional settings.
+
+  - `.adhocTag` - **string** - Overrides "ad.hoc" theme key. Defaults `"ad.hoc"`.
+
+  - `.composeAdhocTheme` - **string** - Composition type for _ad hoc_ theme,
+    which is merged into the result of composition of lower priority themes.
+    Must be one of [COMPOSE] values. Defaults `COMPOSE.DEEP`.
+
+  - `.composeContextTheme` - **string** - Composition type for context theme
+    into default theme (or vice verca, if opted by `themePriority` override).
+    Must be one of [COMPOSE] values. Defaults `COMPOSE.DEEP`.
+
+  - `.contextTag` - **string** - Overrides context theme key. Defaults `"context"`.
+
+  - `.mapThemeProps` - **[ThemePropsMapper]** - By default, a themed component
+    created by [themed()] does not pass into the original base component any
+    props introduced by this library. A function provided by this option will
+    get the composed theme and all properties, and the result from this function
+    call will be passed as props down the base component.
+
+  - `.themePriority` - **string** - Theme priorities. Must be one of [PRIORITY]
+    values. Defaults `PRIORITY.ADHOC_CONTEXT_DEFAULT`.
+
+  - **Deprecated** `.composeTheme` - **string** - Compatibility compose mode
+    option.
+
+  - **Deprecated** `.mapThemrProps` - **function** - Compatibility prop mapper
+    option.
+
+**Returns**
+
+- **function (BaseComponent): [ThemedComponent]**
+  
+  The result of [themed()]
+  call is a wrapper function, which should be called right away with a single
+  argument, the base component to wrap. Such syntax makes it possible (although
+  not recommendable) to use it as a decorator. The final result will be a newly
+  created [ThemedComponent] which works the same as the given `BaseComponent`
+  beside having a few extra features, as per its documentation.
 
 ## ThemePropsMapper
 
 ```jsx
 function themePropsMapper(props, theme): object
 ```
-Function signature accepted by `mapThemeProps` option of [themed()()](#themed)
-decorator.
+Function signature accepted by `mapThemeProps` option of [themed()] decorator
+and [ThemedComponent] .
 
-| Params | Type | Description |
-| - | - | - |
-| `props` | `object` | All props received by [`<ThemedComponent>`](components#ThemedComponent). |
-| `theme` | `object` | Composed theme. |
+**Params**
 
-**Returns** `object` &rArr; The map of properties to pass down the original
-component wrapped into [`<ThemedComponent>`](components#ThemedComponent).
+- `props` - **object** - All props received by [ThemedComponent].
+- `theme` - **object** - Composed theme.
 
+**Returns**
+- **object** - The map of properties to pass down the original
+component wrapped into [ThemedComponent].
+
+[COMPOSE]: constants#compose
+[PRIORITY]: constants#priority
+[themed()]: #themed
+[ThemedComponent]: components#themedcomponent
+[ThemeProvider]: components#themeprovider
+[ThemePropsMapper]: #themepropsmapper

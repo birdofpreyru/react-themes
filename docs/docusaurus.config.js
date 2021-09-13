@@ -24,7 +24,7 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: `${EDIT_BASE}/docs/`,
+          editUrl: EDIT_BASE,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

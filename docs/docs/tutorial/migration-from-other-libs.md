@@ -12,7 +12,7 @@ the original inspiration for this work
   was not maintained by its original author for quite some time, before getting
   new maintainers recently.
 
-[setCompatibilityMode()](/docs/api/functions#setCompatibilityMode) function
+[setCompatibilityMode()](/docs/api/functions#setcompatibilitymode) function
 allows `react-themes` to closely emulate behavior of those older libs (you will
 still have to upgrade your code to use the latest React 16+). For a complete
 migration to this library, you will need to patch your code to address
