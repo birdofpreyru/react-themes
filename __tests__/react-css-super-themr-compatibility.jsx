@@ -153,6 +153,9 @@ describe('02 - With default theme', () => {
       const InvalidThemed = themed('Themed', themeA, {
         themePriority: 'Invalid',
       })(TestComponent);
+
+      const logError = console.error;
+      console.error = () => undefined;
       expect(
         () => snapshot((
           <ThemeProvider theme={{ Themed: themeB }}>
@@ -164,6 +167,7 @@ describe('02 - With default theme', () => {
           </ThemeProvider>
         )),
       ).toThrowErrorMatchingSnapshot();
+      console.error = logError;
     });
 
     test('04 - Theme props mapping', () => {

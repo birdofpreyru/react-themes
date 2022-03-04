@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "plugins": ["@babel"],
   "rules": {
     "react/jsx-uses-react": 0,
     "react/react-in-jsx-scope": 0

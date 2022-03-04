@@ -8,6 +8,12 @@ import themeB from '../jest/theme-b.scss';
 import themeC from '../jest/theme-c.scss';
 import themeD from '../jest/theme-d.scss';
 
+const logError = console.error;
+
+function muteConsoleError(mute = true) {
+  console.error = mute ? () => undefined : logError;
+}
+
 describe('01 - No default theme.', () => {
   describe('01 - No options at registration.', () => {
     const Themed = themed('Themed')(TestComponent);
@@ -76,6 +82,7 @@ describe('01 - No default theme.', () => {
         </ThemeProvider>
       ));
 
+      muteConsoleError();
       expect(
         () => snapshot((
           <ThemeProvider themes={{ Themed: themeA }}>
@@ -83,6 +90,7 @@ describe('01 - No default theme.', () => {
           </ThemeProvider>
         )),
       ).toThrowErrorMatchingSnapshot();
+      muteConsoleError(false);
     });
 
     test(
@@ -270,12 +278,14 @@ describe('02 - With default theme', () => {
           <Themed theme={themeC} />
         </ThemeProvider>
       ));
+      muteConsoleError();
       expect(
         () => themed('Themed', themeA, {
           adhocTag: '.invalid',
           contextTag: 'absent',
         })(TestComponent),
       ).toThrowErrorMatchingSnapshot();
+      muteConsoleError(false);
     });
   });
 });
