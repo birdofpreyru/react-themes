@@ -10,7 +10,7 @@
     "build": "rimraf build && npm run build:module && npm run build:node",
     "build:module": "rimraf build/module && babel src --out-dir build/module --source-maps --config-file ./babel-module.config.js",
     "build:node": "rimraf build/node && babel src --out-dir build/node --source-maps",
-    "jest": "jest --config jest/config.json",
+    "jest": "jest --config jest/config.json --no-cache",
     "lint": "eslint --ext .js,.jsx .",
     "test": "npm run lint && npm run jest"
   },

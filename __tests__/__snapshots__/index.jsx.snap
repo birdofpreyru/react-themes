@@ -16,10 +16,10 @@ exports[`01 - No default theme. 01 - No options at registration. 01 - No extra t
 
 exports[`01 - No default theme. 01 - No options at registration. 02 - Ad hoc theme 1`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   >
     Child
   </div>
@@ -34,7 +34,7 @@ exports[`01 - No default theme. 01 - No options at registration. 03 - Context th
 
 exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 2`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -42,7 +42,7 @@ exports[`01 - No default theme. 01 - No options at registration. 03 - Context th
 
 exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 3`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -51,54 +51,54 @@ exports[`01 - No default theme. 01 - No options at registration. 03 - Context th
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 1`] = `
 <div>
   <div
-    className="theme-c__content___14iRZ"
+    className="theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 2`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div
-    className="theme-c__content___14iRZ"
+    className="theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 3`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5 theme-c__ad___asr7c theme-c__hoc___2sTdX theme-c__content___14iRZ"
+    className="theme-a__content___IgY-k theme-c__ad___i7Ven theme-c__hoc___6A2dq theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 4`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div
-    className="theme-c__content___14iRZ"
+    className="theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 1`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 2`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -109,14 +109,14 @@ exports[`01 - No default theme. 01 - No options at registration. 05 - Context + 
 exports[`01 - No default theme. 01 - No options at registration. 06 - Nested ThemeProvider does not shadow parent themes it does not override 1`] = `
 Array [
   <div
-    className="theme-a__container___3m8Bb"
+    className="theme-a__container___OHZan"
   >
     <div
-      className="theme-a__content___3cON5"
+      className="theme-a__content___IgY-k"
     />
   </div>,
   <div
-    className="theme-b__container___2LMSB"
+    className="theme-b__container___mfrvK"
   >
     <div />
   </div>,
@@ -125,20 +125,20 @@ Array [
 
 exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 1`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 2`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   >
     Child
   </div>
@@ -147,10 +147,10 @@ exports[`02 - With default theme 01 - No options at registration. 01 - No extra 
 
 exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc theme 1`] = `
 <div
-  className="theme-a__container___3m8Bb theme-b__ad___WYlQK theme-b__hoc___1PtwN theme-b__container___2LMSB"
+  className="theme-a__container___OHZan theme-b__ad___MToBJ theme-b__hoc___D-90l theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   >
     Child
   </div>
@@ -159,27 +159,27 @@ exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc th
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 1`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
 <div
-  className="theme-a__container___3m8Bb theme-b__context___2MQ7- theme-b__container___2LMSB"
+  className="theme-a__container___OHZan theme-b__context___623DE theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 3`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -187,50 +187,50 @@ exports[`02 - With default theme 01 - No options at registration. 03 - Context t
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 1`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5 theme-c__ad___asr7c theme-c__hoc___2sTdX theme-c__content___14iRZ"
+    className="theme-a__content___IgY-k theme-c__ad___i7Ven theme-c__hoc___6A2dq theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
 <div
-  className="theme-a__container___3m8Bb theme-b__context___2MQ7- theme-b__container___2LMSB"
+  className="theme-a__container___OHZan theme-b__context___623DE theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5 theme-c__ad___asr7c theme-c__hoc___2sTdX theme-c__content___14iRZ"
+    className="theme-a__content___IgY-k theme-c__ad___i7Ven theme-c__hoc___6A2dq theme-c__content___xSnq1"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 3`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5 theme-c__context___3d2m3 theme-c__content___14iRZ theme-d__ad___32oBa theme-d__hoc___EaZh5 theme-d__content___pDc1c"
+    className="theme-a__content___IgY-k theme-c__context___c253P theme-c__content___xSnq1 theme-d__ad___WibJk theme-d__hoc___ycFZY theme-d__content___xEs5l"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 1`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-c__content___14iRZ theme-a__context___2giIe theme-a__content___3cON5 theme-d__ad___32oBa theme-d__hoc___EaZh5 theme-d__content___pDc1c"
+    className="theme-c__content___xSnq1 theme-a__context___YNfwL theme-a__content___IgY-k theme-d__ad___WibJk theme-d__hoc___ycFZY theme-d__content___xEs5l"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 2`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5 theme-d__ad___32oBa theme-d__hoc___EaZh5 theme-d__content___pDc1c"
+    className="theme-a__content___IgY-k theme-d__ad___WibJk theme-d__hoc___ycFZY theme-d__content___xEs5l"
   />
 </div>
 `;
@@ -238,7 +238,7 @@ exports[`02 - With default theme 01 - No options at registration. 05 - Context +
 exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 3`] = `
 <div>
   <div
-    className="theme-c__content___14iRZ theme-d__ad___32oBa theme-d__hoc___EaZh5 theme-d__content___pDc1c"
+    className="theme-c__content___xSnq1 theme-d__ad___WibJk theme-d__hoc___ycFZY theme-d__content___xEs5l"
   />
 </div>
 `;
@@ -256,18 +256,18 @@ Object {
     "ref": null,
   },
   "theme": Object {
-    "ad": "theme-a__ad___26pQW",
-    "container": "theme-a__container___3m8Bb",
-    "content": "theme-a__content___3cON5",
-    "context": "theme-a__context___2giIe",
-    "hoc": "theme-a__hoc___3XwRf",
+    "ad": "theme-a__ad___yK+Km",
+    "container": "theme-a__container___OHZan",
+    "content": "theme-a__content___IgY-k",
+    "context": "theme-a__context___YNfwL",
+    "hoc": "theme-a__hoc___zE9Bs",
   },
 }
 `;
 
 exports[`02 - With default theme 02 - Options at registration 01 - composeContextTheme 1`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -275,17 +275,17 @@ exports[`02 - With default theme 02 - Options at registration 01 - composeContex
 
 exports[`02 - With default theme 02 - Options at registration 01 - composeContextTheme 2`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
 
 exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocTheme 1`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div />
 </div>
@@ -293,10 +293,10 @@ exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocT
 
 exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocTheme 2`] = `
 <div
-  className="theme-b__container___2LMSB"
+  className="theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
@@ -304,17 +304,17 @@ exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocT
 exports[`02 - With default theme 02 - Options at registration 03 - themePriority 1`] = `
 Array [
   <div
-    className="theme-b__container___2LMSB theme-a__context___2giIe theme-a__container___3m8Bb"
+    className="theme-b__container___mfrvK theme-a__context___YNfwL theme-a__container___OHZan"
   >
     <div
-      className="theme-a__content___3cON5 theme-c__ad___asr7c theme-c__hoc___2sTdX theme-c__content___14iRZ"
+      className="theme-a__content___IgY-k theme-c__ad___i7Ven theme-c__hoc___6A2dq theme-c__content___xSnq1"
     />
   </div>,
   <div
-    className="theme-a__container___3m8Bb theme-b__context___2MQ7- theme-b__container___2LMSB"
+    className="theme-a__container___OHZan theme-b__context___623DE theme-b__container___mfrvK"
   >
     <div
-      className="theme-a__content___3cON5 theme-c__ad___asr7c theme-c__hoc___2sTdX theme-c__content___14iRZ"
+      className="theme-a__content___IgY-k theme-c__ad___i7Ven theme-c__hoc___6A2dq theme-c__content___xSnq1"
     />
   </div>,
 ]
@@ -332,21 +332,21 @@ Object {
     "ref": null,
   },
   "theme": Object {
-    "ad": "theme-a__ad___26pQW",
-    "container": "theme-a__container___3m8Bb",
-    "content": "theme-a__content___3cON5",
-    "context": "theme-a__context___2giIe",
-    "hoc": "theme-a__hoc___3XwRf",
+    "ad": "theme-a__ad___yK+Km",
+    "container": "theme-a__container___OHZan",
+    "content": "theme-a__content___IgY-k",
+    "context": "theme-a__context___YNfwL",
+    "hoc": "theme-a__hoc___zE9Bs",
   },
 }
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 3`] = `
 <div
-  className="theme-a__container___3m8Bb"
+  className="theme-a__container___OHZan"
 >
   <div
-    className="theme-a__content___3cON5"
+    className="theme-a__content___IgY-k"
   />
 </div>
 `;
@@ -358,21 +358,21 @@ Object {
     "ref": null,
   },
   "theme": Object {
-    "ad": "theme-a__ad___26pQW",
-    "container": "theme-a__container___3m8Bb",
-    "content": "theme-a__content___3cON5",
-    "context": "theme-a__context___2giIe",
-    "hoc": "theme-a__hoc___3XwRf",
+    "ad": "theme-a__ad___yK+Km",
+    "container": "theme-a__container___OHZan",
+    "content": "theme-a__content___IgY-k",
+    "context": "theme-a__context___YNfwL",
+    "hoc": "theme-a__hoc___zE9Bs",
   },
 }
 `;
 
 exports[`02 - With default theme 02 - Options at registration 05 - Specifity tags 1`] = `
 <div
-  className="theme-a__container___3m8Bb  theme-b__container___2LMSB"
+  className="theme-a__container___OHZan  theme-b__container___mfrvK"
 >
   <div
-    className="theme-a__content___3cON5  theme-c__hoc___2sTdX theme-c__content___14iRZ"
+    className="theme-a__content___IgY-k  theme-c__hoc___6A2dq theme-c__content___xSnq1"
   />
 </div>
 `;
