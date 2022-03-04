@@ -1,7 +1,8 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "UI theme composition with CSS Modules and React",
+  "main": "./build/node/index.js",
   "exports": {
     "module": "./build/module/index.js",
     "node": "./build/node/index.js"
