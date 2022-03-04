@@ -16,10 +16,10 @@ exports[`01 - No default theme. 01 - No options at registration. 01 - No extra t
 
 exports[`01 - No default theme. 01 - No options at registration. 02 - Ad hoc theme 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   >
     Child
   </div>
@@ -34,7 +34,7 @@ exports[`01 - No default theme. 01 - No options at registration. 03 - Context th
 
 exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 2`] = `
 <div
-  className="theme-b-legacy__container___3HftU"
+  className="theme-b-legacy__container___mcbj4"
 >
   <div />
 </div>
@@ -43,57 +43,57 @@ exports[`01 - No default theme. 01 - No options at registration. 03 - Context th
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 1`] = `
 <div>
   <div
-    className="theme-c-legacy__content___3tfhw"
+    className="theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 2`] = `
 <div
-  className="theme-b-legacy__container___3HftU"
+  className="theme-b-legacy__container___mcbj4"
 >
   <div
-    className="theme-c-legacy__content___3tfhw"
+    className="theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 3`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_   theme-c-legacy__content___3tfhw"
+    className="theme-a-legacy__content___Bw9Ve   theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 4`] = `
 <div
-  className="theme-b-legacy__container___3HftU"
+  className="theme-b-legacy__container___mcbj4"
 >
   <div
-    className="theme-c-legacy__content___3tfhw"
+    className="theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 2`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   >
     Child
   </div>
@@ -102,10 +102,10 @@ exports[`02 - With default theme 01 - No options at registration. 01 - No extra 
 
 exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc theme 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM   theme-b-legacy__container___3HftU"
+  className="theme-a-legacy__container___Vxc65   theme-b-legacy__container___mcbj4"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   >
     Child
   </div>
@@ -114,60 +114,60 @@ exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc th
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
 <div
-  className="theme-b-legacy__container___3HftU  theme-a-legacy__container___Dr2yM"
+  className="theme-b-legacy__container___mcbj4  theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_   theme-c-legacy__content___3tfhw"
+    className="theme-a-legacy__content___Bw9Ve   theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
 <div
-  className="theme-b-legacy__container___3HftU  theme-a-legacy__container___Dr2yM"
+  className="theme-b-legacy__container___mcbj4  theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_   theme-c-legacy__content___3tfhw"
+    className="theme-a-legacy__content___Bw9Ve   theme-c-legacy__content___PNxZs"
   />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 3`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-c-legacy__content___3tfhw  theme-a-legacy__content___13JE_   theme-d-legacy__content___1Cy_8"
+    className="theme-c-legacy__content___PNxZs  theme-a-legacy__content___Bw9Ve   theme-d-legacy__content___K0EnN"
   />
 </div>
 `;
 
 exports[`02 - With default theme 02 - Options at registration 01 - composeTheme 1`] = `
 <div
-  className="theme-a-legacy__container___Dr2yM"
+  className="theme-a-legacy__container___Vxc65"
 >
   <div
-    className="theme-a-legacy__content___13JE_"
+    className="theme-a-legacy__content___Bw9Ve"
   />
 </div>
 `;
@@ -184,8 +184,8 @@ Object {
     "ref": null,
   },
   "theme": Object {
-    "container": "theme-a-legacy__container___Dr2yM",
-    "content": "theme-a-legacy__content___13JE_",
+    "container": "theme-a-legacy__container___Vxc65",
+    "content": "theme-a-legacy__content___Bw9Ve",
   },
 }
 `;

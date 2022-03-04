@@ -9,11 +9,11 @@ exports[`Theme verification Reports correct errors with invalid theme 1`] = `
 
 exports[`Theme verification Theme casting works 1`] = `
 "{
-  \\"container\\": \\"theme-with-extra-styles__container___19Wzw\\",
-  \\"content\\": \\"theme-with-extra-styles__content___1CqM0\\",
-  \\"ad\\": \\"theme-with-extra-styles__ad___2uc4T\\",
-  \\"hoc\\": \\"theme-with-extra-styles__hoc___2Cig8\\",
-  \\"context\\": \\"theme-with-extra-styles__context___1JDVn\\"
+  \\"container\\": \\"theme-with-extra-styles__container___o7DyA\\",
+  \\"content\\": \\"theme-with-extra-styles__content___3dIhn\\",
+  \\"ad\\": \\"theme-with-extra-styles__ad___3OAlJ\\",
+  \\"hoc\\": \\"theme-with-extra-styles__hoc___FwFj8\\",
+  \\"context\\": \\"theme-with-extra-styles__context___4Fpmq\\"
 }"
 `;
 
