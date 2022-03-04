@@ -6,11 +6,9 @@
  *  Babel env preset.
  * @return {object} Babel preset config.
  */
-module.exports = function preset(api, options = {}) {
-  const { targets } = options;
-
+module.exports = function preset(api, options) {
   let envPreset = '@babel/env';
-  if (targets) envPreset = [envPreset, { targets }];
+  if (options) envPreset = [envPreset, options];
 
   return {
     presets: [

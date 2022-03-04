@@ -1,4 +1,5 @@
 import React from 'react';
+import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
 
 import Link from '@docusaurus/Link';
@@ -9,7 +10,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 import { ThemeProvider } from '@dr.pogodin/react-themes';
 
-import styles from './index.module.css';
+import S from './index.module.scss';
 
 import Calendar from '../components/Calendar';
 import darkContextCalendarTheme
@@ -19,16 +20,25 @@ import redContextCalendarTheme
 import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
 function HomepageHeader() {
+  const { isDarkTheme } = useColorMode();
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header
+      className={
+        clsx(
+          'hero hero--primary',
+          S.heroBanner,
+          isDarkTheme ? S.dark : S.light
+        )
+      }
+    >
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p>
           Inspired by &zwnj;
           <Link
-            className={styles.whiteLink}
+            className={S.whiteLink}
             to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
           >
             react-css-themr
@@ -41,7 +51,7 @@ function HomepageHeader() {
         </p>
         <p>
           <Link
-            className={styles.install}
+            className={S.install}
             to="https://www.npmjs.com/package/@dr.pogodin/react-themes"
           >
             <code>
@@ -84,24 +94,24 @@ export default function Home() {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
-      <main className={styles.main}>
-        <div className={styles.centerText}>
+      <main className={S.main}>
+        <div className={S.centerText}>
           Here is a simple example of React Themes library in action
           (see explanations <Link to="#explanations">below</Link>).
         </div>
-        <div className={styles.columns}>
+        <div className={S.columns}>
           <div>
             <Calendar />
             <Calendar theme={calendarWithGrid} />
           </div>
           <ThemeProvider themes={{Calendar: darkContextCalendarTheme}}>
-            <div className={styles.darkBackground}>
+            <div className={S.darkBackground}>
               <Calendar />
               <Calendar theme={calendarWithGrid} />
             </div>
           </ThemeProvider>
           <ThemeProvider themes={{Calendar: redContextCalendarTheme}}>
-            <div className={styles.redBackground}>
+            <div className={S.redBackground}>
               <Calendar />
               <Calendar theme={calendarWithGrid} />
             </div>

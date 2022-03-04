@@ -3,11 +3,13 @@
   "version": "1.4.0",
   "description": "UI theme composition with CSS Modules and React",
   "exports": {
-    "module": "./src/index.js",
-    "node": "./build/index.js"
+    "module": "./build/module/index.js",
+    "node": "./build/node/index.js"
   },
   "scripts": {
-    "build": "rimraf build && babel src --out-dir build --source-maps",
+    "build": "rimraf build && npm run build:module && npm run build:node",
+    "build:module": "rimraf build/module && babel src --out-dir build/module --source-maps --config-file ./babel-module.config.js",
+    "build:node": "rimraf build/node && babel src --out-dir build/node --source-maps",
     "jest": "jest --config jest/config.json",
     "lint": "eslint --ext .js,.jsx .",
     "test": "npm run lint && npm run jest"

@@ -25,10 +25,25 @@
   color: orange;
 }
 
-.install,
-.install:hover {
+.install {
   color: #333;
   text-decoration: none;
+
+  &:hover { color: orange; }
+}
+
+.dark {
+  .install {
+    color: white;
+
+    &:hover { color: orange; }
+  }
+
+  .whiteLink {
+    color: black;
+
+    &:hover { color: orange; }
+  }
 }
 
 .main {

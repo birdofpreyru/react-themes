@@ -36,15 +36,10 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: true
-      },
       navbar: {
         logo: {
           alt: 'Dr. Pogodin Studio Logo',
           src: 'img/logo-verbose.svg',
-          srcDark: 'img/logo-verbose-white.svg',
           href: 'https://dr.pogodin.studio'
         },
         items: [
