@@ -2,11 +2,12 @@
   "name": "@dr.pogodin/react-themes",
   "version": "1.4.0",
   "description": "UI theme composition with CSS Modules and React",
-  "main": "index.js",
+  "exports": {
+    "module": "./src/index.js",
+    "node": "./build/index.js"
+  },
   "scripts": {
-    "build": "rimraf build && npm run build:node && npm run build:web",
-    "build:node": "rimraf build/node && babel src --out-dir build/node --source-maps",
-    "build:web": "rimraf build/web && babel src --out-dir build/web --source-maps --config-file ./babel.web.config.js",
+    "build": "rimraf build && babel src --out-dir build --source-maps",
     "jest": "jest --config jest/config.json",
     "lint": "eslint --ext .js,.jsx .",
     "test": "npm run lint && npm run jest"
