@@ -20,7 +20,13 @@ module.exports = function preset(api, options) {
       ['@babel/react', { runtime: 'automatic' }],
     ],
     plugins: [
-      ['@dr.pogodin/css-modules-transform', { extensions: ['.css', '.scss'] }],
+      ['@dr.pogodin/react-css-modules', {
+        filetypes: {
+          '.scss': { syntax: 'postcss-scss' },
+        },
+        generateScopedName: '[name]__[local]___[hash:base64:5]',
+        replaceImport: true,
+      }],
       ['module-resolver', {
         extensions: ['.js', '.jsx'],
         root: ['./src', '.'],
