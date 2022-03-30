@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.5.0",
+  "version": "1.4.2",
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/node/index.js",
   "exports": {
@@ -61,8 +61,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^17.0.2 || ^18.0.0",
+    "react-dom": "^17.0.2 || ^18.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.8"
