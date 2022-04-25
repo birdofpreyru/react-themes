@@ -4,9 +4,9 @@
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/node/index.js",
   "exports": {
-    "default": "./build/node/index.js",
     "module": "./build/module/index.js",
-    "node": "./build/node/index.js"
+    "node": "./build/node/index.js",
+    "default": "./build/node/index.js"
   },
   "scripts": {
     "build": "rimraf build && npm run build:module && npm run build:node",
