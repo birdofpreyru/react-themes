@@ -21,7 +21,7 @@ jobs:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}
       - run:
           name: Documentation build
-          command: npm install --force ../dr.pogodin-react-themes-*.tgz && npm install  && npm run build
+          command: npm install --force ../dr.pogodin-react-themes-*.tgz && npm install --force && npm run build
           working_directory: docs
       - save_cache:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}
