@@ -181,7 +181,7 @@ exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocT
 `;
 
 exports[`02 - With default theme 02 - Options at registration 03 - themePriority 1`] = `
-Array [
+[
   <div
     className="theme-a-legacy__container___VVsql"
   >
@@ -208,11 +208,11 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "ref": null,
   },
-  "theme": Object {
+  "theme": {
     "container": "theme-a-legacy__container___VVsql",
     "content": "theme-a-legacy__content___jAHmU",
   },

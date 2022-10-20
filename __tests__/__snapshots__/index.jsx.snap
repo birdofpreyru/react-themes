@@ -107,7 +107,7 @@ exports[`01 - No default theme. 01 - No options at registration. 05 - Context + 
 exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 3`] = `"Invalid composition mode"`;
 
 exports[`01 - No default theme. 01 - No options at registration. 06 - Nested ThemeProvider does not shadow parent themes it does not override 1`] = `
-Array [
+[
   <div
     className="theme-a__container___KKR91"
   >
@@ -250,12 +250,12 @@ exports[`02 - With default theme 01 - No options at registration. 06 - Theme pro
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 06 - Theme props mapping 2`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "mapThemeProps": [Function],
     "ref": null,
   },
-  "theme": Object {
+  "theme": {
     "ad": "theme-a__ad___qo1qO",
     "container": "theme-a__container___KKR91",
     "content": "theme-a__content___yA6Ea",
@@ -302,7 +302,7 @@ exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocT
 `;
 
 exports[`02 - With default theme 02 - Options at registration 03 - themePriority 1`] = `
-Array [
+[
   <div
     className="theme-b__container___atStN theme-a__context___kW3Il theme-a__container___KKR91"
   >
@@ -327,11 +327,11 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "ref": null,
   },
-  "theme": Object {
+  "theme": {
     "ad": "theme-a__ad___qo1qO",
     "container": "theme-a__container___KKR91",
     "content": "theme-a__content___yA6Ea",
@@ -352,12 +352,12 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 4`] = `
-Object {
-  "props": Object {
+{
+  "props": {
     "mapThemeProps": [Function],
     "ref": null,
   },
-  "theme": Object {
+  "theme": {
     "ad": "theme-a__ad___qo1qO",
     "container": "theme-a__container___KKR91",
     "content": "theme-a__content___yA6Ea",
