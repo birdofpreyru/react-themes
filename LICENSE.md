@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright &copy; 2019, Dr. Sergey Pogodin
+Copyright &copy; 2019 - 2022, Dr. Sergey Pogodin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -19,6 +19,8 @@ import redContextCalendarTheme
   from '../components/Calendar/red-context.module.scss';
 import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
+import SponsorImg from '../../static/img/sponsor.png';
+
 function HomepageHeader() {
   const { isDarkTheme } = useColorMode();
   const {siteConfig} = useDocusaurusContext();
@@ -58,6 +60,14 @@ function HomepageHeader() {
               npm install --save @dr.pogodin/react-themes
             </code>
           </Link>
+        </p>
+        <p>
+          <a
+            href="https://github.com/sponsors/birdofpreyru"
+            target="blank"
+          >
+            <img alt="Sponsor" src={SponsorImg} />
+          </a>
         </p>
       </div>
     </header>
