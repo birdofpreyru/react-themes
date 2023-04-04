@@ -16,6 +16,12 @@
   }
 }
 
+.repoBadges {
+  justify-content: center;
+  display: flex;
+  gap: 0.3em;
+}
+
 .whiteLink {
   color: white;
   text-decoration: underline;

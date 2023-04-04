@@ -1,9 +1,9 @@
-![Master Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/master.svg?label=master)
-![Dev Build Status](https://img.shields.io/circleci/project/github/birdofpreyru/react-themes/devel.svg?label=devel)
-![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg)
-![NPM Downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes.svg)
-
 # React Themes
+
+[![Latest NPM Release](https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg)](https://www.npmjs.com/package/@dr.pogodin/react-themes)
+[![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes)](https://www.npmjs.com/package/@dr.pogodin/react-themes)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/birdofpreyru/react-themes/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/birdofpreyru/react-themes)
+[![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/react-themes?style=social)](https://github.com/birdofpreyru/react-themes)
 
 [**Documentation**](https://dr.pogodin.studio/docs/react-themes/index.html)
 

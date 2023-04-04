@@ -61,6 +61,32 @@ function HomepageHeader() {
             </code>
           </Link>
         </p>
+        <p className={S.repoBadges}>
+          <Link to="https://www.npmjs.com/package/@dr.pogodin/react-themes">
+            <img
+              alt="Latest NPM Release"
+              src="https://img.shields.io/npm/v/@dr.pogodin/react-themes.svg"
+            />
+          </Link>
+          <Link to="https://www.npmjs.com/package/@dr.pogodin/react-themes">
+            <img
+              alt="NPM monthly downloads"
+              src="https://img.shields.io/npm/dm/@dr.pogodin/react-themes"
+            />
+          </Link>
+          <Link to="https://app.circleci.com/pipelines/github/birdofpreyru/react-themes">
+            <img
+              alt="CircleCI"
+              src="https://dl.circleci.com/status-badge/img/gh/birdofpreyru/react-themes/tree/master.svg?style=shield"
+            />
+          </Link>
+          <Link to="https://github.com/birdofpreyru/react-themes">
+            <img
+              alt="GitHub Repo stars"
+              src="https://img.shields.io/github/stars/birdofpreyru/react-themes?style=social"
+            />
+          </Link>
+        </p>
         <p>
           <a
             href="https://github.com/sponsors/birdofpreyru"
