@@ -5,7 +5,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/birdofpreyru/react-themes/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/birdofpreyru/react-themes)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/react-themes?style=social)](https://github.com/birdofpreyru/react-themes)
 
-[**Documentation**](https://dr.pogodin.studio/docs/react-themes/index.html)
+[Documentation](https://dr.pogodin.studio/docs/react-themes/index.html)
 
 Themeable UI styling of React components, with theme composition features,
 based on
@@ -22,4 +22,4 @@ your choice.
 
 ![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/illustration.png)
 
-[**Documentation**](https://dr.pogodin.studio/docs/react-themes/index.html)
+[Documentation](https://dr.pogodin.studio/docs/react-themes/index.html)
