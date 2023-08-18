@@ -19,10 +19,10 @@ import redContextCalendarTheme
   from '../components/Calendar/red-context.module.scss';
 import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
-import SponsorImg from '../../static/img/sponsor.png';
+import SponsorImg from '../../../.README/sponsor.svg';
 
 function HomepageHeader() {
-  const { isDarkTheme } = useColorMode();
+  const isDarkTheme = useColorMode().colorMode === 'dark';
   const {siteConfig} = useDocusaurusContext();
   return (
     <header
@@ -92,7 +92,7 @@ function HomepageHeader() {
             href="https://github.com/sponsors/birdofpreyru"
             target="blank"
           >
-            <img alt="Sponsor" src={SponsorImg} />
+            <SponsorImg />
           </a>
         </p>
       </div>
