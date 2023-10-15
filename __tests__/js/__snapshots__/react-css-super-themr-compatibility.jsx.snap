@@ -124,7 +124,7 @@ exports[`02 - With default theme 01 - No options at registration. 03 - Context t
 
 exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
 <div
-  className="theme-b-legacy__container___JagPe  theme-a-legacy__container___VVsql"
+  className="theme-b-legacy__container___JagPe"
 >
   <div
     className="theme-a-legacy__content___jAHmU"
@@ -144,7 +144,7 @@ exports[`02 - With default theme 01 - No options at registration. 04 - Context +
 
 exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
 <div
-  className="theme-b-legacy__container___JagPe  theme-a-legacy__container___VVsql"
+  className="theme-b-legacy__container___JagPe"
 >
   <div
     className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
@@ -157,20 +157,49 @@ exports[`02 - With default theme 01 - No options at registration. 04 - Context +
   className="theme-a-legacy__container___VVsql"
 >
   <div
-    className="theme-c-legacy__content___B4OaL  theme-a-legacy__content___jAHmU   theme-d-legacy__content___cGQH7"
+    className="theme-c-legacy__content___B4OaL   theme-d-legacy__content___cGQH7"
   />
 </div>
 `;
 
 exports[`02 - With default theme 02 - Options at registration 01 - composeTheme 1`] = `
 <div
-  className="theme-a-legacy__container___VVsql"
+  className="theme-b-legacy__container___JagPe"
 >
   <div
     className="theme-a-legacy__content___jAHmU"
   />
 </div>
 `;
+
+exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocTheme 1`] = `
+<div>
+  <div
+    className="theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 03 - themePriority 1`] = `
+[
+  <div
+    className="theme-a-legacy__container___VVsql"
+  >
+    <div
+      className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
+    />
+  </div>,
+  <div
+    className="theme-b-legacy__container___JagPe"
+  >
+    <div
+      className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
+    />
+  </div>,
+]
+`;
+
+exports[`02 - With default theme 02 - Options at registration 03 - themePriority 2`] = `"Invalid priority"`;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 1`] = `
 <div>
@@ -181,7 +210,14 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
 {
   "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": undefined,
     "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
   },
   "theme": {
     "container": "theme-a-legacy__container___VVsql",
@@ -189,3 +225,5 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
   },
 }
 `;
+
+exports[`Compatibility switching 1`] = `"Invalid compatibility mode"`;

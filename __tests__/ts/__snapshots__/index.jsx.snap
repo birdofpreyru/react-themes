@@ -1,0 +1,399 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 2`] = `
+<div>
+  <div>
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 3`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div>
+  <div
+    className="theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div
+    className="theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea theme-c__ad___pkn9n theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 4`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div
+    className="theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 1`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 2`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 3`] = `"Invalid composition mode"`;
+
+exports[`01 - No default theme. 01 - No options at registration. 06 - Nested ThemeProvider does not shadow parent themes it does not override 1`] = `
+[
+  <div
+    className="theme-a__container___KKR91"
+  >
+    <div
+      className="theme-a__content___yA6Ea"
+    />
+  </div>,
+  <div
+    className="theme-b__container___atStN"
+  >
+    <div />
+  </div>,
+]
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 1`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 2`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a__container___KKR91 theme-b__ad___TwfGm theme-b__hoc___QB2GB theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 1`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-a__container___KKR91 theme-b__context___RaJ9p theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 3`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea theme-c__ad___pkn9n theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-a__container___KKR91 theme-b__context___RaJ9p theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea theme-c__ad___pkn9n theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea theme-c__context___c9i1d theme-c__content___tcrzy theme-d__ad___CxaN3 theme-d__hoc___Ymq3c theme-d__content___h6mrz"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 1`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-c__content___tcrzy theme-a__context___kW3Il theme-a__content___yA6Ea theme-d__ad___CxaN3 theme-d__hoc___Ymq3c theme-d__content___h6mrz"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 2`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea theme-d__ad___CxaN3 theme-d__hoc___Ymq3c theme-d__content___h6mrz"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 05 - Context + ad hoc + composition modes 3`] = `
+<div>
+  <div
+    className="theme-c__content___tcrzy theme-d__ad___CxaN3 theme-d__hoc___Ymq3c theme-d__content___h6mrz"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 06 - Theme props mapping 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 06 - Theme props mapping 2`] = `
+{
+  "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": [Function],
+    "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
+  },
+  "theme": {
+    "ad": "theme-a__ad___qo1qO",
+    "container": "theme-a__container___KKR91",
+    "content": "theme-a__content___yA6Ea",
+    "context": "theme-a__context___kW3Il",
+    "hoc": "theme-a__hoc___WL_6Z",
+  },
+}
+`;
+
+exports[`02 - With default theme 02 - Options at registration 01 - composeContextTheme 1`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 01 - composeContextTheme 2`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocTheme 1`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 02 - composeAdhocTheme 2`] = `
+<div
+  className="theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 03 - themePriority 1`] = `
+[
+  <div
+    className="theme-b__container___atStN theme-a__context___kW3Il theme-a__container___KKR91"
+  >
+    <div
+      className="theme-a__content___yA6Ea theme-c__ad___pkn9n theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+    />
+  </div>,
+  <div
+    className="theme-a__container___KKR91 theme-b__context___RaJ9p theme-b__container___atStN"
+  >
+    <div
+      className="theme-a__content___yA6Ea theme-c__ad___pkn9n theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+    />
+  </div>,
+]
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
+{
+  "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": undefined,
+    "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
+  },
+  "theme": {
+    "ad": "theme-a__ad___qo1qO",
+    "container": "theme-a__container___KKR91",
+    "content": "theme-a__content___yA6Ea",
+    "context": "theme-a__context___kW3Il",
+    "hoc": "theme-a__hoc___WL_6Z",
+  },
+}
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 3`] = `
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 4`] = `
+{
+  "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": [Function],
+    "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
+  },
+  "theme": {
+    "ad": "theme-a__ad___qo1qO",
+    "container": "theme-a__container___KKR91",
+    "content": "theme-a__content___yA6Ea",
+    "context": "theme-a__context___kW3Il",
+    "hoc": "theme-a__hoc___WL_6Z",
+  },
+}
+`;
+
+exports[`02 - With default theme 02 - Options at registration 05 - Specifity tags 1`] = `
+<div
+  className="theme-a__container___KKR91  theme-b__container___atStN"
+>
+  <div
+    className="theme-a__content___yA6Ea  theme-c__hoc___MQR5Y theme-c__content___tcrzy"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 05 - Specifity tags 2`] = `"Invalid adhoc theme tag"`;

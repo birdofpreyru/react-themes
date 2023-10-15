@@ -4,6 +4,6 @@
   "coverageDirectory": "__coverage__",
   "rootDir": "..",
   "transform": {
-    "\\.jsx?$": "babel-jest"
+    "\\.(j|t)sx?$": "babel-jest"
   }
 }

@@ -210,7 +210,14 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
 {
   "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": undefined,
     "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
   },
   "theme": {
     "container": "theme-a-legacy__container___VVsql",

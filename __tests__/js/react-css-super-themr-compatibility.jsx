@@ -3,15 +3,15 @@ import themed, {
   PRIORITY,
   ThemeProvider,
   setCompatibilityMode,
-} from '../src';
+} from '../../src';
 
-import { snapshot } from '../jest/utils';
-import TestComponent from '../jest/TestComponent';
+import { snapshot } from '../../jest/utils';
+import TestComponent from '../../jest/TestComponent';
 
-import themeA from '../jest/theme-a-legacy.scss';
-import themeB from '../jest/theme-b-legacy.scss';
-import themeC from '../jest/theme-c-legacy.scss';
-import themeD from '../jest/theme-d-legacy.scss';
+import themeA from '../../jest/theme-a-legacy.scss';
+import themeB from '../../jest/theme-b-legacy.scss';
+import themeC from '../../jest/theme-c-legacy.scss';
+import themeD from '../../jest/theme-d-legacy.scss';
 
 setCompatibilityMode(COMPATIBILITY_MODE.REACT_CSS_SUPER_THEMR);
 

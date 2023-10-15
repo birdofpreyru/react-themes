@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 2`] = `
+<div>
+  <div>
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-b-legacy__container___JagPe"
+>
+  <div />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div>
+  <div
+    className="theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-b-legacy__container___JagPe"
+>
+  <div
+    className="theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`01 - No default theme. 01 - No options at registration. 04 - Context + ad hoc 4`] = `
+<div
+  className="theme-b-legacy__container___JagPe"
+>
+  <div
+    className="theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 01 - No extra themes 2`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 02 - Ad hoc theme 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql   theme-b-legacy__container___JagPe"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  >
+    Child
+  </div>
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 03 - Context theme 2`] = `
+<div
+  className="theme-b-legacy__container___JagPe  theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 2`] = `
+<div
+  className="theme-b-legacy__container___JagPe  theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU   theme-c-legacy__content___B4OaL"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 01 - No options at registration. 04 - Context + ad hoc 3`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-c-legacy__content___B4OaL  theme-a-legacy__content___jAHmU   theme-d-legacy__content___cGQH7"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 01 - composeTheme 1`] = `
+<div
+  className="theme-a-legacy__container___VVsql"
+>
+  <div
+    className="theme-a-legacy__content___jAHmU"
+  />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
+{
+  "props": {
+    "castTheme": false,
+    "children": undefined,
+    "composeAdhocTheme": undefined,
+    "composeContextTheme": undefined,
+    "mapThemeProps": undefined,
+    "ref": null,
+    "theme": undefined,
+    "themePriority": undefined,
+  },
+  "theme": {
+    "container": "theme-a-legacy__container___VVsql",
+    "content": "theme-a-legacy__content___jAHmU",
+  },
+}
+`;

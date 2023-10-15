@@ -2,13 +2,13 @@
  * Tests for theme schema verifier, and casting.
  */
 
-import themed from '../src';
+import themed from '../../src';
 
-import { snapshot } from '../jest/utils';
+import { snapshot } from '../../jest/utils';
 
-import themeA from '../jest/theme-a.scss';
-import invalidTheme from '../jest/invalid-theme.scss';
-import themeWithExtraStyles from '../jest/theme-with-extra-styles.scss';
+import themeA from '../../jest/theme-a.scss';
+import invalidTheme from '../../jest/invalid-theme.scss';
+import themeWithExtraStyles from '../../jest/theme-with-extra-styles.scss';
 
 function Component({ theme }) {
   return JSON.stringify(theme, null, 2);
@@ -26,7 +26,7 @@ describe('Theme verification', () => {
       'theme',
       'Component',
     );
-    expect(res).toBe();
+    expect(res).toBe(null);
   });
 
   test('Theme is missing and not required', () => {
@@ -35,7 +35,7 @@ describe('Theme verification', () => {
       'theme',
       'Component',
     );
-    expect(res).toBe(undefined);
+    expect(res).toBe(null);
   });
 
   test('Theme is missing and is required', () => {

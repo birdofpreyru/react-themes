@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/recommended",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "declaration": true,
+    "jsx": "react-jsx",
+    "module": "ES6",
+    "outDir": "build/module",
+    "sourceMap": true
+  }
+}

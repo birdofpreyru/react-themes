@@ -1,12 +1,12 @@
-import themed, { COMPOSE, PRIORITY, ThemeProvider } from '../src';
+import themed, { COMPOSE, PRIORITY, ThemeProvider } from '../../src';
 
-import { snapshot } from '../jest/utils';
-import TestComponent from '../jest/TestComponent';
+import { snapshot } from '../../jest/utils';
+import TestComponent from '../../jest/TestComponent';
 
-import themeA from '../jest/theme-a.scss';
-import themeB from '../jest/theme-b.scss';
-import themeC from '../jest/theme-c.scss';
-import themeD from '../jest/theme-d.scss';
+import themeA from '../../jest/theme-a.scss';
+import themeB from '../../jest/theme-b.scss';
+import themeC from '../../jest/theme-c.scss';
+import themeD from '../../jest/theme-d.scss';
 
 const logError = console.error;
 
