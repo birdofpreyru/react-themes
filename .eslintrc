@@ -1,7 +1,7 @@
 {
   "extends": ["airbnb", "airbnb-typescript"],
   "parserOptions": {
-    "project": "./tsconfig.tests.json"
+    "project": "./tsconfig.eslint.json"
   },
   "plugins": ["@babel"],
   "rules": {

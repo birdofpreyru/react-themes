@@ -3,6 +3,9 @@
   "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
   "coverageDirectory": "__coverage__",
   "rootDir": "..",
+  "testPathIgnorePatterns": [
+    "/__tests__/ts-types/"
+  ],
   "transform": {
     "\\.(j|t)sx?$": "babel-jest"
   }

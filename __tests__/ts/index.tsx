@@ -196,7 +196,10 @@ describe('02 - With default theme', () => {
       let args;
       snapshot((
         <Themed
-          mapThemeProps={(props, theme) => {
+          mapThemeProps={(
+            props: { [key: string]: any },
+            theme: ThemeT,
+          ) => {
             args = { props, theme };
             return {
               theme: {},
@@ -264,7 +267,10 @@ describe('02 - With default theme', () => {
       expect(args).toMatchSnapshot();
       snapshot((
         <Themed
-          mapThemeProps={(props, theme) => {
+          mapThemeProps={(
+            props: { [key: string]: any },
+            theme: ThemeT,
+          ) => {
             args = { props, theme };
             return { theme };
           }}
