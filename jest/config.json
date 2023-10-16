@@ -1,6 +1,6 @@
 {
   "collectCoverage": true,
-  "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+  "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
   "coverageDirectory": "__coverage__",
   "rootDir": "..",
   "transform": {

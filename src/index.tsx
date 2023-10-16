@@ -8,11 +8,10 @@ import {
   useContext,
 } from 'react';
 
-import * as PT from 'prop-types';
-
 const INVALID_COMPOSE = 'Invalid composition mode';
 
 export type ThemeT = { [key: string]: string };
+
 export type ThemeMapT = { [key: string]: ThemeT };
 
 const Context = createContext<ThemeMapT>({});
@@ -35,7 +34,7 @@ const VALID_COMPATIBILITY_MODES = Object.values(COMPATIBILITY_MODE);
  * where it emulates behavior of other similar theming libraries.
  * @param {string} mode COMPATIBILITY_MODE values.
  */
-export function setCompatibilityMode(mode: COMPATIBILITY_MODE) {
+export function setCompatibilityMode(mode: COMPATIBILITY_MODE | null) {
   // This is a runtime safeguard for pure-JS use.
   if (mode && !VALID_COMPATIBILITY_MODES.includes(mode)) {
     throw new Error('Invalid compatibility mode');
@@ -140,11 +139,13 @@ export function ThemeProvider({
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
+/*
 ThemeProvider.propTypes = {
   children: PT.node,
   theme: PT.shape({}),
   themes: PT.shape({}),
 };
+*/
 
 ThemeProvider.defaultProps = {
   children: null,
@@ -188,7 +189,10 @@ function compose(
   } else return high || low;
 }
 
-export type ThemePropsMapperT = (props: object, theme: ThemeT) => { [key: string]: unknown };
+export type ThemePropsMapperT = (props: object, theme: ThemeT) => {
+  theme: ThemeT;
+  [key: string]: unknown;
+};
 
 export type ThemedOptionsT = {
   adhocTag?: string;
@@ -204,12 +208,24 @@ export type ThemedOptionsT = {
 export type ThemedComponentPropsT = {
   castTheme?: boolean;
   children?: React.ReactNode;
-  composeAdhocTheme?: COMPOSE;
-  composeContextTheme?: COMPOSE;
+  composeAdhocTheme?: COMPOSE | LegacyComposeT;
+  composeContextTheme?: COMPOSE | LegacyComposeT;
   theme?: ThemeT;
   themePriority?: PRIORITY;
   mapThemeProps?: ThemePropsMapperT;
   [key: string]: unknown;
+};
+
+// This is similar to validator from 'prop-types', just requires two arguments
+// less.
+type Validator = (
+  props: { [key: string]: any },
+  propName: string,
+  componentName: string,
+) => Error | null;
+
+type RequireableValidator = Validator & {
+  isRequired: Validator;
 };
 
 /**
@@ -269,7 +285,7 @@ function themed(
     themePriority: oThemePriority,
   } = options || {};
 
-  const aTag = adhocTag.split('.');
+  const aTag: string[] = adhocTag.split('.');
   if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
     throw new Error('Invalid adhoc theme tag');
   }
@@ -278,12 +294,13 @@ function themed(
   validThemeKeys.push(aTag[0], aTag[1], contextTag);
   const validThemeKeysSet = new Set(validThemeKeys);
 
-  type ThemedComponentT = React.ElementType<ThemedComponentPropsT> & {
-    themeType: PT.Requireable<PT.Validator<unknown>>;
+  type ThemedComponentT = React.ComponentType<ThemedComponentPropsT> & {
+    themeType: RequireableValidator;
   };
 
   return (Component: React.ComponentType<{
-    children: React.ReactNode;
+    children?: React.ReactNode;
+    theme: ThemeT;
   }>): ThemedComponentT => {
     const WrappedComponentBuffer = forwardRef<unknown, ThemedComponentPropsT>(
       (properties, ref) => {
@@ -302,8 +319,8 @@ function themed(
         /* Deduction of applicable theme composition and priority settings. */
         let mapper;
         let priority;
-        let composeAdhoc;
-        let composeContext;
+        let composeAdhoc: COMPOSE;
+        let composeContext: COMPOSE;
         switch (compatibilityMode) {
           case COMPATIBILITY_MODE.REACT_CSS_THEMR:
             mapper = oLegacyMapThemeProps;
@@ -327,7 +344,7 @@ function themed(
               COMPOSE.DEEP,
             );
             composeContext = legacyCompose(
-              composeContext,
+              composeContextTheme,
               oComposeContextTheme,
               COMPOSE.SOFT,
             );
@@ -336,9 +353,9 @@ function themed(
             mapper = mapThemeProps || oMapThemeProps;
             priority = themePriority || oThemePriority
             || PRIORITY.ADHOC_CONTEXT_DEFAULT;
-            composeAdhoc = composeAdhocTheme
+            composeAdhoc = composeAdhocTheme as COMPOSE
             || oComposeAdhocTheme || COMPOSE.DEEP;
-            composeContext = composeContextTheme
+            composeContext = composeContextTheme as COMPOSE
             || oComposeContextTheme || COMPOSE.DEEP;
         }
 
@@ -361,7 +378,10 @@ function themed(
         res = compose(adhocTheme, res, composeAdhoc, aTag) || {};
 
         /* Props deduction. */
-        const p: { [key: string]: unknown } = mapper
+        const p: {
+          theme: ThemeT,
+          [key: string]: unknown,
+        } = mapper
           ? mapper({ ...properties, ref }, res) : {
             ...rest,
             theme: res,

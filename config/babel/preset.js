@@ -30,7 +30,7 @@ module.exports = function preset(api, options) {
         replaceImport: true,
       }],
       ['module-resolver', {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         root: ['./src', '.'],
       }],
       '@babel/plugin-transform-runtime',

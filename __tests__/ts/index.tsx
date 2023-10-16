@@ -1,4 +1,9 @@
-import themed, { COMPOSE, PRIORITY, ThemeProvider } from '../../src';
+import themed, {
+  type ThemeT,
+  COMPOSE,
+  PRIORITY,
+  ThemeProvider,
+} from '../../src';
 
 import { snapshot } from '../../jest/utils';
 import TestComponent from '../../jest/TestComponent';
@@ -250,7 +255,7 @@ describe('02 - With default theme', () => {
     test('04 - Theme props mapping', () => {
       let args;
       const Themed = themed('Themed', themeA, {
-        mapThemeProps: (props, theme) => {
+        mapThemeProps: (props: object, theme: ThemeT) => {
           args = { props, theme };
           return { theme: {} };
         },

@@ -2,7 +2,7 @@
  * Tests for theme schema verifier, and casting.
  */
 
-import themed from '../../src';
+import themed, { type ThemeT } from '../../src';
 
 import { snapshot } from '../../jest/utils';
 
@@ -10,7 +10,11 @@ import themeA from '../../jest/theme-a.scss';
 import invalidTheme from '../../jest/invalid-theme.scss';
 import themeWithExtraStyles from '../../jest/theme-with-extra-styles.scss';
 
-function Component({ theme }) {
+type ComponentPropsT = {
+  theme: ThemeT;
+};
+
+function Component({ theme }: ComponentPropsT) {
   return JSON.stringify(theme, null, 2);
 }
 
@@ -44,7 +48,7 @@ describe('Theme verification', () => {
       'theme',
       'Component',
     );
-    expect(res.message).toMatchSnapshot();
+    expect(res?.message).toMatchSnapshot();
   });
 
   test('Reports correct errors with invalid theme', () => {
@@ -53,7 +57,7 @@ describe('Theme verification', () => {
       'theme',
       'Component',
     );
-    expect(res.message).toMatchSnapshot();
+    expect(res?.message).toMatchSnapshot();
   });
 
   test('Theme casting works', () => {

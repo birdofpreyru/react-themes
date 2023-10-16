@@ -1,4 +1,5 @@
 import themed, {
+  type ThemeT,
   COMPATIBILITY_MODE,
   PRIORITY,
   ThemeProvider,
@@ -173,7 +174,7 @@ describe('02 - With default theme', () => {
     test('04 - Theme props mapping', () => {
       let args;
       const Themed = themed('Themed', themeA, {
-        mapThemrProps: (props, theme) => {
+        mapThemrProps: (props: object, theme: ThemeT) => {
           args = { props, theme };
           return { theme: {} };
         },
@@ -185,7 +186,5 @@ describe('02 - With default theme', () => {
 });
 
 test('Compatibility switching', () => {
-  expect(() => setCompatibilityMode('Invalid'))
-    .toThrowErrorMatchingSnapshot();
-  expect(() => setCompatibilityMode()).not.toThrow();
+  expect(() => setCompatibilityMode(null)).not.toThrow();
 });

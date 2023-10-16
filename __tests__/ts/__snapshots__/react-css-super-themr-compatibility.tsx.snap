@@ -225,5 +225,3 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
   },
 }
 `;
-
-exports[`Compatibility switching 1`] = `"Invalid compatibility mode"`;

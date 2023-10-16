@@ -13,7 +13,7 @@ import Renderer from 'react-test-renderer';
  * @param {Object} component ReactJS component to render.
  * @return {Object} JSON representation of the rendered tree.
  */
-function render(component) {
+function render(component: React.ReactElement) {
   return Renderer.create(component).toJSON();
 }
 
@@ -23,7 +23,7 @@ function render(component) {
  * @param {Object} component ReactJS component to render.
  * @return {Object} JSON render of the component.
  */
-export function snapshot(component) {
+export function snapshot(component: React.ReactElement) {
   const res = render(component);
   expect(res).toMatchSnapshot();
   return res;

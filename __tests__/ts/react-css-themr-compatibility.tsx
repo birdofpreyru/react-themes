@@ -1,4 +1,5 @@
 import themed, {
+  type ThemeT,
   COMPATIBILITY_MODE,
   ThemeProvider,
   setCompatibilityMode,
@@ -127,7 +128,7 @@ describe('02 - With default theme', () => {
     test('04 - Theme props mapping', () => {
       let args;
       const Themed = themed('Themed', themeA, {
-        mapThemrProps: (props, theme) => {
+        mapThemrProps: (props: object, theme: ThemeT) => {
           args = { props, theme };
           return { theme: {} };
         },

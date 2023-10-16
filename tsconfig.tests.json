@@ -3,11 +3,8 @@
   "include": [
     "__tests__/**/*",
     "config/**/*",
+    "jest/**/*",
     "src/**/*",
     "*"
   ],
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "module": "ES6",
-  }
 }
