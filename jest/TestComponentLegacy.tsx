@@ -1,7 +1,6 @@
+// This is a component accepting legacy themes (Themr library).
+
 export type ComponentThemeT = {
-  ad: string;
-  hoc: string;
-  context: string;
   container?: string;
   content?: string;
 };
@@ -9,19 +8,13 @@ export type ComponentThemeT = {
 type ComponentPropsT = {
   children?: React.ReactNode;
   theme: ComponentThemeT;
-  goodKey?: string;
 };
 
-export default function Component({
-  children,
-  goodKey,
-  theme,
-}: ComponentPropsT) {
+export default function Component({ children, theme }: ComponentPropsT) {
   return (
     <div className={theme.container}>
       <div className={theme.content}>
         { children }
-        { goodKey }
       </div>
     </div>
   );
@@ -29,5 +22,4 @@ export default function Component({
 
 Component.defaultProps = {
   children: null,
-  goodKey: '',
 };

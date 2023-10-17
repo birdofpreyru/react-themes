@@ -1,10 +1,11 @@
+// TS config for ESlint.
 {
-  "extends": "@tsconfig/recommended",
-  "include": ["src/**/*"],
+  "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "declaration": true,
     "jsx": "react-jsx",
-    "module": "NodeNext",
-    "outDir": "build/types"
+    "rootDirs": [
+      "build/scss-types/jest",
+      "jest"
+    ]
   }
 }

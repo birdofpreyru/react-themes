@@ -244,22 +244,20 @@ exports[`02 - With default theme 01 - No options at registration. 05 - Context +
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 06 - Theme props mapping 1`] = `
-<div>
-  <div />
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
 </div>
 `;
 
 exports[`02 - With default theme 01 - No options at registration. 06 - Theme props mapping 2`] = `
 {
   "props": {
-    "castTheme": false,
-    "children": undefined,
-    "composeAdhocTheme": undefined,
-    "composeContextTheme": undefined,
     "mapThemeProps": [Function],
     "ref": null,
-    "theme": undefined,
-    "themePriority": undefined,
   },
   "theme": {
     "ad": "theme-a__ad___qo1qO",
@@ -327,22 +325,19 @@ exports[`02 - With default theme 02 - Options at registration 03 - themePriority
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 1`] = `
-<div>
-  <div />
+<div
+  className="theme-a__container___KKR91"
+>
+  <div
+    className="theme-a__content___yA6Ea"
+  />
 </div>
 `;
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
 {
   "props": {
-    "castTheme": false,
-    "children": undefined,
-    "composeAdhocTheme": undefined,
-    "composeContextTheme": undefined,
-    "mapThemeProps": undefined,
     "ref": null,
-    "theme": undefined,
-    "themePriority": undefined,
   },
   "theme": {
     "ad": "theme-a__ad___qo1qO",
@@ -367,14 +362,8 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 4`] = `
 {
   "props": {
-    "castTheme": false,
-    "children": undefined,
-    "composeAdhocTheme": undefined,
-    "composeContextTheme": undefined,
     "mapThemeProps": [Function],
     "ref": null,
-    "theme": undefined,
-    "themePriority": undefined,
   },
   "theme": {
     "ad": "theme-a__ad___qo1qO",

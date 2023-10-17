@@ -1,12 +1,13 @@
-import themed, {
+import {
   type ThemeT,
   COMPATIBILITY_MODE,
+  themedComponent,
   ThemeProvider,
   setCompatibilityMode,
 } from '../../src';
 
 import { snapshot } from '../../jest/utils';
-import TestComponent from '../../jest/TestComponent';
+import TestComponent from '../../jest/TestComponentLegacy';
 
 import themeA from '../../jest/theme-a-legacy.scss';
 import themeB from '../../jest/theme-b-legacy.scss';
@@ -17,7 +18,7 @@ setCompatibilityMode(COMPATIBILITY_MODE.REACT_CSS_THEMR);
 
 describe('01 - No default theme.', () => {
   describe('01 - No options at registration.', () => {
-    const Themed = themed('Themed')(TestComponent);
+    const Themed = themedComponent('Themed', TestComponent);
 
     test('01 - No extra themes', () => {
       snapshot(<Themed />);
@@ -70,7 +71,7 @@ describe('01 - No default theme.', () => {
 
 describe('02 - With default theme', () => {
   describe('01 - No options at registration.', () => {
-    const Themed = themed('Themed', themeA)(TestComponent);
+    const Themed = themedComponent('Themed', TestComponent, themeA);
 
     test('01 - No extra themes', () => {
       snapshot(<Themed />);
@@ -115,9 +116,9 @@ describe('02 - With default theme', () => {
 
   describe('02 - Options at registration', () => {
     test('01 - composeTheme', () => {
-      const Themed = themed('Themed', themeA, {
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
         composeTheme: false,
-      })(TestComponent);
+      });
       snapshot((
         <ThemeProvider theme={{ Themed: themeB }}>
           <Themed />
@@ -127,12 +128,12 @@ describe('02 - With default theme', () => {
 
     test('04 - Theme props mapping', () => {
       let args;
-      const Themed = themed('Themed', themeA, {
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
         mapThemrProps: (props: object, theme: ThemeT) => {
           args = { props, theme };
           return { theme: {} };
         },
-      })(TestComponent);
+      });
       snapshot(<Themed />);
       expect(args).toMatchSnapshot();
     });

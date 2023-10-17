@@ -1,13 +1,15 @@
-import themed, {
-  type ThemeT,
+import {
   COMPATIBILITY_MODE,
+  COMPOSE,
   PRIORITY,
+  themedComponent,
   ThemeProvider,
   setCompatibilityMode,
 } from '../../src';
 
 import { snapshot } from '../../jest/utils';
-import TestComponent from '../../jest/TestComponent';
+
+import TestComponent, { type ComponentThemeT } from '../../jest/TestComponentLegacy';
 
 import themeA from '../../jest/theme-a-legacy.scss';
 import themeB from '../../jest/theme-b-legacy.scss';
@@ -18,7 +20,7 @@ setCompatibilityMode(COMPATIBILITY_MODE.REACT_CSS_SUPER_THEMR);
 
 describe('01 - No default theme.', () => {
   describe('01 - No options at registration.', () => {
-    const Themed = themed('Themed')(TestComponent);
+    const Themed = themedComponent('Themed', TestComponent);
 
     test('01 - No extra themes', () => {
       snapshot(<Themed />);
@@ -71,7 +73,7 @@ describe('01 - No default theme.', () => {
 
 describe('02 - With default theme', () => {
   describe('01 - No options at registration.', () => {
-    const Themed = themed('Themed', themeA)(TestComponent);
+    const Themed = themedComponent('Themed', TestComponent, themeA);
 
     test('01 - No extra themes', () => {
       snapshot(<Themed />);
@@ -116,9 +118,9 @@ describe('02 - With default theme', () => {
 
   describe('02 - Options at registration', () => {
     test('01 - composeTheme', () => {
-      const Themed = themed('Themed', themeA, {
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
         composeTheme: false,
-      })(TestComponent);
+      });
       snapshot((
         <ThemeProvider theme={{ Themed: themeB }}>
           <Themed />
@@ -127,9 +129,9 @@ describe('02 - With default theme', () => {
     });
 
     test('02 - composeAdhocTheme', () => {
-      const Themed = themed('Themed', themeA, {
-        composeAdhocTheme: 'SWAP',
-      })(TestComponent);
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
+        composeAdhocTheme: COMPOSE.SWAP,
+      });
       snapshot((
         <ThemeProvider theme={{ Themed: themeB }}>
           <Themed theme={themeC} />
@@ -138,9 +140,9 @@ describe('02 - With default theme', () => {
     });
 
     test('03 - themePriority', () => {
-      const Themed = themed('Themed', themeA, {
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
         themePriority: PRIORITY.ADHOC_DEFAULT_CONTEXT,
-      })(TestComponent);
+      });
       snapshot((
         <ThemeProvider theme={{ Themed: themeB }}>
           <Themed theme={themeC} />
@@ -150,35 +152,16 @@ describe('02 - With default theme', () => {
           />
         </ThemeProvider>
       ));
-
-      const InvalidThemed = themed('Themed', themeA, {
-        themePriority: 'Invalid',
-      })(TestComponent);
-
-      const logError = console.error;
-      console.error = () => undefined;
-      expect(
-        () => snapshot((
-          <ThemeProvider theme={{ Themed: themeB }}>
-            <InvalidThemed theme={themeC} />
-            <InvalidThemed
-              theme={themeC}
-              themePriority={PRIORITY.ADHOC_CONTEXT_DEFAULT}
-            />
-          </ThemeProvider>
-        )),
-      ).toThrowErrorMatchingSnapshot();
-      console.error = logError;
     });
 
     test('04 - Theme props mapping', () => {
       let args;
-      const Themed = themed('Themed', themeA, {
-        mapThemrProps: (props: object, theme: ThemeT) => {
+      const Themed = themedComponent('Themed', TestComponent, themeA, {
+        mapThemrProps: (props: object, theme: ComponentThemeT) => {
           args = { props, theme };
           return { theme: {} };
         },
-      })(TestComponent);
+      });
       snapshot(<Themed />);
       expect(args).toMatchSnapshot();
     });

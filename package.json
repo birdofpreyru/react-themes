@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/node/index.js",
   "source": "src/index.ts",
@@ -11,16 +11,17 @@
     "default": "./build/node/index.js"
   },
   "scripts": {
-    "build": "rimraf build && npm run build:module && npm run build:node && npm run build:types",
+    "build": "rimraf build && npm run build:module && npm run build:node && npm run build:types && npm run build:scss-types",
     "build:module": "rimraf build/module && babel src -x .ts,.tsx --out-dir build/module --source-maps --config-file ./babel-module.config.js",
     "build:node": "rimraf build/node && babel src -x .ts,.tsx --out-dir build/node --source-maps",
-    "build:types": "rimraf build/types && tsc --emitDeclarationOnly",
+    "build:scss-types": "rimraf build/scss-types && typed-scss-modules .",
+    "build:types": "rimraf build/types && tsc --project tsconfig.types.json --emitDeclarationOnly",
     "jest": "npm run jest:types && npm run jest:logic",
     "jest:logic": "jest --config jest/config.json --no-cache",
     "jest:types": "jest --config jest/config-types.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "npm run lint && npm run typecheck && npm run jest",
-    "typecheck": "tsc --project tsconfig.tests.json --noEmit"
+    "typecheck": "tsc --project __tests__/tsconfig.json --noEmit"
   },
   "repository": "github:birdofpreyru/react-themes",
   "keywords": [
@@ -78,7 +79,9 @@
     "postcss-scss": "^4.0.9",
     "react-test-renderer": "^18.2.0",
     "rimraf": "^5.0.5",
+    "sass": "^1.69.3",
     "tsd-lite": "^0.8.0",
+    "typed-scss-modules": "^7.1.4",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {

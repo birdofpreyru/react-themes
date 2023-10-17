@@ -1,0 +1,13 @@
+{
+  "extends": "@tsconfig/recommended",
+  "exclude": [
+    "ts-types/"
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "rootDirs": [
+      "../build/scss-types/jest",
+      "../jest"
+    ]
+  }
+}

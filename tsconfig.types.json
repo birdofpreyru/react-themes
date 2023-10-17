@@ -1,0 +1,10 @@
+// TS config for generation of library's type declarations with TSC.
+{
+  "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "declaration": true,
+    "jsx": "react-jsx",
+    "outDir": "build/types"
+  }
+}

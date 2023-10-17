@@ -2,16 +2,11 @@
  * Dr. Pogodin's React Themes.
  */
 
-import {
-  createContext,
-  forwardRef,
-  useContext,
-} from 'react';
+import { createContext, forwardRef, useContext } from 'react';
 
 const INVALID_COMPOSE = 'Invalid composition mode';
 
 export type ThemeT = { [key: string]: string };
-
 export type ThemeMapT = { [key: string]: ThemeT };
 
 const Context = createContext<ThemeMapT>({});
@@ -161,12 +156,12 @@ ThemeProvider.defaultProps = {
  * @param tag Specifity tag(s).
  * @return Composed theme.
  */
-function compose(
-  high: ThemeT | undefined,
-  low: ThemeT | undefined,
+function compose<SpecificThemeT extends ThemeT>(
+  high: SpecificThemeT | undefined,
+  low: SpecificThemeT | undefined,
   mode: COMPOSE,
   tag: string | string[],
-): ThemeT | undefined {
+): SpecificThemeT | undefined {
   if (high && low) {
     switch (mode) {
       case COMPOSE.DEEP: {
@@ -176,8 +171,10 @@ function compose(
           : (high[tag] || '');
         /* eslint-disable no-restricted-syntax */
         for (const key in high) {
-          if (res[key]) res[key] = `${res[key]} ${prefix} ${high[key]}`;
-          else res[key] = high[key];
+          if (res[key]) {
+            res[key] = `${res[key]} ${prefix} ${high[key]}` as
+              SpecificThemeT[Extract<keyof SpecificThemeT, string>];
+          } else res[key] = high[key];
         }
         /* eslint-enable no-restricted-syntax */
         return res;
@@ -189,31 +186,39 @@ function compose(
   } else return high || low;
 }
 
-export type ThemePropsMapperT = (props: object, theme: ThemeT) => {
-  theme: ThemeT;
-  [key: string]: unknown;
-};
+export type ThemePropsMapperT<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+> =
+  (props: object, theme: ComponentThemeT) => ComponentPropsT & {
+    theme: ComponentThemeT;
+  };
 
-export type ThemedOptionsT = {
+export type ThemedOptionsT<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+> = {
   adhocTag?: string;
   contextTag?: string;
-  composeAdhocTheme?: COMPOSE;
-  composeContextTheme?: COMPOSE;
+  composeAdhocTheme?: COMPOSE | LegacyComposeT;
+  composeContextTheme?: COMPOSE | LegacyComposeT;
   composeTheme?: LegacyComposeT;
-  mapThemeProps?: ThemePropsMapperT,
-  mapThemrProps?: ThemePropsMapperT,
-  themePriority?: PRIORITY,
+  mapThemeProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>,
+  mapThemrProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>,
+  themePriority?: PRIORITY | LegacyPriorityT,
 };
 
-export type ThemedComponentPropsT = {
+export type ThemedComponentPropsT<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+> = Omit<ComponentPropsT, 'theme'> & {
   castTheme?: boolean;
   children?: React.ReactNode;
   composeAdhocTheme?: COMPOSE | LegacyComposeT;
   composeContextTheme?: COMPOSE | LegacyComposeT;
-  theme?: ThemeT;
-  themePriority?: PRIORITY;
-  mapThemeProps?: ThemePropsMapperT;
-  [key: string]: unknown;
+  theme?: ComponentThemeT;
+  themePriority?: PRIORITY | LegacyPriorityT;
+  mapThemeProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>;
 };
 
 // This is similar to validator from 'prop-types', just requires two arguments
@@ -227,6 +232,15 @@ type Validator = (
 type RequireableValidator = Validator & {
   isRequired: Validator;
 };
+
+export type ThemeableComponentT<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+> =
+  React.ComponentType<ComponentPropsT & {
+    children?: React.ReactNode;
+    theme: ComponentThemeT;
+  }>;
 
 /**
  * Registers a themeable component under given name, and with an optional
@@ -268,11 +282,14 @@ type RequireableValidator = Validator & {
  * @return Themeable component, registered under
  * given name.
  */
-function themed(
+function themedImpl<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+>(
   componentName: string,
   themeSchema?: string[],
-  defaultTheme?: ThemeT,
-  options?: ThemedOptionsT,
+  defaultTheme?: ComponentThemeT,
+  options: ThemedOptionsT<ComponentThemeT, ComponentPropsT> = {},
 ) {
   const {
     adhocTag = 'ad.hoc',
@@ -283,7 +300,7 @@ function themed(
     mapThemeProps: oMapThemeProps,
     mapThemrProps: oLegacyMapThemeProps,
     themePriority: oThemePriority,
-  } = options || {};
+  } = options;
 
   const aTag: string[] = adhocTag.split('.');
   if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
@@ -294,15 +311,16 @@ function themed(
   validThemeKeys.push(aTag[0], aTag[1], contextTag);
   const validThemeKeysSet = new Set(validThemeKeys);
 
-  type ThemedComponentT = React.ComponentType<ThemedComponentPropsT> & {
+  type SThemedComponentPT = ThemedComponentPropsT<ComponentThemeT, ComponentPropsT>;
+
+  type ThemedComponentT = React.FunctionComponent<SThemedComponentPT> & {
     themeType: RequireableValidator;
   };
 
-  return (Component: React.ComponentType<{
-    children?: React.ReactNode;
-    theme: ThemeT;
-  }>): ThemedComponentT => {
-    const WrappedComponentBuffer = forwardRef<unknown, ThemedComponentPropsT>(
+  return (
+    ThemeableComponent: ThemeableComponentT<ComponentThemeT, ComponentPropsT>,
+  ): ThemedComponentT => {
+    const WrappedComponentBuffer = forwardRef<unknown, SThemedComponentPT>(
       (properties, ref) => {
         const {
           castTheme,
@@ -314,7 +332,7 @@ function themed(
           mapThemeProps,
           ...rest
         } = properties;
-        const contextThemes = useContext(Context);
+        const contextTheme = useContext(Context)[componentName] as ComponentThemeT;
 
         /* Deduction of applicable theme composition and priority settings. */
         let mapper;
@@ -360,8 +378,7 @@ function themed(
         }
 
         /* Theme composition. */
-        const contextTheme = contextThemes[componentName];
-        let res = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
+        let res: ComponentThemeT | undefined = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
           ? compose(defaultTheme, contextTheme, composeContext, contextTag)
           : compose(contextTheme, defaultTheme, composeContext, contextTag);
 
@@ -372,40 +389,29 @@ function themed(
             const clazz = theme[key];
             if (clazz) castedTheme[key] = clazz;
           });
-          adhocTheme = castedTheme;
+          adhocTheme = castedTheme as ComponentThemeT;
         }
 
-        res = compose(adhocTheme, res, composeAdhoc, aTag) || {};
+        res = compose(adhocTheme, res, composeAdhoc, aTag) || ({} as ComponentThemeT);
 
         /* Props deduction. */
-        const p: {
-          theme: ThemeT,
-          [key: string]: unknown,
+        const p: ComponentPropsT & {
+          theme: ComponentThemeT,
         } = mapper
           ? mapper({ ...properties, ref }, res) : {
-            ...rest,
+            ...rest as ComponentPropsT,
             theme: res,
             ref,
           };
 
         /* eslint-disable react/jsx-props-no-spreading */
-        return <Component {...p}>{children}</Component>;
+        return <ThemeableComponent {...p}>{children}</ThemeableComponent>;
         /* eslint-enable react/jsx-props-no-spreading */
       },
     );
 
     const WrappedComponent: ThemedComponentT = (
       WrappedComponentBuffer as unknown) as ThemedComponentT;
-
-    WrappedComponentBuffer.defaultProps = {
-      castTheme: false,
-      children: undefined,
-      composeAdhocTheme: undefined,
-      composeContextTheme: undefined,
-      theme: undefined,
-      themePriority: undefined,
-      mapThemeProps: undefined,
-    };
 
     /**
      * `prop-types` compatible prop checker for `theme` prop.
@@ -462,31 +468,57 @@ function themed(
 }
 
 /**
- * Exposes `themed(..)` as a function of either 3 or 4 arguments. In the first
+ * Exposes `themed()` as a function of either 3 or 4 arguments. In the first
  * case it is:
  * `themed(componentName, defaultTheme, options)`,
  * in the second (recommended) case it is:
  * `themed(componentName, themeSchema, defaultTheme, options)`
+ *
+ * In case of TypeScript it has an optional generic argument, allowing
+ * to enforce a specific theme layout, beyond the default lax
+ * `{ [key: string]: string }`.
+ *
  * @param args
  * @return
  */
-export default function themedWrapper(
+export default function themedWrapper<
+  ComponentThemeT extends ThemeT = ThemeT,
+  ComponentPropsT extends {} = {},
+>(
   componentName: string,
-  themeSchemaOrdefaultTheme?: string[] | ThemeT,
-  defaultThemeOrOptions?: ThemeT | ThemedOptionsT,
-  options?: ThemedOptionsT,
+  themeSchemaOrDefaultTheme?: string[] | ComponentThemeT,
+  defaultThemeOrOptions?: ComponentThemeT | ThemedOptionsT<ComponentThemeT, ComponentPropsT>,
+  options?: ThemedOptionsT<ComponentThemeT, ComponentPropsT>,
 ) {
-  return Array.isArray(themeSchemaOrdefaultTheme)
-    ? themed(
+  return Array.isArray(themeSchemaOrDefaultTheme)
+    ? themedImpl<ComponentThemeT, ComponentPropsT>(
       componentName,
-      themeSchemaOrdefaultTheme,
-      defaultThemeOrOptions as ThemeT | undefined,
+      themeSchemaOrDefaultTheme,
+      defaultThemeOrOptions as ComponentThemeT | undefined,
       options,
     )
-    : themed(
+    : themedImpl<ComponentThemeT, ComponentPropsT>(
       componentName,
       undefined,
-      themeSchemaOrdefaultTheme,
+      themeSchemaOrDefaultTheme,
       defaultThemeOrOptions,
     );
+}
+
+export function themedComponent<
+  ComponentThemeT extends ThemeT,
+  ComponentPropsT extends {},
+  DefaultThemeT extends ComponentThemeT,
+>(
+  componentName: string,
+  component: ThemeableComponentT<ComponentThemeT, ComponentPropsT>,
+  defaultTheme?: DefaultThemeT,
+  options?: ThemedOptionsT<ComponentThemeT, ComponentPropsT>,
+) {
+  return themedImpl<ComponentThemeT, ComponentPropsT>(
+    componentName,
+    undefined,
+    defaultTheme,
+    options,
+  )(component);
 }
