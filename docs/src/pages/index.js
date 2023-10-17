@@ -21,27 +21,6 @@ import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
 import SponsorImg from '../../../.README/sponsor.svg';
 
-const themedComponentCodeExample =
-`// The original JavaScript way to register a themed component:
-
-import themed from '@dr.pogodin/react-themes';
-import defaultTheme from '/path/to/default.theme.scss';
-import Component from '/path/to/themeable.component.jsx';
-
-const ThemedComponent = themed('Name', defaultTheme)(Component);
-
-// The added, new TypeScript-friendly way is:
-
-import {themedComponent} from '@dr.pogodin/react-themes';
-import defaultTheme from '/path/to/default.theme.scss';
-import Component from '/path/to/themeable.component.jsx';
-
-const ThemedComponent = themedComponent('Name', Component, defaultTheme);
-
-// This way TypeScript will be able to automatically deduce and use the typing
-// of Component props, and its theme in particular.
-`;
-
 function HomepageHeader() {
   const isDarkTheme = useColorMode().colorMode === 'dark';
   const {siteConfig} = useDocusaurusContext();
@@ -117,21 +96,24 @@ function HomepageHeader() {
           </a>
         </p>
         <div className={S.attention}>
-          <strong>Note</strong>: Since its release <strong>v1.5.0</strong>
-          &zwnj; the library has been migrated to TypeScript. It is still
-          compatible with plain JavaScript &mdash; original intefaces has not
-          been changed, and the packaged library includes JavaScript build,
-          alongside TypeScript sources, and type declarations. The TypeScript
-          specific usage and APIs have not been documented yet (and no ETA when
-          it will be documented), and might be
-          not yet stable. Should you attempt to use it with TypeScript, pay
-          attention to the new, undocumented named export &zwnj;
-          <code>themedComponent()</code> similar in its purpose to
-          the default <code>themed()</code> export, but better suited for
-          TypeScript use (it helps to auto-deduce component types):
-          <CodeBlock className="language-jsx">
-            {themedComponentCodeExample}
-          </CodeBlock>
+          <p>
+            <strong>Note:</strong> Since its release <strong>v2.0.0</strong>
+            &zwnj; the library has been migrated to TypeScript. It is still
+            compatible with plain JavaScript &mdash; the original interfaces have
+            not been changed (with exception of removed &laquo;<em>compatibility
+            mode</em>&raquo; for emulation of &zwnj;
+            <Link
+              to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
+            >
+              react-css-themr
+            </Link>
+            &zwnj; library), and the packaged library now includes JavaScript
+            build, alongside TypeScript sources, and type declarations.
+          </p>
+          <p>
+            The TypeScript-specific usage and APIs have not been documented yet,
+            and are likely to evolve in the follow-up releases.
+          </p>
         </div>
       </div>
     </header>

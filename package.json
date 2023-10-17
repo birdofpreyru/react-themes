@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/node/index.js",
   "source": "src/index.ts",
@@ -79,7 +79,7 @@
     "postcss-scss": "^4.0.9",
     "react-test-renderer": "^18.2.0",
     "rimraf": "^5.0.5",
-    "sass": "^1.69.3",
+    "sass": "^1.69.4",
     "tsd-lite": "^0.8.0",
     "typed-scss-modules": "^7.1.4",
     "typescript": "^5.2.2"

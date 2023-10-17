@@ -4,27 +4,6 @@ sidebar_position: 2
 
 # Constants
 
-## COMPATIBILITY_MODE
-
-```jsx
-export const COMPATIBILITY_MODE = {
-  REACT_CSS_THEMR: 'REACT_CSS_THEMR',
-  REACT_CSS_SUPER_THEMR: 'REACT_CSS_SUPER_THEMR',
-}
-```
-Compatibility modes supported by
-[setCompatibilityMode()](functions#setcompatibilitymode)
-
-- `.REACT_CSS_THEMR` - In this mode React Themes library emulates
-  [`react-css-themr`](https://www.npmjs.com/package/react-css-themr):
-    it will accept the same parameters, and use different default settings
-    to mimic `react-css-themr` behavior.
-
-- `.REACT_CSS_SUPER_THEMR` - In this mode React Themes library emulates
-  [`react-css-super-themr`](https://www.npmjs.com/package/react-css-super-themr):
-  it will accept the same parameters, and use different default settings
-  to mimic `react-css-themr` behavior.
-
 ## COMPOSE
 
 ```jsx

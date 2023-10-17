@@ -87,16 +87,6 @@ describe('01 - No default theme.', () => {
           <Themed composeAdhocTheme={COMPOSE.SWAP} theme={themeB} />
         </ThemeProvider>
       ));
-
-      muteConsoleError();
-      expect(
-        () => snapshot((
-          <ThemeProvider themes={{ Themed: themeA }}>
-            <Themed composeAdhocTheme="deeply" theme={themeB} />
-          </ThemeProvider>
-        )),
-      ).toThrowErrorMatchingSnapshot();
-      muteConsoleError(false);
     });
 
     test(

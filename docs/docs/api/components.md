@@ -98,10 +98,6 @@ context will be applied.
 
 - `children` - **ReactNode** - The content to render in-place of [ThemeProvider].
 
-- **Deprecated** `theme` - **object** - The fallback value to use if `themes`
-  prop is missing. It is for backward compatibility with `react-css-themr`
-  and `react-css-super-themr` libraries.
-
 [COMPOSE]: constants#compose
 [PRIORITY]: constants#priority
 [themed()]: functions#themed

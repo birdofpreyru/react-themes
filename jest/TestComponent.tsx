@@ -1,7 +1,6 @@
-export type ComponentThemeT = {
-  ad: string;
-  hoc: string;
-  context: string;
+import { type ThemeT } from '../src';
+
+export type ComponentThemeT = ThemeT & {
   container?: string;
   content?: string;
 };

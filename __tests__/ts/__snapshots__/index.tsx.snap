@@ -104,8 +104,6 @@ exports[`01 - No default theme. 01 - No options at registration. 05 - Context + 
 </div>
 `;
 
-exports[`01 - No default theme. 01 - No options at registration. 05 - Context + ad hoc + composition modes 3`] = `"Invalid composition mode"`;
-
 exports[`01 - No default theme. 01 - No options at registration. 06 - Nested ThemeProvider does not shadow parent themes it does not override 1`] = `
 [
   <div

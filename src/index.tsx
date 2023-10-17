@@ -2,41 +2,42 @@
  * Dr. Pogodin's React Themes.
  */
 
-import { createContext, forwardRef, useContext } from 'react';
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useMemo,
+} from 'react';
 
 const INVALID_COMPOSE = 'Invalid composition mode';
 
-export type ThemeT = { [key: string]: string };
-export type ThemeMapT = { [key: string]: ThemeT };
+export type ThemeT<
+  AdHocTag1T extends string = 'ad',
+  AdHocTag2T extends string = 'hoc',
+  ContextTagT extends string = 'context',
+> = {
+  // A valid theme stylesheet must have three special classes (by default, named
+  // "ad", "hoc", and "context"), which are used by the library to manage specifity
+  // of (S)CSS rules from different merged themes. To work as intended, these
+  // special classes should wrap all other classes in the theme, as shown in
+  // the tutorial:
+  //
+  //  *,
+  //  .ad.hoc,
+  //  .context {
+  //    .aThemeClass {}
+  //  }
+  [key in AdHocTag1T | AdHocTag2T | ContextTagT]: string;
+} & {
+  // This allows the theme to have any additional classes, wrapped inside our
+  // three special classes (at the moment the library is not able to verify
+  // whether they are wrapped correctly).
+  [key: string]: string;
+};
 
-const Context = createContext<ThemeMapT>({});
+export interface ThemeMapT { [key: string]: ThemeT | undefined }
 
-/**
- * Compatibility modes supported by setCompatibilityMode().
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export enum COMPATIBILITY_MODE {
-  REACT_CSS_THEMR = 'REACT_CSS_THEMR',
-  REACT_CSS_SUPER_THEMR = 'REACT_CSS_SUPER_THEMR',
-}
-
-let compatibilityMode: COMPATIBILITY_MODE | null = null;
-
-const VALID_COMPATIBILITY_MODES = Object.values(COMPATIBILITY_MODE);
-
-/**
- * Switches `react-themes` library into a compatibility mode,
- * where it emulates behavior of other similar theming libraries.
- * @param {string} mode COMPATIBILITY_MODE values.
- */
-export function setCompatibilityMode(mode: COMPATIBILITY_MODE | null) {
-  // This is a runtime safeguard for pure-JS use.
-  if (mode && !VALID_COMPATIBILITY_MODES.includes(mode)) {
-    throw new Error('Invalid compatibility mode');
-  }
-
-  compatibilityMode = mode || null;
-}
+const Context = createContext<ThemeMapT | undefined>(undefined);
 
 /**
  * Supported theme composition modes.
@@ -47,31 +48,6 @@ export enum COMPOSE {
   SWAP = 'SWAP',
 }
 
-type LegacyComposeT = 'deeply' | 'softly' | false;
-
-/**
- * Maps an array of legacy compose modes to one of current compose modes.
- * @param args
- * @return
- */
-function legacyCompose(...args: (COMPOSE | LegacyComposeT | undefined)[]): COMPOSE {
-  for (let i = 0; i < args.length; i += 1) {
-    switch (args[i]) {
-      case COMPOSE.DEEP:
-      case 'deeply':
-        return COMPOSE.DEEP;
-      case COMPOSE.SOFT:
-      case 'softly':
-        return COMPOSE.SOFT;
-      case COMPOSE.SWAP:
-      case false:
-        return COMPOSE.SWAP;
-      default:
-    }
-  }
-  throw new Error(INVALID_COMPOSE);
-}
-
 /**
  * Supported theme priorities.
  */
@@ -80,29 +56,8 @@ export enum PRIORITY {
   ADHOC_DEFAULT_CONTEXT = 'ADHOC_DEFAULT_CONTEXT',
 }
 
-type LegacyPriorityT = 'adhoc-default-context' | 'adhoc-context-default';
-
-/**
- * Maps legacy priority to the current one.
- * @param priority
- * @ignore
- */
-function legacyPriority(priority: PRIORITY | LegacyPriorityT): PRIORITY {
-  switch (priority) {
-    case PRIORITY.ADHOC_CONTEXT_DEFAULT:
-    case 'adhoc-context-default':
-      return PRIORITY.ADHOC_CONTEXT_DEFAULT;
-    case PRIORITY.ADHOC_DEFAULT_CONTEXT:
-    case 'adhoc-default-context':
-      return PRIORITY.ADHOC_DEFAULT_CONTEXT;
-    default:
-      throw new Error('Invalid priority');
-  }
-}
-
 export type ThemeProviderPropT = {
   children?: React.ReactNode;
-  theme?: ThemeMapT;
   themes?: ThemeMapT;
 };
 
@@ -125,27 +80,24 @@ export type ThemeProviderPropT = {
  */
 export function ThemeProvider({
   children,
-  theme: legacyThemes = {},
-  themes = {},
+  themes,
 }: ThemeProviderPropT) {
   const contextThemes = useContext(Context);
-  let value = compatibilityMode ? legacyThemes : themes;
-  if (contextThemes) value = { ...contextThemes, ...value };
+
+  // useMemo() ensures we don't generate a new "value" on each render when both
+  // "contextThemes" and "themes" are defined.
+  const value: ThemeMapT = useMemo(() => (
+    contextThemes && themes
+      ? { ...contextThemes, ...themes }
+      : (contextThemes || themes || {})
+  ), [contextThemes, themes]);
+
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-/*
-ThemeProvider.propTypes = {
-  children: PT.node,
-  theme: PT.shape({}),
-  themes: PT.shape({}),
-};
-*/
-
 ThemeProvider.defaultProps = {
-  children: null,
-  theme: null,
-  themes: null,
+  children: undefined,
+  themes: undefined,
 };
 
 /**
@@ -200,12 +152,10 @@ export type ThemedOptionsT<
 > = {
   adhocTag?: string;
   contextTag?: string;
-  composeAdhocTheme?: COMPOSE | LegacyComposeT;
-  composeContextTheme?: COMPOSE | LegacyComposeT;
-  composeTheme?: LegacyComposeT;
+  composeAdhocTheme?: COMPOSE;
+  composeContextTheme?: COMPOSE;
   mapThemeProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>,
-  mapThemrProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>,
-  themePriority?: PRIORITY | LegacyPriorityT,
+  themePriority?: PRIORITY,
 };
 
 export type ThemedComponentPropsT<
@@ -214,10 +164,10 @@ export type ThemedComponentPropsT<
 > = Omit<ComponentPropsT, 'theme'> & {
   castTheme?: boolean;
   children?: React.ReactNode;
-  composeAdhocTheme?: COMPOSE | LegacyComposeT;
-  composeContextTheme?: COMPOSE | LegacyComposeT;
+  composeAdhocTheme?: COMPOSE;
+  composeContextTheme?: COMPOSE;
   theme?: ComponentThemeT;
-  themePriority?: PRIORITY | LegacyPriorityT;
+  themePriority?: PRIORITY;
   mapThemeProps?: ThemePropsMapperT<ComponentThemeT, ComponentPropsT>;
 };
 
@@ -296,9 +246,7 @@ function themedImpl<
     contextTag = 'context',
     composeAdhocTheme: oComposeAdhocTheme,
     composeContextTheme: oComposeContextTheme,
-    composeTheme: oLegacyComposeTheme,
     mapThemeProps: oMapThemeProps,
-    mapThemrProps: oLegacyMapThemeProps,
     themePriority: oThemePriority,
   } = options;
 
@@ -332,50 +280,18 @@ function themedImpl<
           mapThemeProps,
           ...rest
         } = properties;
-        const contextTheme = useContext(Context)[componentName] as ComponentThemeT;
+
+        const context = useContext(Context) || {};
+        const contextTheme = context[componentName] as ComponentThemeT | undefined;
 
         /* Deduction of applicable theme composition and priority settings. */
-        let mapper;
-        let priority;
-        let composeAdhoc: COMPOSE;
-        let composeContext: COMPOSE;
-        switch (compatibilityMode) {
-          case COMPATIBILITY_MODE.REACT_CSS_THEMR:
-            mapper = oLegacyMapThemeProps;
-            priority = PRIORITY.ADHOC_DEFAULT_CONTEXT;
-            composeAdhoc = legacyCompose(
-              oLegacyComposeTheme,
-              COMPOSE.DEEP,
-            );
-            composeContext = composeAdhoc;
-            break;
-          case COMPATIBILITY_MODE.REACT_CSS_SUPER_THEMR:
-            mapper = oLegacyMapThemeProps;
-            priority = legacyPriority(
-              themePriority
-              || oThemePriority
-              || PRIORITY.ADHOC_CONTEXT_DEFAULT,
-            );
-            composeAdhoc = legacyCompose(
-              composeAdhocTheme,
-              oComposeAdhocTheme,
-              COMPOSE.DEEP,
-            );
-            composeContext = legacyCompose(
-              composeContextTheme,
-              oComposeContextTheme,
-              COMPOSE.SOFT,
-            );
-            break;
-          default:
-            mapper = mapThemeProps || oMapThemeProps;
-            priority = themePriority || oThemePriority
-            || PRIORITY.ADHOC_CONTEXT_DEFAULT;
-            composeAdhoc = composeAdhocTheme as COMPOSE
-            || oComposeAdhocTheme || COMPOSE.DEEP;
-            composeContext = composeContextTheme as COMPOSE
-            || oComposeContextTheme || COMPOSE.DEEP;
-        }
+        const mapper = mapThemeProps || oMapThemeProps;
+        const priority = themePriority || oThemePriority
+          || PRIORITY.ADHOC_CONTEXT_DEFAULT;
+        const composeAdhoc: COMPOSE = composeAdhocTheme as COMPOSE
+          || oComposeAdhocTheme || COMPOSE.DEEP;
+        const composeContext: COMPOSE = composeContextTheme as COMPOSE
+          || oComposeContextTheme || COMPOSE.DEEP;
 
         /* Theme composition. */
         let res: ComponentThemeT | undefined = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
@@ -384,7 +300,7 @@ function themedImpl<
 
         let adhocTheme = theme;
         if (castTheme && theme) {
-          const castedTheme: ThemeT = {};
+          const castedTheme: ThemeT = {} as ThemeT;
           validThemeKeys.forEach((key) => {
             const clazz = theme[key];
             if (clazz) castedTheme[key] = clazz;
@@ -501,7 +417,7 @@ export default function themedWrapper<
       componentName,
       undefined,
       themeSchemaOrDefaultTheme,
-      defaultThemeOrOptions,
+      defaultThemeOrOptions as ThemedOptionsT<ComponentThemeT, ComponentPropsT>,
     );
 }
 
