@@ -97,7 +97,7 @@ function HomepageHeader() {
         </p>
         <div className={S.attention}>
           <p>
-            <strong>Note:</strong> Since its release <strong>v2.0.0</strong>
+            <strong>Note:</strong> Since its release <strong>v1.5.0</strong>
             &zwnj; the library has been migrated to TypeScript. It is still
             compatible with plain JavaScript &mdash; the original interfaces have
             not been changed (with exception of removed &laquo;<em>compatibility
@@ -107,7 +107,13 @@ function HomepageHeader() {
             >
               react-css-themr
             </Link>
-            &zwnj; library), and the packaged library now includes JavaScript
+            &zwnj; and &zwnj;
+            <Link
+              to="https://www.npmjs.com/package/react-css-super-themr"
+            >
+              react-css-super-themr
+            </Link>
+            &zwnj; libraries), and the packaged library now includes JavaScript
             build, alongside TypeScript sources, and type declarations.
           </p>
           <p>

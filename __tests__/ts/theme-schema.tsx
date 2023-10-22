@@ -2,7 +2,7 @@
  * Tests for theme schema verifier, and casting.
  */
 
-import themed, { type ThemeT } from '../../src';
+import themed, { type Theme } from '../../src';
 
 import { snapshot } from '../../jest/utils';
 
@@ -11,7 +11,7 @@ import invalidTheme from '../../jest/invalid-theme.scss';
 import themeWithExtraStyles from '../../jest/theme-with-extra-styles.scss';
 
 type ComponentPropsT = {
-  theme: ThemeT;
+  theme: Theme;
 };
 
 function Component({ theme }: ComponentPropsT) {

@@ -1,13 +1,13 @@
-import { type ThemeT } from '../src';
+import { type Theme } from '../src';
 
-export type ComponentThemeT = ThemeT & {
+export type ComponentTheme = Theme & {
   container?: string;
   content?: string;
 };
 
-type ComponentPropsT = {
+export type ComponentProps = {
   children?: React.ReactNode;
-  theme: ComponentThemeT;
+  theme: ComponentTheme;
   goodKey?: string;
 };
 
@@ -15,7 +15,7 @@ export default function Component({
   children,
   goodKey,
   theme,
-}: ComponentPropsT) {
+}: ComponentProps) {
   return (
     <div className={theme.container}>
       <div className={theme.content}>

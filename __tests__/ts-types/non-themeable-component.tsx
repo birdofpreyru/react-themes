@@ -1,9 +1,6 @@
 import { expectError, expectNotAssignable } from 'tsd-lite';
 
-import {
-  type ThemeableComponentPropsT,
-  themedComponent,
-} from '../../src';
+import themed, { type ThemeableComponentProps } from '../../src';
 
 // It is invalid theme, as it does not have special theme tags
 // for specifity manipulations.
@@ -27,6 +24,6 @@ const props: ComponentPropsT = {
   theme: {},
 };
 
-expectNotAssignable<ThemeableComponentPropsT>(props);
+expectNotAssignable<ThemeableComponentProps>(props);
 
-expectError(themedComponent('Themed', Component));
+expectError(themed(Component, 'Themed'));

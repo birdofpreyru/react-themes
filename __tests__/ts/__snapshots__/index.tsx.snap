@@ -373,14 +373,8 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 }
 `;
 
-exports[`02 - With default theme 02 - Options at registration 05 - Specifity tags 1`] = `
-<div
-  className="theme-a__container___KKR91  theme-b__container___atStN"
->
-  <div
-    className="theme-a__content___yA6Ea  theme-c__hoc___MQR5Y theme-c__content___tcrzy"
-  />
+exports[`Decorator-style wrapping 1`] = `
+<div>
+  <div />
 </div>
 `;
-
-exports[`02 - With default theme 02 - Options at registration 05 - Specifity tags 2`] = `"Invalid adhoc theme tag"`;
