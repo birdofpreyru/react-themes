@@ -18,6 +18,8 @@ module.exports = function preset(api, options) {
       // thus once upgraded to Babel 8, runtime should be removed from
       // @babel/react options below.
       ['@babel/react', { runtime: 'automatic' }],
+
+      '@babel/typescript',
     ],
     plugins: [
       ['@dr.pogodin/react-css-modules', {
@@ -28,7 +30,7 @@ module.exports = function preset(api, options) {
         replaceImport: true,
       }],
       ['module-resolver', {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         root: ['./src', '.'],
       }],
       '@babel/plugin-transform-runtime',

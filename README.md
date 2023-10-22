@@ -20,7 +20,7 @@ your choice.
 
 [![Sponsor](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
 
-![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/illustration.png)
+![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/.README/illustration.png)
 
 [>>> Documentation <<<](https://dr.pogodin.studio/docs/react-themes/index.html)
 

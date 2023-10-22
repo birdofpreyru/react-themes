@@ -1,0 +1,11 @@
+// TS config for ESlint.
+{
+  "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "rootDirs": [
+      "build/scss-types/jest",
+      "jest"
+    ]
+  }
+}

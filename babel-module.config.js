@@ -2,7 +2,7 @@ module.exports = {
   presets: [
     ['./config/babel/preset', {
       modules: false,
-      targets: 'defaults',
+      targets: 'defaults or chrome >= 69',
     }],
   ],
 };

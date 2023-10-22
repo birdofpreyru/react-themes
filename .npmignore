@@ -3,9 +3,8 @@
 /__tests__/
 /babel.*config.js
 /bin/
+/build/scss-types/
 /config/
 /docs/
 /dr.pogodin-react-themes-*.tgz
-/illustration*
 /jest/
-/src/

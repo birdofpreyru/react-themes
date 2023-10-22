@@ -95,6 +95,32 @@ function HomepageHeader() {
             <SponsorImg />
           </a>
         </p>
+        <div className={S.attention}>
+          <p>
+            <strong>Note:</strong> Since its release <strong>v1.5.0</strong>
+            &zwnj; the library has been migrated to TypeScript. It is still
+            compatible with plain JavaScript &mdash; the original interfaces have
+            not been changed (with exception of removed &laquo;<em>compatibility
+            mode</em>&raquo; for emulation of &zwnj;
+            <Link
+              to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
+            >
+              react-css-themr
+            </Link>
+            &zwnj; and &zwnj;
+            <Link
+              to="https://www.npmjs.com/package/react-css-super-themr"
+            >
+              react-css-super-themr
+            </Link>
+            &zwnj; libraries), and the packaged library now includes JavaScript
+            build, alongside TypeScript sources, and type declarations.
+          </p>
+          <p>
+            The TypeScript-specific usage and APIs have not been documented yet,
+            and are likely to evolve in the follow-up releases.
+          </p>
+        </div>
       </div>
     </header>
   );

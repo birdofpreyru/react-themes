@@ -1,6 +1,8 @@
 {
-  "extends": "airbnb",
-  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "plugins": ["@babel"],
   "rules": {
     "react/jsx-uses-react": 0,

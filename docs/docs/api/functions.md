@@ -4,19 +4,6 @@ sidebar_position: 3
 
 # Functions
 
-## setCompatibilityMode()
-
-```jsx
-export function setCompatibilityMode(mode)
-```
-
-Switches React Themes library into a compatibility mode, in which it emulates
-behavior of different similar theming libraries.
-
-**Params**
-- `mode` - **string** - Compatibility mode, one of
-  [COMPATIBILITY_MODE](constants#compatibility_mode) values.
-
 ## themed()
 
 ```jsx
@@ -87,12 +74,6 @@ tutorial.
 
   - `.themePriority` - **string** - Theme priorities. Must be one of [PRIORITY]
     values. Defaults `PRIORITY.ADHOC_CONTEXT_DEFAULT`.
-
-  - **Deprecated** `.composeTheme` - **string** - Compatibility compose mode
-    option.
-
-  - **Deprecated** `.mapThemrProps` - **function** - Compatibility prop mapper
-    option.
 
 **Returns**
 

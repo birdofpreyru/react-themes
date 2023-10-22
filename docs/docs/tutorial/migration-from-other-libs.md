@@ -12,11 +12,16 @@ the original inspiration for this work
   was not maintained by its original author for quite some time, before getting
   new maintainers recently.
 
-[setCompatibilityMode()](/docs/api/functions#setcompatibilitymode) function
-allows `react-themes` to closely emulate behavior of those older libs (you will
-still have to upgrade your code to use the latest React 16+). For a complete
-migration to this library, you will need to patch your code to address
-the following points:
+To migrate from them to this library you should patch your code to address
+the following points below:
+
+:::info
+Prior to **v2.0.0** this library had a special &laquo;_compatibility mode_&raquo;
+able to closely emulate behavior of `react-css-themr` / `react-css-super-themr`
+libraries. You may consider to migrate to the version **v1.4.9** of this library
+first, using that mode (activated by `setCompatibilityMode()` function),
+and then migrate to its **v2+** in the follow-up step.
+:::
 
 ## `react-css-themr`
 
