@@ -16,7 +16,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/preset-classic": "^2.4.3",
-    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.5.0.tgz",
+    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.5.1.tgz",
     "@mdx-js/react": "^1.6.21",
     "@svgr/webpack": "^8.1.0",
     "clsx": "^2.0.0",

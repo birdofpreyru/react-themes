@@ -59,13 +59,13 @@ export type ThemedComponentProps<
   mapThemeProps?: ThemePropsMapper<ComponentProps>;
 };
 
-interface ThemedComponent<
+export interface ThemedComponent<
   ComponentProps extends ThemeableComponentProps,
 > extends React.FunctionComponent<ThemedComponentProps<ComponentProps>> {
   themeType: RequireableValidator;
 }
 
-type ThemedComponentFactory<ComponentProps extends ThemeableComponentProps> = (
+export type ThemedComponentFactory<ComponentProps extends ThemeableComponentProps> = (
   component: React.ComponentType<ComponentProps>,
 ) => ThemedComponent<ComponentProps>;
 
@@ -188,7 +188,7 @@ interface RequireableValidator extends Validator {
 }
 
 function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
-  themeSchema?: string[],
+  themeSchema?: (keyof ComponentProps['theme'])[],
   options: ThemedOptions<ComponentProps> = {},
 ) {
   const { adhocTag = 'ad.hoc', contextTag = 'context' } = options;
@@ -219,14 +219,14 @@ function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
       errors.push('- Misses context tag class');
     }
     Object.keys(theme).forEach((key) => {
-      if (!validThemeKeysSet.has(key)) {
+      if (!validThemeKeysSet.has(key as any)) {
         errors.push(`- Unexpected theme key ${key}`);
       }
     });
     validThemeKeys.forEach((key) => {
       const type = typeof (theme as any)[key];
       if (type !== 'undefined' && type !== 'string') {
-        errors.push(`- ${key} class is defined, but not a string`);
+        errors.push(`- ${key as string} class is defined, but not a string`);
       }
     });
     if (errors.length) {
@@ -292,7 +292,7 @@ function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
  */
 function themedImpl<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
-  themeSchema?: string[],
+  themeSchema?: (keyof ComponentProps['theme'])[],
   defaultTheme?: ComponentProps['theme'],
   options: ThemedOptions<ComponentProps> = {},
 ) {
@@ -406,7 +406,9 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
 
 function themed<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
-  themeKeysOrDefaultTheme?: string[] | ComponentProps['theme'],
+
+  themeKeysOrDefaultTheme?: (keyof ComponentProps['theme'])[]
+  | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
@@ -417,7 +419,9 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 function themed<ComponentProps extends ThemeableComponentProps>(
   component: React.ComponentType<ComponentProps>,
   componentName: string,
-  themeKeysOrDefaultTheme?: string[] | ComponentProps['theme'],
+
+  themeKeysOrDefaultTheme?: (keyof ComponentProps['theme'])[]
+  | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
@@ -430,10 +434,12 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   componentOrComponentName: React.ComponentType<ComponentProps> | string,
 
   // 2nd argument.
-  componentNameOrThemeKeysOrDefaultTheme?: string | string[] | ComponentProps['theme'],
+  componentNameOrThemeKeysOrDefaultTheme?: string
+  | (keyof ComponentProps['theme'])[]
+  | ComponentProps['theme'],
 
   // 3rd argument.
-  themeKeysOrDefaultThemeOrOptions?: string[]
+  themeKeysOrDefaultThemeOrOptions?: (keyof ComponentProps['theme'])[]
   | ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
 
@@ -450,7 +456,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   let component: React.ComponentType<ComponentProps> | undefined;
   let componentName: string;
   let defaultTheme: ComponentProps['theme'] | undefined;
-  let themeKeys: string[] | undefined;
+  let themeKeys: (keyof ComponentProps['theme'])[] | undefined;
   let ops: OpsT | undefined;
 
   if (typeof componentOrComponentName === 'string') {
