@@ -1,5 +1,4 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
 
 const CODE_REPO = 'https://github.com/birdofpreyru/react-themes';
 const EDIT_BASE = `${CODE_REPO}/edit/master/docs`;
@@ -107,8 +106,8 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
         `,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: themes.github,
+        darkTheme: themes.dracula,
       },
     }),
 });
