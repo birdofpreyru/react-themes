@@ -11,16 +11,34 @@ import {
 // Note: Support of custom specifity-manipulation classes in TypeScript is too
 // cumbersome, thus although it remains a functional feature for pure JavaScript,
 // the TypeScript assumes these classes are always "ad", "hoc", and "context".
-export interface Theme {
+export interface ThemeI {
   ad: string;
   hoc: string;
   context: string;
 }
 
-export interface ThemeMap { [key: string]: Theme | undefined }
+// NOTE: This may work only if Keys is an array of string literals,
+// which allows us to deduce the union of valid keys as Keys[number].
+// E.g. ("as const" is critical to make it work):
+//
+// const validKeys = ['a', 'b'] as const;
+// type T = Theme<typeof validKeys>;
+//
+// as a safeguard, if not used correctly, the resulting type will be "never".
+export type Theme<Keys extends readonly string[]> =
+  // NOTE: Here, if Keys has the correct type, Keys[number] will be a union of
+  // string literals (e.g. 'a' | 'b'), which is not extendable by string, thus
+  // the condition will enter its second branch. Otherwise, Keys[number] will
+  // evalute to just "string", which is extendable by "string", and the result
+  // will be "never" - this is our safeguard against incorrect use.
+  string extends Keys[number]
+    ? never
+    : ThemeI & { [key in Keys[number]]?: string };
+
+export interface ThemeMap { [key: string]: ThemeI | undefined }
 
 export interface ThemeableComponentProps {
-  theme: Theme;
+  theme: ThemeI;
 }
 
 export interface ThemePropsMapper<
@@ -143,7 +161,7 @@ ThemeProvider.defaultProps = {
  * @param tag Specifity tag(s).
  * @return Composed theme.
  */
-function compose<CustomTheme extends Theme>(
+function compose<CustomTheme extends ThemeI>(
   high: CustomTheme | undefined,
   low: CustomTheme | undefined,
   mode: COMPOSE,
@@ -188,7 +206,7 @@ interface RequireableValidator extends Validator {
 }
 
 function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
-  themeSchema?: (keyof ComponentProps['theme'])[],
+  themeSchema?: readonly (keyof ComponentProps['theme'])[],
   options: ThemedOptions<ComponentProps> = {},
 ) {
   const { adhocTag = 'ad.hoc', contextTag = 'context' } = options;
@@ -207,7 +225,7 @@ function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
     propName: string,
     name: string,
   ) => {
-    const theme: Theme = props[propName];
+    const theme: ThemeI = props[propName];
     if (!theme) return null;
 
     const errors: string[] = [];
@@ -292,7 +310,7 @@ function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
  */
 function themedImpl<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
-  themeSchema?: (keyof ComponentProps['theme'])[],
+  themeSchema?: readonly (keyof ComponentProps['theme'])[],
   defaultTheme?: ComponentProps['theme'],
   options: ThemedOptions<ComponentProps> = {},
 ) {
@@ -362,7 +380,7 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
 
         let adhocTheme = theme;
         if (castTheme && theme) {
-          const castedTheme = {} as Theme;
+          const castedTheme = {} as ThemeI;
           validThemeKeys.forEach((key) => {
             const clazz: string = (theme as any)[key];
             if (clazz) (castedTheme as any)[key] = clazz;
@@ -407,7 +425,7 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
 function themed<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
 
-  themeKeysOrDefaultTheme?: (keyof ComponentProps['theme'])[]
+  themeKeysOrDefaultTheme?: readonly (keyof ComponentProps['theme'])[]
   | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
@@ -420,7 +438,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   component: React.ComponentType<ComponentProps>,
   componentName: string,
 
-  themeKeysOrDefaultTheme?: (keyof ComponentProps['theme'])[]
+  themeKeysOrDefaultTheme?: readonly (keyof ComponentProps['theme'])[]
   | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
@@ -435,11 +453,11 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 
   // 2nd argument.
   componentNameOrThemeKeysOrDefaultTheme?: string
-  | (keyof ComponentProps['theme'])[]
+  | readonly (keyof ComponentProps['theme'])[]
   | ComponentProps['theme'],
 
   // 3rd argument.
-  themeKeysOrDefaultThemeOrOptions?: (keyof ComponentProps['theme'])[]
+  themeKeysOrDefaultThemeOrOptions?: readonly (keyof ComponentProps['theme'])[]
   | ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
 
@@ -456,7 +474,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   let component: React.ComponentType<ComponentProps> | undefined;
   let componentName: string;
   let defaultTheme: ComponentProps['theme'] | undefined;
-  let themeKeys: (keyof ComponentProps['theme'])[] | undefined;
+  let themeKeys: readonly (keyof ComponentProps['theme'])[] | undefined;
   let ops: OpsT | undefined;
 
   if (typeof componentOrComponentName === 'string') {
@@ -475,7 +493,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
     } else if (typeof componentNameOrThemeKeysOrDefaultTheme === 'string') {
       throw Error('Second argument is not expected to be a string');
     } else {
-      defaultTheme = componentNameOrThemeKeysOrDefaultTheme;
+      defaultTheme = componentNameOrThemeKeysOrDefaultTheme as ComponentProps['theme'];
 
       // 3rd argument: options.
       ops = themeKeysOrDefaultThemeOrOptions as OpsT;

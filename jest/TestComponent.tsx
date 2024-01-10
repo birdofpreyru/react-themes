@@ -1,9 +1,8 @@
 import { type Theme } from '../src';
 
-export type ComponentTheme = Theme & {
-  container?: string;
-  content?: string;
-};
+export const validThemeKeys = ['container', 'content'] as const;
+
+export type ComponentTheme = Theme<typeof validThemeKeys>;
 
 export type ComponentProps = {
   children?: React.ReactNode;

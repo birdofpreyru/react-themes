@@ -10,21 +10,17 @@ import themeA from '../../jest/theme-a.scss';
 import invalidTheme from '../../jest/invalid-theme.scss';
 import themeWithExtraStyles from '../../jest/theme-with-extra-styles.scss';
 
+const themeKeys = ['container', 'content'] as const;
+
 type ComponentPropsT = {
-  theme: Theme & {
-    container?: string;
-    content?: string;
-  };
+  theme: Theme<typeof themeKeys>;
 };
 
 function Component({ theme }: ComponentPropsT) {
   return JSON.stringify(theme, null, 2);
 }
 
-const ThemedComponent = themed(Component, 'Component', [
-  'container',
-  'content',
-]);
+const ThemedComponent = themed(Component, 'Component', themeKeys);
 
 describe('Theme verification', () => {
   test('No errors with the correct theme', () => {
