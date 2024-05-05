@@ -148,11 +148,6 @@ export function ThemeProvider({ children, themes }: ThemeProviderProp) {
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-ThemeProvider.defaultProps = {
-  children: undefined,
-  themes: undefined,
-};
-
 /**
  * Composes two themes.
  * @param high High priorty theme.

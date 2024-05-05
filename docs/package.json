@@ -14,19 +14,19 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.1.0",
-    "@docusaurus/preset-classic": "^3.1.0",
-    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.6.0.tgz",
-    "@mdx-js/react": "^3.0.0",
+    "@docusaurus/core": "^3.3.2",
+    "@docusaurus/preset-classic": "^3.3.2",
+    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.6.1.tgz",
+    "@mdx-js/react": "^3.0.1",
     "@svgr/webpack": "^8.1.0",
-    "dayjs": "^1.11.10",
+    "dayjs": "^1.11.11",
     "docusaurus-plugin-sass": "^0.2.5",
     "file-loader": "^6.2.0",
     "prism-react-renderer": "^2.3.1",
     "raw-loader": "^4.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.69.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.76.0",
     "url-loader": "^4.1.1"
   },
   "browserslist": {

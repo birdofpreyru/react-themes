@@ -12,7 +12,7 @@ export type ComponentProps = {
 
 export default function Component({
   children,
-  goodKey,
+  goodKey = '',
   theme,
 }: ComponentProps) {
   return (
@@ -24,8 +24,3 @@ export default function Component({
     </div>
   );
 }
-
-Component.defaultProps = {
-  children: null,
-  goodKey: '',
-};
