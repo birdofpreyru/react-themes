@@ -4,18 +4,11 @@
 
 /* global expect */
 
-/* eslint-disable import/no-extraneous-dependencies */
-import Renderer from 'react-test-renderer';
-/* eslint-enable import/no-extraneous-dependencies */
+import { act } from 'react';
 
-/**
- * Auxiliary wrapper around ReactJS Test Renderer.
- * @param {Object} component ReactJS component to render.
- * @return {Object} JSON representation of the rendered tree.
- */
-function render(component: React.ReactElement) {
-  return Renderer.create(component).toJSON();
-}
+/* eslint-disable import/no-extraneous-dependencies */
+import { type RenderResult, render } from '@testing-library/react';
+/* eslint-enable import/no-extraneous-dependencies */
 
 /**
  * Renders provided ReactJS component with ReactJS Test Renderer,
@@ -23,9 +16,15 @@ function render(component: React.ReactElement) {
  * @param {Object} component ReactJS component to render.
  * @return {Object} JSON render of the component.
  */
-export function snapshot(component: React.ReactElement) {
-  const res = render(component);
-  expect(res).toMatchSnapshot();
+export function snapshot(element: React.ReactElement) {
+  let res: RenderResult | undefined;
+  act(() => {
+    res = render(element);
+  });
+  if (res === undefined) throw Error('Render failed');
+
+  const nodes = res.asFragment().childNodes;
+  expect(nodes.length > 1 ? [...nodes] : nodes[0]).toMatchSnapshot();
   return res;
 }
 

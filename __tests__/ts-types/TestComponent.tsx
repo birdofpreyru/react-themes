@@ -1,12 +1,11 @@
-import { expectError } from 'tsd-lite';
+import { expect } from 'tstyche';
 
 import themed from '../../src';
 import TestComponent from '../../jest/TestComponent';
 
-expectError(<TestComponent />);
+expect(<TestComponent />).type.toRaiseError(2741);
 
 const Themed = themed(TestComponent, 'Themed');
 
-expectError(<Themed badKey="value" />);
-
-  <Themed goodKey="good" />;
+expect(<Themed badKey="value" />).type.toRaiseError(2322);
+expect(<Themed goodKey="good" />).type.not.toRaiseError();

@@ -1,4 +1,4 @@
-import { expectError, expectNotAssignable } from 'tsd-lite';
+import { expect } from 'tstyche';
 
 import themed, { type ThemeableComponentProps } from '../../src';
 
@@ -24,6 +24,6 @@ const props: ComponentPropsT = {
   theme: {},
 };
 
-expectNotAssignable<ThemeableComponentProps>(props);
+expect<ThemeableComponentProps>().type.not.toBeAssignable(props);
 
-expectError(themed(Component, 'Themed'));
+expect(themed(Component, 'Themed')).type.toRaiseError(2769);

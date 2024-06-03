@@ -1,3 +1,5 @@
+/** @jest-environment jsdom */
+
 /**
  * Tests for theme schema verifier, and casting.
  */

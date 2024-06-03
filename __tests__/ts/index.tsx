@@ -1,3 +1,5 @@
+/** @jest-environment jsdom */
+
 import themed, {
   COMPOSE,
   PRIORITY,

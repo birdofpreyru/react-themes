@@ -1,3 +1,5 @@
+/** @jest-environment jsdom */
+
 import themed, { COMPOSE, PRIORITY, ThemeProvider } from '../../src';
 
 import { snapshot } from '../../jest/utils';

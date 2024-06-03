@@ -1,11 +1,18 @@
 // TS config for ESlint.
 {
+  // NOTE: Full relative path here, as typed-scss-modules relies on this config,
+  // and does not support Node module resolution mechanics.
   "extends": "./node_modules/@tsconfig/recommended/tsconfig.json",
+
   "compilerOptions": {
     "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "rootDirs": [
       "build/scss-types/jest",
       "jest"
-    ]
+    ],
+    "strict": true,
+    "verbatimModuleSyntax": true,
   }
 }

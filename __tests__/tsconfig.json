@@ -7,9 +7,13 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "rootDirs": [
       "../build/scss-types/jest",
       "../jest"
-    ]
+    ],
+    "strict": true,
+    "verbatimModuleSyntax": true
   }
 }
