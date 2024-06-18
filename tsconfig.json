@@ -9,7 +9,9 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "rootDirs": [
+      "build/scss-types/docs",
       "build/scss-types/jest",
+      "docs",
       "jest"
     ],
     "strict": true,

@@ -16,7 +16,6 @@ jobs:
           paths:
             - node_modules
       - run: npm run build && npm pack
-      - run: npm test
       - restore_cache:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}
       - run:
@@ -27,6 +26,10 @@ jobs:
           key: docs-node-modules-{{ checksum "docs/package-lock.json" }}
           paths:
             - docs/node_modules
+
+      # TypeScript typechecks need docs dependencies installed.
+      - run: npm test
+
       - run: rm -rf docs/node_modules
       - persist_to_workspace:
           root: .
