@@ -1,12 +1,23 @@
 import dayjs from 'dayjs';
-import React from 'react';
-import themed from '@dr.pogodin/react-themes';
+import themed, { type Theme } from '@dr.pogodin/react-themes';
 
 import defaultTheme from './default.module.scss';
 
-function Calendar({
+type PropsT = {
+  theme: Theme<
+  | 'cell'
+  | 'container'
+  | 'grid'
+  | 'headerCell'
+  | 'sunday'
+  | 'title'
+  | 'today'
+  >;
+};
+
+const Calendar: React.FunctionComponent<PropsT> = ({
   theme,
-}) {
+}) => {
   const date = dayjs();
   const first = date.startOf('month');
   const last = date.endOf('month');
@@ -58,18 +69,4 @@ function Calendar({
   );
 }
 
-const ThemedCalendar = themed('Calendar', [
-  'cell',
-  'container',
-  'grid',
-  'headerCell',
-  'sunday',
-  'title',
-  'today',
-], defaultTheme)(Calendar);
-
-Calendar.propTypes = {
-  theme: ThemedCalendar.themeType.isRequired,
-};
-
-export default ThemedCalendar;
+export default themed(Calendar, 'Calendar', defaultTheme);

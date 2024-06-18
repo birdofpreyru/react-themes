@@ -180,7 +180,7 @@ export default function Home() {
           </ThemeProvider>
         </div>
         <div>
-          <Link name="explanations" />
+          <Link id="explanations" />
           <p>  
             The base &zwnj;
             <Link

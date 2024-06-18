@@ -13,7 +13,7 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
   url: 'https://dr.pogodin.studio',
   baseUrl: '/docs/react-themes/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   plugins: ['docusaurus-plugin-sass'],
   presets: [
@@ -106,8 +106,9 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
         `,
       },
       prism: {
-        theme: themes.github,
+        additionalLanguages: ['scss', 'tsx'],
         darkTheme: themes.dracula,
+        theme: themes.github,
       },
     }),
 });

@@ -31,12 +31,16 @@ sidebar_position: 1
 As the most simple example, let's consider a trivial component that just renders
 a `<div>` element wrapping the text provided via `children` prop:
 
-```jsx title="/src/components/BasicExample/index.jsx"
-import React from 'react';
+```tsx title="/src/components/BasicExample/index.tsx"
+type PropsT = {
+  children?: React.ReactNode;
+};
 
-export default function BasicExample({ children }) {
-  return <div>{children}</div>;
-}
+const BasicExample: React.FunctionComponent<PropsT> = ({ children }) => (
+  <div>{children}</div>
+);
+
+export default BasicExample;
 ```
 
 Say, we want to style this component as a button, using React Themes library
@@ -60,8 +64,8 @@ import BasicExample from '../../src/components/BasicExample';
 import basicExampleCode from '!!raw-loader!../../src/components/BasicExample';
 
 <CodeBlock
-  className="language-jsx"
-  title="src/components/BasicExample/default.scss"
+  className="language-tsx"
+  title="src/components/BasicExample/index.tsx"
 >{basicExampleCode}</CodeBlock>
 
 At this point we can use the component to render a block appearing as a simple
@@ -72,8 +76,8 @@ import Example01Code from '!!raw-loader!../../src/components/Example01';
 
 <Example01 />
 <CodeBlock
-  className="language-jsx"
-  title="src/components/Example01.jsx"
+  className="language-tsx"
+  title="src/components/Example01.tsx"
 >{Example01Code}</CodeBlock>
 
 Now, say some part of your app uses a blue background, where our sample component
@@ -84,8 +88,8 @@ import Example02Code from '!!raw-loader!../../src/components/Example02';
 
 <Example02 />
 <CodeBlock
-  className="language-jsx"
-  title="src/components/Example02.jsx"
+  className="language-tsx"
+  title="src/components/Example02.tsx"
 >{Example02Code}</CodeBlock>
 
 Let's use React Themes to apply additional "blue context" theme for our
@@ -109,8 +113,8 @@ import Example03Code from '!!raw-loader!../../src/components/Example03';
 
 <Example03 />
 <CodeBlock
-  className="language-jsx"
-  title="src/components/Example03.jsx"
+  className="language-tsx"
+  title="src/components/Example03.tsx"
 >{Example03Code}</CodeBlock>
 
 Now, say we want to add some particular styling to a selected component
@@ -136,8 +140,8 @@ import Example04Code from '!!raw-loader!../../src/components/Example04';
 
 <Example04 />
 <CodeBlock
-  className="language-jsx"
-  title="src/components/Example04/index.jsx"
+  className="language-tsx"
+  title="src/components/Example04/index.tsx"
 >{Example04Code}</CodeBlock>
 
 [ThemeProvider]: /docs/api/components#themeprovider

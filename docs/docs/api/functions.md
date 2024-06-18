@@ -6,20 +6,26 @@ sidebar_position: 3
 
 ## themed()
 
-```jsx
-export default themed(
-  componentName,
-  themeSchema,
-  defaultTheme,
-  options,
-)(BaseComponent): ThemedComponent
+```tsx
+import themed from '@dr.pogodin/react-themes';
+
+// Recommended signature:
+function themed(
+  BaseComponent: React.ComponentType,
+  componentName: string,
+  defaultTheme?: Theme,
+  options?: Options,
+): ThemedComponent;
+
+// Decorator signature:
+function themed(
+  componentName: string,
+  defaultTheme?: Theme,
+  options?: Options,
+): (BaseComponent: React.ComponentType) => ThemedComponent
 ```
 Registers a themed component under the given name, and with an optional default
 theme.
-
-The second argument, `themeSchema`, can be omitted. The library recognizes it
-by its type: if second argument is an array, `themeSchema` is assumed, otherwise
-it considers it was omitted.
 
 [themed()] can be used as a decorator, or in the following (recommended) way:
 ```jsx
@@ -28,9 +34,7 @@ import defaultTheme from './default.scss';
 
 function Component() { ... }
 
-export default themed('ThemedComponent', [
-  ...
-], defaultTheme)(Component);
+export themed(Component, 'ThemedComponent', defaultTheme);
 ```
 
 When rendered, your component will receive the composed theme via its
@@ -43,11 +47,6 @@ tutorial.
 
 - `componentName` - **string** - Themed component name, which should be used
   to provide its context theme via [ThemeProvider].
-
-- `themeSchema` - **string[]** - Optional. An array of valid theme keys
-  recognized by the wrapped component, beside the keys corresponding to _ad hoc_
-  and context tags. It is used for theme validation, and casting (if opted).
-  See `themeType` and `castTheme` in [ThemedComponent] documentation.
 
 - `defaultTheme` - **object** - Optional. Default theme, in the form of theme
   key to CSS classname mapping.

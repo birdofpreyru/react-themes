@@ -17,23 +17,13 @@ export interface ThemeI {
   context: string;
 }
 
-// NOTE: This may work only if Keys is an array of string literals,
-// which allows us to deduce the union of valid keys as Keys[number].
-// E.g. ("as const" is critical to make it work):
-//
-// const validKeys = ['a', 'b'] as const;
-// type T = Theme<typeof validKeys>;
-//
-// as a safeguard, if not used correctly, the resulting type will be "never".
-export type Theme<Keys extends readonly string[]> =
-  // NOTE: Here, if Keys has the correct type, Keys[number] will be a union of
-  // string literals (e.g. 'a' | 'b'), which is not extendable by string, thus
-  // the condition will enter its second branch. Otherwise, Keys[number] will
-  // evalute to just "string", which is extendable by "string", and the result
-  // will be "never" - this is our safeguard against incorrect use.
-  string extends Keys[number]
-    ? never
-    : ThemeI & { [key in Keys[number]]?: string };
+// NOTE: KeyT should be a union of string literals - valid theme keys.
+export type Theme<KeyT extends string> =
+  // NOTE: Here if KeyT is a union of string literals (e.g. 'a' | 'b'),
+  // it is not extendable by a string, thus the condition will enter its
+  // second branch. Otherwise, the result will be `never` - this is our
+  // safeguard against incorrect usage.
+  string extends KeyT ? never : ThemeI & { [key in KeyT]?: string };
 
 export interface ThemeMap { [key: string]: ThemeI | undefined }
 
@@ -68,7 +58,6 @@ export type ThemedOptions<
 export type ThemedComponentProps<
   ComponentProps extends ThemeableComponentProps,
 > = Omit<ComponentProps, 'theme'> & {
-  castTheme?: boolean;
   children?: React.ReactNode;
   composeAdhocTheme?: COMPOSE;
   composeContextTheme?: COMPOSE;
@@ -77,11 +66,9 @@ export type ThemedComponentProps<
   mapThemeProps?: ThemePropsMapper<ComponentProps>;
 };
 
-export interface ThemedComponent<
+export type ThemedComponent<
   ComponentProps extends ThemeableComponentProps,
-> extends React.FunctionComponent<ThemedComponentProps<ComponentProps>> {
-  themeType: RequireableValidator;
-}
+> = React.FunctionComponent<ThemedComponentProps<ComponentProps>>;
 
 export type ThemedComponentFactory<ComponentProps extends ThemeableComponentProps> = (
   component: React.ComponentType<ComponentProps>,
@@ -186,92 +173,11 @@ function compose<CustomTheme extends ThemeI>(
   } else return high || low;
 }
 
-// This is similar to validator from 'prop-types', just requires two arguments
-// less.
-interface Validator {
-  (
-    props: { [key: string]: any },
-    propName: string,
-    componentName: string,
-  ): Error | null
-}
-
-interface RequireableValidator extends Validator {
-  isRequired: Validator;
-}
-
-function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
-  themeSchema?: readonly (keyof ComponentProps['theme'])[],
-  options: ThemedOptions<ComponentProps> = {},
-) {
-  const { adhocTag = 'ad.hoc', contextTag = 'context' } = options;
-
-  const aTag = adhocTag.split('.') as ['ad', 'hoc'];
-  if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
-    throw new Error('Invalid adhoc theme tag');
-  }
-
-  const validThemeKeys = themeSchema ? [...themeSchema] : [];
-  validThemeKeys.push(aTag[0], aTag[1], contextTag);
-  const validThemeKeysSet = new Set(validThemeKeys);
-
-  const res = (
-    props: { [key: string]: any },
-    propName: string,
-    name: string,
-  ) => {
-    const theme: ThemeI = props[propName];
-    if (!theme) return null;
-
-    const errors: string[] = [];
-    if (typeof theme[aTag[0]] !== 'string'
-    || typeof theme[aTag[1]] !== 'string') {
-      errors.push('- Misses adhoc tag classes');
-    }
-    if (typeof theme[contextTag] !== 'string') {
-      errors.push('- Misses context tag class');
-    }
-    Object.keys(theme).forEach((key) => {
-      if (!validThemeKeysSet.has(key as any)) {
-        errors.push(`- Unexpected theme key ${key}`);
-      }
-    });
-    validThemeKeys.forEach((key) => {
-      const type = typeof (theme as any)[key];
-      if (type !== 'undefined' && type !== 'string') {
-        errors.push(`- ${key as string} class is defined, but not a string`);
-      }
-    });
-    if (errors.length) {
-      const errorString: string = errors.join('\n');
-      return new Error(
-        `Theme given to ${name} has multiple issues:\n${errorString}`,
-      );
-    }
-    return null;
-  };
-
-  res.isRequired = (
-    props: { [key: string]: any },
-    propName: string,
-    name: string,
-  ) => (
-    props[propName] ? res(props, propName, name)
-      : Error(`Theme is not provided to ${name} component`)
-  );
-
-  return res;
-}
-
 /**
  * Registers a themeable component under given name, and with an optional
  * default theme.
  * @param componentName Themed component name, which should be used to
  * provide its context theme via <ThemeProvider>.
- * @param themeSchema An array of valid theme keys
- * recognized by the wrapped component, beside the keys corresponding
- * to _ad hoc_ and context tags. It is used for theme validation, and
- * casting (if opted).
  * @param [defaultTheme] Default theme, in form of theme key to
  * CSS class name mapping. If you have CSS modules and SCSS loader correctly
  * configured, the import `import theme from 'some.theme.scss';` will result
@@ -305,7 +211,6 @@ function createThemeValidator<ComponentProps extends ThemeableComponentProps>(
  */
 function themedImpl<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
-  themeSchema?: readonly (keyof ComponentProps['theme'])[],
   defaultTheme?: ComponentProps['theme'],
   options: ThemedOptions<ComponentProps> = {},
 ) {
@@ -323,9 +228,6 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
     throw new Error('Invalid adhoc theme tag');
   }
 
-  const validThemeKeys = themeSchema ? [...themeSchema] : [];
-  validThemeKeys.push(aTag[0], aTag[1], contextTag);
-
   type ComponentTheme = ComponentProps['theme'];
   type CustomThemedComponentProps = ThemedComponentProps<ComponentProps>;
   type CustomThemedComponent = ThemedComponent<ComponentProps>;
@@ -336,7 +238,6 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
     const component = forwardRef<unknown, CustomThemedComponentProps>(
       (properties, ref) => {
         const {
-          castTheme,
           children,
           composeAdhocTheme,
           composeContextTheme,
@@ -373,18 +274,8 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
             contextTag,
           );
 
-        let adhocTheme = theme;
-        if (castTheme && theme) {
-          const castedTheme = {} as ThemeI;
-          validThemeKeys.forEach((key) => {
-            const clazz: string = (theme as any)[key];
-            if (clazz) (castedTheme as any)[key] = clazz;
-          });
-          adhocTheme = castedTheme as ComponentTheme;
-        }
-
         res = compose<ComponentTheme>(
-          adhocTheme,
+          theme,
           res,
           composeAdhoc,
           aTag,
@@ -404,24 +295,12 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
       },
     );
 
-    const res: CustomThemedComponent = (
-      component as unknown) as CustomThemedComponent;
-
-    // `prop-types` compatible prop checker for `theme` prop.
-    res.themeType = createThemeValidator<ComponentProps>(
-      themeSchema,
-      options,
-    );
-
-    return res;
+    return (component as unknown) as CustomThemedComponent;
   };
 }
 
 function themed<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
-
-  themeKeysOrDefaultTheme?: readonly (keyof ComponentProps['theme'])[]
-  | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
@@ -432,9 +311,6 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 function themed<ComponentProps extends ThemeableComponentProps>(
   component: React.ComponentType<ComponentProps>,
   componentName: string,
-
-  themeKeysOrDefaultTheme?: readonly (keyof ComponentProps['theme'])[]
-  | ComponentProps['theme'],
 
   defaultThemeOrOptions?: ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
@@ -447,20 +323,14 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   componentOrComponentName: React.ComponentType<ComponentProps> | string,
 
   // 2nd argument.
-  componentNameOrThemeKeysOrDefaultTheme?: string
-  | readonly (keyof ComponentProps['theme'])[]
-  | ComponentProps['theme'],
+  componentNameOrDefaultTheme?: string | ComponentProps['theme'],
 
   // 3rd argument.
-  themeKeysOrDefaultThemeOrOptions?: readonly (keyof ComponentProps['theme'])[]
+  defaultThemeOrOptions?:
   | ComponentProps['theme']
   | ThemedOptions<ComponentProps>,
 
   // 4th argument.
-  defaultThemeOrOptions?: ComponentProps['theme']
-  | ThemedOptions<ComponentProps>,
-
-  // 5th argument.
   options?: ThemedOptions<ComponentProps>,
 ): ThemedComponentFactory<ComponentProps>
   | ThemedComponent<ComponentProps> {
@@ -469,69 +339,44 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   let component: React.ComponentType<ComponentProps> | undefined;
   let componentName: string;
   let defaultTheme: ComponentProps['theme'] | undefined;
-  let themeKeys: readonly (keyof ComponentProps['theme'])[] | undefined;
   let ops: OpsT | undefined;
 
   if (typeof componentOrComponentName === 'string') {
     // 1st argument: component name.
     componentName = componentOrComponentName;
 
-    // 2nd argument: theme keys, or default theme.
-    if (Array.isArray(componentNameOrThemeKeysOrDefaultTheme)) {
-      themeKeys = componentNameOrThemeKeysOrDefaultTheme;
-
-      // 3rd argument: default theme.
-      defaultTheme = themeKeysOrDefaultThemeOrOptions as ComponentProps['theme'];
-
-      // 4th argument: options.
-      ops = defaultThemeOrOptions as ThemedOptions<ComponentProps>;
-    } else if (typeof componentNameOrThemeKeysOrDefaultTheme === 'string') {
+    // 2nd argument: default theme.
+    if (typeof componentNameOrDefaultTheme === 'string') {
       throw Error('Second argument is not expected to be a string');
-    } else {
-      defaultTheme = componentNameOrThemeKeysOrDefaultTheme as ComponentProps['theme'];
-
-      // 3rd argument: options.
-      ops = themeKeysOrDefaultThemeOrOptions as OpsT;
-
-      // 4th argument: none.
-      if (defaultThemeOrOptions) throw Error('4th argument is not expected');
     }
 
-    // 5th argument: none.
-    if (options) throw Error('5th argument is not expected');
+    defaultTheme = componentNameOrDefaultTheme as ComponentProps['theme'];
+
+    // 3rd argument: options.
+    ops = defaultThemeOrOptions as OpsT;
+
+    // 4th argument: none.
+    if (options) throw Error('4th argument is not expected');
   } else {
     // 1st argument: component.
     component = componentOrComponentName;
 
     // 2nd argument: component name.
-    if (typeof componentNameOrThemeKeysOrDefaultTheme !== 'string') {
+    if (typeof componentNameOrDefaultTheme !== 'string') {
       throw Error('Second argument is not a string');
     }
-    componentName = componentNameOrThemeKeysOrDefaultTheme;
 
-    // 3rd argument: theme keys, or default theme.
-    if (Array.isArray(themeKeysOrDefaultThemeOrOptions)) {
-      themeKeys = themeKeysOrDefaultThemeOrOptions;
+    componentName = componentNameOrDefaultTheme;
 
-      // 4th argument: default theme.
-      defaultTheme = defaultThemeOrOptions as ComponentProps['theme'];
+    // 3rd argument: default theme.
+    defaultTheme = defaultThemeOrOptions as ComponentProps['theme'];
 
-      // 5th argument: options.
-      ops = options;
-    } else {
-      defaultTheme = themeKeysOrDefaultThemeOrOptions as ComponentProps['theme'];
-
-      // 4th argument: options.
-      ops = defaultThemeOrOptions as ThemedOptions<ComponentProps>;
-
-      // 5th argument: none.
-      if (options) throw Error('5th argument is not expected');
-    }
+    // 4th argument: options.
+    ops = options;
   }
 
   const impl = themedImpl<ComponentProps>(
     componentName,
-    themeKeys,
     defaultTheme,
     ops,
   );

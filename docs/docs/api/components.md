@@ -21,11 +21,6 @@ beside the following ones, which allow to override for given component instance
 theming settings configured upon the registration with [themed()].
 
 **Props**
-
-- `castTheme` - **boolean** - If **true**, the component will rely on
-  `themeSchema` provided to [themed()] function upon the component registration,
-  to pick up from _ad hoc_ theme and pass down only expected theme key/values.
-
 - `composeAdhocTheme` - **string** - Allows to override composition mode of
   _ad hoc_ theme, specified via [themed()]. Must be one of [COMPOSE] values.
 
@@ -39,39 +34,6 @@ theming settings configured upon the registration with [themed()].
 
 - `mapThemeProps` - **[ThemePropsMapper]** - Allows to verride the props mapper
   specified via [themed()].
-
-### `theme` typecheck
-
-If `themeSchema` was provided to [themed()], the component
-function will have `.themeType` field (function) attached, which can be passed
-into React's `.propTypes` to check _ad hoc_ theme passed into the component
-(without `themeSchema` provided, it will expect empty `theme`).
-
-Here is an example of `theme` prop check:
-```jsx
-import themed from '@dr.pogodin/react-themes';
-
-function Component({ theme }) {
-  return <div className={theme.container} />;
-}
-
-const ThemedComponent = themed('Component', [
-  'container',
-])(Component);
-
-Component.propTypes = {
-  theme: ThemedComponent.themeType.isRequired,
-};
-
-export default ThemedComponent;
-```
-
-This will warn you if theme is missing, contains unexpected fields,
-or misses _ad hoc_, or context tag keys. In the case of _ad hoc_ styling you
-may want to not have a dedicated stylesheet for the _ad hoc_ theme, and it
-will be seen as an issue by this check. In such case the
-`castTheme` option comes handly.
-
 
 ## ThemeProvider
 
