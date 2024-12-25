@@ -1,7 +1,10 @@
 import {
+  type ComponentType,
+  type FunctionComponent,
+  type ReactNode,
+  type RefObject,
   createContext,
-  forwardRef,
-  useContext,
+  use,
   useMemo,
 } from 'react';
 
@@ -58,9 +61,10 @@ export type ThemedOptions<
 export type ThemedComponentProps<
   ComponentProps extends ThemeableComponentProps,
 > = Omit<ComponentProps, 'theme'> & {
-  children?: React.ReactNode;
+  children?: ReactNode;
   composeAdhocTheme?: COMPOSE;
   composeContextTheme?: COMPOSE;
+  ref?: RefObject<unknown>;
   theme?: ComponentProps['theme'];
   themePriority?: PRIORITY;
   mapThemeProps?: ThemePropsMapper<ComponentProps>;
@@ -68,10 +72,10 @@ export type ThemedComponentProps<
 
 export type ThemedComponent<
   ComponentProps extends ThemeableComponentProps,
-> = React.FunctionComponent<ThemedComponentProps<ComponentProps>>;
+> = FunctionComponent<ThemedComponentProps<ComponentProps>>;
 
 export type ThemedComponentFactory<ComponentProps extends ThemeableComponentProps> = (
-  component: React.ComponentType<ComponentProps>,
+  component: ComponentType<ComponentProps>,
 ) => ThemedComponent<ComponentProps>;
 
 //------------------------------------------------------------------------------
@@ -98,7 +102,7 @@ const Context = createContext<ThemeMap | undefined>(undefined);
 // Here comes the logic.
 
 export type ThemeProviderProp = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   themes?: ThemeMap;
 };
 
@@ -122,7 +126,7 @@ export type ThemeProviderProp = {
  * with `react-css-themr` and `react-css-super-themr` libraries.
  */
 export function ThemeProvider({ children, themes }: ThemeProviderProp) {
-  const contextThemes = useContext(Context);
+  const contextThemes = use(Context);
 
   // useMemo() ensures we don't generate a new "value" on each render when both
   // "contextThemes" and "themes" are defined.
@@ -132,7 +136,7 @@ export function ThemeProvider({ children, themes }: ThemeProviderProp) {
       : (contextThemes || themes || {})
   ), [contextThemes, themes]);
 
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return <Context value={value}>{children}</Context>;
 }
 
 /**
@@ -233,67 +237,66 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
   type CustomThemedComponent = ThemedComponent<ComponentProps>;
 
   return (
-    ThemeableComponent: React.ComponentType<ComponentProps>,
+    ThemeableComponent: ComponentType<ComponentProps>,
   ): CustomThemedComponent => {
-    const component = forwardRef<unknown, CustomThemedComponentProps>(
-      (properties, ref) => {
-        const {
-          children,
-          composeAdhocTheme,
-          composeContextTheme,
-          theme,
-          themePriority,
-          mapThemeProps,
-          ...rest
-        } = properties;
+    const component: FunctionComponent<CustomThemedComponentProps> = (properties) => {
+      const {
+        children,
+        composeAdhocTheme,
+        composeContextTheme,
+        mapThemeProps,
+        ref,
+        theme,
+        themePriority,
+        ...rest
+      } = properties;
 
-        const context = useContext(Context) || {};
-        const contextTheme = context[componentName] as ComponentTheme | undefined;
+      const context = use(Context);
+      const contextTheme = context?.[componentName] as ComponentTheme | undefined;
 
-        /* Deduction of applicable theme composition and priority settings. */
-        const mapper = mapThemeProps || oMapThemeProps;
-        const priority = themePriority || oThemePriority
-          || PRIORITY.ADHOC_CONTEXT_DEFAULT;
-        const composeAdhoc: COMPOSE = composeAdhocTheme as COMPOSE
-          || oComposeAdhocTheme || COMPOSE.DEEP;
-        const composeContext: COMPOSE = composeContextTheme as COMPOSE
-          || oComposeContextTheme || COMPOSE.DEEP;
+      /* Deduction of applicable theme composition and priority settings. */
+      const mapper = mapThemeProps || oMapThemeProps;
+      const priority = themePriority || oThemePriority
+        || PRIORITY.ADHOC_CONTEXT_DEFAULT;
+      const composeAdhoc: COMPOSE = composeAdhocTheme as COMPOSE
+        || oComposeAdhocTheme || COMPOSE.DEEP;
+      const composeContext: COMPOSE = composeContextTheme as COMPOSE
+        || oComposeContextTheme || COMPOSE.DEEP;
 
-        /* Theme composition. */
-        let res: ComponentTheme | undefined = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
-          ? compose<ComponentTheme>(
-            defaultTheme,
-            contextTheme,
-            composeContext,
-            contextTag,
-          )
-          : compose<ComponentTheme>(
-            contextTheme,
-            defaultTheme,
-            composeContext,
-            contextTag,
-          );
+      /* Theme composition. */
+      let res: ComponentTheme | undefined = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
+        ? compose<ComponentTheme>(
+          defaultTheme,
+          contextTheme,
+          composeContext,
+          contextTag,
+        )
+        : compose<ComponentTheme>(
+          contextTheme,
+          defaultTheme,
+          composeContext,
+          contextTag,
+        );
 
-        res = compose<ComponentTheme>(
-          theme,
-          res,
-          composeAdhoc,
-          aTag,
-        ) || ({} as ComponentTheme);
+      res = compose<ComponentTheme>(
+        theme,
+        res,
+        composeAdhoc,
+        aTag,
+      ) || ({} as ComponentTheme);
 
-        /* Props deduction. */
-        const p: ComponentProps = mapper
-          ? mapper({ ...properties, ref }, res) : {
-            ...rest as ComponentProps,
-            theme: res,
-            ref,
-          };
+      /* Props deduction. */
+      const p: ComponentProps = mapper
+        ? mapper({ ...properties, ref }, res) : {
+          ...rest as ComponentProps,
+          theme: res,
+          ref,
+        };
 
-        /* eslint-disable react/jsx-props-no-spreading */
-        return <ThemeableComponent {...p}>{children}</ThemeableComponent>;
-        /* eslint-enable react/jsx-props-no-spreading */
-      },
-    );
+      /* eslint-disable react/jsx-props-no-spreading */
+      return <ThemeableComponent {...p}>{children}</ThemeableComponent>;
+      /* eslint-enable react/jsx-props-no-spreading */
+    };
 
     return (component as unknown) as CustomThemedComponent;
   };
@@ -309,7 +312,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 ): ThemedComponentFactory<ComponentProps>;
 
 function themed<ComponentProps extends ThemeableComponentProps>(
-  component: React.ComponentType<ComponentProps>,
+  component: ComponentType<ComponentProps>,
   componentName: string,
 
   defaultThemeOrOptions?: ComponentProps['theme']
@@ -320,7 +323,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 
 function themed<ComponentProps extends ThemeableComponentProps>(
   // 1st argument.
-  componentOrComponentName: React.ComponentType<ComponentProps> | string,
+  componentOrComponentName: ComponentType<ComponentProps> | string,
 
   // 2nd argument.
   componentNameOrDefaultTheme?: string | ComponentProps['theme'],
@@ -336,7 +339,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   | ThemedComponent<ComponentProps> {
   type OpsT = ThemedOptions<ComponentProps>;
 
-  let component: React.ComponentType<ComponentProps> | undefined;
+  let component: ComponentType<ComponentProps> | undefined;
   let componentName: string;
   let defaultTheme: ComponentProps['theme'] | undefined;
   let ops: OpsT | undefined;
