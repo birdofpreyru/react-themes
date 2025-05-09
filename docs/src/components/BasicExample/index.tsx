@@ -8,9 +8,8 @@ type PropsT = {
   theme: Theme<'component'>;
 };
 
-const BasicExample: React.FunctionComponent<PropsT> = ({ children, theme }) => (
-  <div className={theme.component}>{children}</div>
-);
+const BasicExample: React.FunctionComponent<PropsT>
+  = ({ children, theme }) => <div className={theme.component}>{children}</div>;
 
 // The component is wrapped by React Themes "themed" helper,
 // which registers it under "BasicExample" name for theming purposes,

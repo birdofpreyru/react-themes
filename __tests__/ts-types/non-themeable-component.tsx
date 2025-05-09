@@ -1,3 +1,5 @@
+import type { FunctionComponent } from 'react';
+
 import { expect } from 'tstyche';
 
 import themed, { type ThemeableComponentProps } from '../../src';
@@ -12,13 +14,11 @@ type ComponentPropsT = {
   theme: BadThemeT;
 };
 
-function Component({ theme }: ComponentPropsT) {
-  return (
-    <div className={theme.container}>
-      NON-THEMEABLE
-    </div>
-  );
-}
+const Component: FunctionComponent<ComponentPropsT> = ({ theme }) => (
+  <div className={theme.container}>
+    NON-THEMEABLE
+  </div>
+);
 
 const props: ComponentPropsT = {
   theme: {},

@@ -163,8 +163,8 @@ describe('02 - With default theme', () => {
       snapshot((
         <ThemeProvider themes={{ Themed: themeC }}>
           <Themed
-            themePriority={PRIORITY.ADHOC_DEFAULT_CONTEXT}
             theme={themeD}
+            themePriority={PRIORITY.ADHOC_DEFAULT_CONTEXT}
           />
         </ThemeProvider>
       ));
@@ -172,8 +172,8 @@ describe('02 - With default theme', () => {
         <ThemeProvider themes={{ Themed: themeC }}>
           <Themed
             composeContextTheme={COMPOSE.SWAP}
-            themePriority={PRIORITY.ADHOC_DEFAULT_CONTEXT}
             theme={themeD}
+            themePriority={PRIORITY.ADHOC_DEFAULT_CONTEXT}
           />
         </ThemeProvider>
       ));
@@ -192,10 +192,10 @@ describe('02 - With default theme', () => {
       snapshot((
         <Themed
           mapThemeProps={(
-            props: { [key: string]: any },
-            theme: ComponentTheme,
+            props,
+            theme,
           ): {
-            theme: ComponentTheme,
+            theme: ComponentTheme;
           } => {
             args = { props, theme };
             return {
@@ -229,12 +229,12 @@ describe('02 - With default theme', () => {
       const Themed = themed(TestComponent, 'Themed', themeA, {
         composeAdhocTheme: COMPOSE.SWAP,
       });
-      snapshot((
-        <Themed theme={themeB} />
-      ));
-      snapshot((
-        <Themed theme={themeB} composeAdhocTheme={COMPOSE.SOFT} />
-      ));
+      snapshot(
+        <Themed theme={themeB} />,
+      );
+      snapshot(
+        <Themed composeAdhocTheme={COMPOSE.SOFT} theme={themeB} />,
+      );
     });
 
     test('03 - themePriority', () => {
@@ -265,7 +265,7 @@ describe('02 - With default theme', () => {
       snapshot((
         <Themed
           mapThemeProps={(
-            props: { [key: string]: any },
+            props: Record<string, unknown>,
             theme: ComponentTheme,
           ) => {
             args = { props, theme };

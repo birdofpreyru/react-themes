@@ -8,12 +8,14 @@ import {
   useMemo,
 } from 'react';
 
-//------------------------------------------------------------------------------
-// TypeScript interfaces & types.
+// -----------------------------------------------------------------------------
+// TypeScript interfaces & types, constants.
 
 // Note: Support of custom specifity-manipulation classes in TypeScript is too
 // cumbersome, thus although it remains a functional feature for pure JavaScript,
 // the TypeScript assumes these classes are always "ad", "hoc", and "context".
+// TODO: Revise, should we change it to type?
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface ThemeI {
   ad: string;
   hoc: string;
@@ -26,21 +28,49 @@ export type Theme<KeyT extends string> =
   // it is not extendable by a string, thus the condition will enter its
   // second branch. Otherwise, the result will be `never` - this is our
   // safeguard against incorrect usage.
+  // TODO: Revise. Just replacing by Record<> breaks our typing intentions,
+  // making some fields non-optional. Perhaps we can somehow tune this ESLint
+  // rule, to handle it better?
+  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   string extends KeyT ? never : ThemeI & { [key in KeyT]?: string };
 
-export interface ThemeMap { [key: string]: ThemeI | undefined }
+// TODO: Revise, should we change it to type?
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style
+export interface ThemeMap {
+  [key: string]: ThemeI | undefined;
+}
 
+// TODO: Revise, should we change it to type?
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface ThemeableComponentProps {
   theme: ThemeI;
 }
 
+// TODO: Revise, should we change it to type?
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface ThemePropsMapper<
   ComponentProps extends ThemeableComponentProps,
 > {
+  // TODO: Revise.
+  // eslint-disable-next-line @typescript-eslint/prefer-function-type
   (
+    // eslint-disable-next-line no-use-before-define
     props: ThemedComponentProps<ComponentProps>,
     theme: ComponentProps['theme'],
   ): ComponentProps;
+}
+
+/** Supported theme composition modes. */
+export enum COMPOSE {
+  DEEP = 'DEEP',
+  SOFT = 'SOFT',
+  SWAP = 'SWAP',
+}
+
+/** Supported theme priorities. */
+export enum PRIORITY {
+  ADHOC_CONTEXT_DEFAULT = 'ADHOC_CONTEXT_DEFAULT',
+  ADHOC_DEFAULT_CONTEXT = 'ADHOC_DEFAULT_CONTEXT',
 }
 
 export type ThemedOptions<
@@ -54,8 +84,8 @@ export type ThemedOptions<
 
   composeAdhocTheme?: COMPOSE;
   composeContextTheme?: COMPOSE;
-  mapThemeProps?: ThemePropsMapper<ComponentProps>,
-  themePriority?: PRIORITY,
+  mapThemeProps?: ThemePropsMapper<ComponentProps>;
+  themePriority?: PRIORITY;
 };
 
 export type ThemedComponentProps<
@@ -74,31 +104,16 @@ export type ThemedComponent<
   ComponentProps extends ThemeableComponentProps,
 > = FunctionComponent<ThemedComponentProps<ComponentProps>>;
 
-export type ThemedComponentFactory<ComponentProps extends ThemeableComponentProps> = (
-  component: ComponentType<ComponentProps>,
-) => ThemedComponent<ComponentProps>;
-
-//------------------------------------------------------------------------------
-// Constants.
-
-/** Supported theme composition modes. */
-export enum COMPOSE {
-  DEEP = 'DEEP',
-  SOFT = 'SOFT',
-  SWAP = 'SWAP',
-}
-
-/** Supported theme priorities. */
-export enum PRIORITY {
-  ADHOC_CONTEXT_DEFAULT = 'ADHOC_CONTEXT_DEFAULT',
-  ADHOC_DEFAULT_CONTEXT = 'ADHOC_DEFAULT_CONTEXT',
-}
+export type ThemedComponentFactory<
+  ComponentProps extends ThemeableComponentProps> = (
+    component: ComponentType<ComponentProps>,
+  ) => ThemedComponent<ComponentProps>;
 
 const INVALID_COMPOSE = 'Invalid composition mode';
 
 const Context = createContext<ThemeMap | undefined>(undefined);
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Here comes the logic.
 
 export type ThemeProviderProp = {
@@ -125,7 +140,10 @@ export type ThemeProviderProp = {
  * @param props.theme Fallback mapping for backward compatibility
  * with `react-css-themr` and `react-css-super-themr` libraries.
  */
-export function ThemeProvider({ children, themes }: ThemeProviderProp) {
+export const ThemeProvider: FunctionComponent<ThemeProviderProp> = ({
+  children,
+  themes,
+}) => {
   const contextThemes = use(Context);
 
   // useMemo() ensures we don't generate a new "value" on each render when both
@@ -133,11 +151,11 @@ export function ThemeProvider({ children, themes }: ThemeProviderProp) {
   const value: ThemeMap = useMemo(() => (
     contextThemes && themes
       ? { ...contextThemes, ...themes }
-      : (contextThemes || themes || {})
+      : contextThemes ?? themes ?? {}
   ), [contextThemes, themes]);
 
   return <Context value={value}>{children}</Context>;
-}
+};
 
 /**
  * Composes two themes.
@@ -159,22 +177,20 @@ function compose<CustomTheme extends ThemeI>(
         const res = { ...low };
         const prefix = Array.isArray(tag)
           ? `${high[tag[0]] || ''} ${high[tag[1]] || ''}`
-          : (high[tag] || '');
-        /* eslint-disable no-restricted-syntax */
+          : high[tag] || '';
         for (const key in high) {
           if (res[key]) {
-            res[key] = `${res[key]} ${prefix} ${high[key]}` as
+            res[key] = `${res[key] as string} ${prefix} ${high[key] as string}` as
               CustomTheme[Extract<keyof CustomTheme, string>];
           } else res[key] = high[key];
         }
-        /* eslint-enable no-restricted-syntax */
         return res;
       }
       case COMPOSE.SOFT: return { ...low, ...high };
       case COMPOSE.SWAP: return high;
       default: throw new Error(INVALID_COMPOSE);
     }
-  } else return high || low;
+  } else return high ?? low;
 }
 
 /**
@@ -228,6 +244,10 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
   } = options;
 
   const aTag = adhocTag.split('.') as ['ad', 'hoc'];
+  // TODO: Should we remove this runtime safeguard, assuming by now all
+  // host projects should use TypeScript, which should prevent the error
+  // we safeguard against here?
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
     throw new Error('Invalid adhoc theme tag');
   }
@@ -239,7 +259,9 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
   return (
     ThemeableComponent: ComponentType<ComponentProps>,
   ): CustomThemedComponent => {
-    const component: FunctionComponent<CustomThemedComponentProps> = (properties) => {
+    const Component: FunctionComponent<CustomThemedComponentProps> = (
+      properties,
+    ) => {
       const {
         children,
         composeAdhocTheme,
@@ -252,45 +274,53 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
       } = properties;
 
       const context = use(Context);
-      const contextTheme = context?.[componentName] as ComponentTheme | undefined;
+      const contextTheme = context?.[componentName] as
+        ComponentTheme | undefined;
 
       /* Deduction of applicable theme composition and priority settings. */
-      const mapper = mapThemeProps || oMapThemeProps;
-      const priority = themePriority || oThemePriority
-        || PRIORITY.ADHOC_CONTEXT_DEFAULT;
+      const mapper = mapThemeProps ?? oMapThemeProps;
+      const priority = themePriority ?? oThemePriority
+        ?? PRIORITY.ADHOC_CONTEXT_DEFAULT;
+
+      // TODO: Revise.
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/non-nullable-type-assertion-style
       const composeAdhoc: COMPOSE = composeAdhocTheme as COMPOSE
         || oComposeAdhocTheme || COMPOSE.DEEP;
+
+      // TODO: Revise.
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/non-nullable-type-assertion-style
       const composeContext: COMPOSE = composeContextTheme as COMPOSE
         || oComposeContextTheme || COMPOSE.DEEP;
 
       /* Theme composition. */
-      let res: ComponentTheme | undefined = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
-        ? compose<ComponentTheme>(
-          defaultTheme,
-          contextTheme,
-          composeContext,
-          contextTag,
-        )
-        : compose<ComponentTheme>(
-          contextTheme,
-          defaultTheme,
-          composeContext,
-          contextTag,
-        );
+      let res: ComponentTheme | undefined
+        = priority === PRIORITY.ADHOC_DEFAULT_CONTEXT
+          ? compose<ComponentTheme>(
+            defaultTheme,
+            contextTheme,
+            composeContext,
+            contextTag,
+          )
+          : compose<ComponentTheme>(
+            contextTheme,
+            defaultTheme,
+            composeContext,
+            contextTag,
+          );
 
       res = compose<ComponentTheme>(
         theme,
         res,
         composeAdhoc,
         aTag,
-      ) || ({} as ComponentTheme);
+      ) ?? ({} as ComponentTheme);
 
       /* Props deduction. */
       const p: ComponentProps = mapper
         ? mapper({ ...properties, ref }, res) : {
           ...rest as ComponentProps,
-          theme: res,
           ref,
+          theme: res,
         };
 
       /* eslint-disable react/jsx-props-no-spreading */
@@ -298,7 +328,7 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
       /* eslint-enable react/jsx-props-no-spreading */
     };
 
-    return (component as unknown) as CustomThemedComponent;
+    return (Component as unknown) as CustomThemedComponent;
   };
 }
 
@@ -306,7 +336,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
 
   defaultThemeOrOptions?: ComponentProps['theme']
-  | ThemedOptions<ComponentProps>,
+    | ThemedOptions<ComponentProps>,
 
   options?: ThemedOptions<ComponentProps>,
 ): ThemedComponentFactory<ComponentProps>;
@@ -316,7 +346,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   componentName: string,
 
   defaultThemeOrOptions?: ComponentProps['theme']
-  | ThemedOptions<ComponentProps>,
+    | ThemedOptions<ComponentProps>,
 
   options?: ThemedOptions<ComponentProps>,
 ): ThemedComponent<ComponentProps>;
@@ -330,8 +360,8 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 
   // 3rd argument.
   defaultThemeOrOptions?:
-  | ComponentProps['theme']
-  | ThemedOptions<ComponentProps>,
+    | ComponentProps['theme']
+    | ThemedOptions<ComponentProps>,
 
   // 4th argument.
   options?: ThemedOptions<ComponentProps>,
@@ -353,7 +383,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
       throw Error('Second argument is not expected to be a string');
     }
 
-    defaultTheme = componentNameOrDefaultTheme as ComponentProps['theme'];
+    defaultTheme = componentNameOrDefaultTheme;
 
     // 3rd argument: options.
     ops = defaultThemeOrOptions as OpsT;

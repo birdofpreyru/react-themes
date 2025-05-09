@@ -5,13 +5,13 @@ import defaultTheme from './default.module.scss';
 
 type PropsT = {
   theme: Theme<
-  | 'cell'
-  | 'container'
-  | 'grid'
-  | 'headerCell'
-  | 'sunday'
-  | 'title'
-  | 'today'
+    | 'cell'
+    | 'container'
+    | 'grid'
+    | 'headerCell'
+    | 'sunday'
+    | 'title'
+    | 'today'
   >;
 };
 
@@ -45,7 +45,7 @@ const Calendar: React.FunctionComponent<PropsT> = ({
     if ((firstDateInWeek + last.date() + i - lastDateInWeek + 1) % 7 === 0) {
       className += ` ${theme.sunday}`;
     }
-    dates.push(<div className={className} key={`end-spacer-${i}`} />)
+    dates.push(<div className={className} key={`end-spacer-${i}`} />);
   }
 
   const headerClass = `${theme.cell} ${theme.headerCell}`;
@@ -67,6 +67,6 @@ const Calendar: React.FunctionComponent<PropsT> = ({
       </div>
     </div>
   );
-}
+};
 
 export default themed(Calendar, 'Calendar', defaultTheme);

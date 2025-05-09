@@ -16,7 +16,7 @@ import { type RenderResult, render } from '@testing-library/react';
  * @param {Object} component ReactJS component to render.
  * @return {Object} JSON render of the component.
  */
-export function snapshot(element: React.ReactElement) {
+export function snapshot(element: React.ReactElement): RenderResult {
   let res: RenderResult | undefined;
   act(() => {
     res = render(element);

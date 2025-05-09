@@ -1,12 +1,15 @@
-import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
 
+// TODO: I believe, these are internally replaced by Docusaurus during
+// the compilation. We should check their docs, if there is a better way
+// to configure something so that TS/ESLint find these correctly?
+/* eslint-disable import/no-unresolved */
 import Link from '@docusaurus/Link';
-
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import CodeBlock from '@theme/CodeBlock';
+/* eslint-enable import/no-unresolved */
 
 import { ThemeProvider } from '@dr.pogodin/react-themes';
 
@@ -19,18 +22,20 @@ import redContextCalendarTheme
   from '../components/Calendar/red-context.module.scss';
 import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
+// TODO: I guess, no better way to share this asset?
+// eslint-disable-next-line import/no-relative-packages
 import SponsorImg from '../../../.README/sponsor.svg';
 
 function HomepageHeader() {
   const isDarkTheme = useColorMode().colorMode === 'dark';
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header
       className={
         clsx(
           'hero hero--primary',
           S.heroBanner,
-          isDarkTheme ? S.dark : S.light
+          isDarkTheme ? S.dark : S.light,
         )
       }
     >
@@ -98,10 +103,11 @@ function HomepageHeader() {
         <div className={S.attention}>
           <p>
             <strong>Note:</strong> Since its release <strong>v1.5.0</strong>
-            &zwnj; the library has been migrated to TypeScript. It is still
-            compatible with plain JavaScript &mdash; the original interfaces have
-            not been changed (with exception of removed &laquo;<em>compatibility
-            mode</em>&raquo; for emulation of &zwnj;
+            {' '}the library has been migrated to TypeScript. It is still
+            compatible with plain JavaScript &mdash; the original interfaces
+            have
+            not been changed (with exception of removed
+            &laquo;<em>compatibility mode</em>&raquo; for emulation of &zwnj;
             <Link
               to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
             >
@@ -126,8 +132,8 @@ function HomepageHeader() {
   );
 }
 
-const CODE_SNIPPLET_01 =
-`// "calendarWithGrid" and "darkContextCalendarTheme" are just
+const CODE_SNIPPLET_01
+= `// "calendarWithGrid" and "darkContextCalendarTheme" are just
 // imported SCSS theme modules.
 
 <div className={styles.columns}>
@@ -150,11 +156,12 @@ const CODE_SNIPPLET_01 =
 </div>`;
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
+      description={siteConfig.tagline}
       title={`${siteConfig.title} | Dr. Pogodin Studio`}
-      description={siteConfig.tagline}>
+    >
       <HomepageHeader />
       <main className={S.main}>
         <div className={S.centerText}>
@@ -166,13 +173,21 @@ export default function Home() {
             <Calendar />
             <Calendar theme={calendarWithGrid} />
           </div>
-          <ThemeProvider themes={{Calendar: darkContextCalendarTheme}}>
+          <ThemeProvider
+            themes={{
+              Calendar: darkContextCalendarTheme,
+            }}
+          >
             <div className={S.darkBackground}>
               <Calendar />
               <Calendar theme={calendarWithGrid} />
             </div>
           </ThemeProvider>
-          <ThemeProvider themes={{Calendar: redContextCalendarTheme}}>
+          <ThemeProvider
+            themes={{
+              Calendar: redContextCalendarTheme,
+            }}
+          >
             <div className={S.redBackground}>
               <Calendar />
               <Calendar theme={calendarWithGrid} />
@@ -181,19 +196,25 @@ export default function Home() {
         </div>
         <div>
           <Link id="explanations" />
-          <p>  
+          <p>
             The base &zwnj;
             <Link
               to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/index.jsx"
-            >Calendar</Link>
-            &zwnj; component renders a generic HTML representation of the current
+            >
+              Calendar
+            </Link>
+            &zwnj; component renders a generic HTML representation of
+            the current
             month, and accepts the classnames for its elements via &zwnj;
             <code>theme</code> prop. It is wrapped with React Themes library
             to compose the actual <code>theme</code> it gets.
-            The <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/default.module.scss">
+            The
+            <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/default.module.scss">
               default theme
-            </Link> implements necessary layout styling, and it looks good against
-            a bright background. As the default style does not shine against dark
+            </Link>
+            implements necessary layout styling, and it looks good against
+            a bright background. As the default style does not shine against
+            dark
             and red backgrounds, &zwnj;
             <Link to="/docs/api/components#themeprovider">
               ThemeProvider
@@ -201,15 +222,19 @@ export default function Home() {
             &zwnj; is used to
             to instruct React Themes to apply additional &zwnj;
             <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/dark-context.module.scss">
-              "black context theme"
+              &ldquo;black context theme&rdquo;
             </Link> and &zwnj;
-            <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/red-context.module.scss">"red context theme"</Link>
-            &zwnj; to all <code>&lt;Calendar&gt;</code> instances within corresponding contexts. These additional "context themes" are very
+            <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/red-context.module.scss">
+              &ldquo;red context theme&rdquo;
+            </Link>
+            &zwnj; to all
+            <code>&lt;Calendar&gt;</code> instances within corresponding
+            contexts. These additional &ldquo;context themes&rdquo; are very
             simple, as they only override necessary colors, while all layout
             styling is automatically inherited from the default theme. Finally,
             a simple &zwnj;
             <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/with-grid.module.scss">
-              "with-grid theme"
+              &ldquo;with-grid theme&rdquo;
             </Link> &zwnj; is applied as an <em>ad hoc</em> theme to the last
             three <code>Calendar</code> instances in this example
             to add visible grid lines to these particular component instances.
@@ -225,8 +250,8 @@ export default function Home() {
           <CodeBlock className="language-jsx">{CODE_SNIPPLET_01}</CodeBlock>
           <p>
             Note, most of this example snipplet is conserned to nicely layout
-            the example, while the actual <code>Calendar</code>
-            &zwnj; instances are created either without parameters at all
+            the example, while the actual <code>Calendar</code> &zwnj;
+            instances are created either without parameters at all
             (as they pick up the default and context theme via React Themes
             mechanics), or with the necessary <em>ad hoc</em> theme passed in
             via <code>theme</code> prop.

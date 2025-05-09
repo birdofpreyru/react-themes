@@ -1,4 +1,6 @@
-import { type Theme } from '../src';
+import type { FunctionComponent } from 'react';
+
+import type { Theme } from '../src';
 
 export type ComponentTheme = Theme<'container' | 'content'>;
 
@@ -8,17 +10,17 @@ export type ComponentProps = {
   goodKey?: string;
 };
 
-export default function Component({
+const Component: FunctionComponent<ComponentProps> = ({
   children,
   goodKey = '',
   theme,
-}: ComponentProps) {
-  return (
-    <div className={theme.container}>
-      <div className={theme.content}>
-        { children }
-        { goodKey }
-      </div>
+}) => (
+  <div className={theme.container}>
+    <div className={theme.content}>
+      { children }
+      { goodKey }
     </div>
-  );
-}
+  </div>
+);
+
+export default Component;
