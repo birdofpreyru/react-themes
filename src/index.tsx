@@ -28,11 +28,7 @@ export type Theme<KeyT extends string> =
   // it is not extendable by a string, thus the condition will enter its
   // second branch. Otherwise, the result will be `never` - this is our
   // safeguard against incorrect usage.
-  // TODO: Revise. Just replacing by Record<> breaks our typing intentions,
-  // making some fields non-optional. Perhaps we can somehow tune this ESLint
-  // rule, to handle it better?
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-  string extends KeyT ? never : ThemeI & { [key in KeyT]?: string };
+  string extends KeyT ? never : ThemeI & Partial<Record<KeyT, string>>;
 
 // TODO: Revise, should we change it to type?
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style

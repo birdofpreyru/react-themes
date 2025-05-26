@@ -13,8 +13,6 @@ import CodeBlock from '@theme/CodeBlock';
 
 import { ThemeProvider } from '@dr.pogodin/react-themes';
 
-import S from './index.module.scss';
-
 import Calendar from '../components/Calendar';
 import darkContextCalendarTheme
   from '../components/Calendar/dark-context.module.scss';
@@ -25,6 +23,8 @@ import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 // TODO: I guess, no better way to share this asset?
 // eslint-disable-next-line import/no-relative-packages
 import SponsorImg from '../../../.README/sponsor.svg';
+
+import S from './index.module.scss';
 
 function HomepageHeader() {
   const isDarkTheme = useColorMode().colorMode === 'dark';
