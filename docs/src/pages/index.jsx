@@ -49,12 +49,12 @@ function HomepageHeader() {
             to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
           >
             react-css-themr
-          </Link> this library allows to easily reuse the same core component
+          </Link>, this library allows to easily reuse the same core component
           in different applications and contexts, modifying its appearance
-          <em>via</em> default, context, and <em>ad hoc</em> themes. Powered
-          by CSS modules and core HTML/CSS mechanics it does not require any
-          unstable dependencies, and does not restrict you from using any other
-          (S)CSS tools of your choice.
+          &zwnj; <em>via</em> default, context, and <em>ad hoc</em> themes.
+          Powered by CSS modules and core HTML/CSS mechanics it does not require
+          any unstable dependencies, and does not restrict you from using any
+          other (S)CSS tools of your choice.
         </p>
         <p>
           <Link
@@ -100,33 +100,6 @@ function HomepageHeader() {
             <SponsorImg />
           </a>
         </p>
-        <div className={S.attention}>
-          <p>
-            <strong>Note:</strong> Since its release <strong>v1.5.0</strong>
-            {' '}the library has been migrated to TypeScript. It is still
-            compatible with plain JavaScript &mdash; the original interfaces
-            have
-            not been changed (with exception of removed
-            &laquo;<em>compatibility mode</em>&raquo; for emulation of &zwnj;
-            <Link
-              to="https://www.npmjs.com/package/@friendsofreactjs/react-css-themr"
-            >
-              react-css-themr
-            </Link>
-            &zwnj; and &zwnj;
-            <Link
-              to="https://www.npmjs.com/package/react-css-super-themr"
-            >
-              react-css-super-themr
-            </Link>
-            &zwnj; libraries), and the packaged library now includes JavaScript
-            build, alongside TypeScript sources, and type declarations.
-          </p>
-          <p>
-            The TypeScript-specific usage and APIs have not been documented yet,
-            and are likely to evolve in the follow-up releases.
-          </p>
-        </div>
       </div>
     </header>
   );
@@ -208,15 +181,16 @@ export default function Home() {
             month, and accepts the classnames for its elements via &zwnj;
             <code>theme</code> prop. It is wrapped with React Themes library
             to compose the actual <code>theme</code> it gets.
-            The
+            The &zwnj;
             <Link to="https://github.com/birdofpreyru/react-themes/blob/master/docs/src/components/Calendar/default.module.scss">
               default theme
             </Link>
-            implements necessary layout styling, and it looks good against
+            &zwnj; implements necessary layout styling, and it looks good
+            against
             a bright background. As the default style does not shine against
             dark
             and red backgrounds, &zwnj;
-            <Link to="/docs/api/components#themeprovider">
+            <Link to="/docs/api/components/themeprovider">
               ThemeProvider
             </Link>
             &zwnj; is used to
@@ -240,7 +214,7 @@ export default function Home() {
             to add visible grid lines to these particular component instances.
           </p>
           <p>
-            The main point is: while <code>Calendar</code>, its default
+            The main point is &mdash; while <code>Calendar</code>, its default
             theme, and light additional themes are reusable components, not much
             complicated by the use of React Themes library, their actual use in
             this example becomes extremely simple, with most of styling nuances

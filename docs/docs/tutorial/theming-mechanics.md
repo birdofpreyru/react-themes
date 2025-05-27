@@ -58,16 +58,16 @@ a specific component instance.
 
 If several themes are applied to the same component instance, they are merged,
 according to their priorities, explained further below, and the composition
-modes provided by [COMPOSE](/docs/api/constants#compose) enum:
+modes provided by [COMPOSE] enum:
 
-```jsx
+```tsx
 import { COMPOSE } from '@dr.pogodin/react-themes';
 
-const {
-  DEEP, // Equals `DEEP` - deep composition mode.
-  SOFT, // Equals `SOFT` - soft composition mode.
-  SWAP, // Equals `SWAP` - swap composition mode.
-} = COMPOSE;
+enum COMPOSE {
+  DEEP = 'DEEP', // deep composition mode.
+  SOFT = 'SOFT', // soft composition mode.
+  SWAP = 'SWAP', // swap composition mode.
+}
 ```
 
 Two themes with lower (`L`) and higher (`H`) priorities can be merged in
@@ -162,8 +162,10 @@ priority order can be changed either for selected themed components, or for
 their individual instances to _ad hoc_ (highest priority), followed by default
 theme, then context theme (lowest priority).
 
-See [PRIORITY](/docs/api/constants#priority), [themed()],
-[ThemedComponent](/docs/api/components#themedcomponent).
+See [PRIORITY], [themed()], [ThemedComponent].
 
-[themed()]: /docs/api/functions#themed
-[ThemeProvider]: /docs/api/components#themeprovider
+[COMPOSE]: /docs/api/enums/compose
+[PRIORITY]: /docs/api/enums/priority
+[themed()]: /docs/api/functions/themed
+[ThemedComponent]: /docs/api/types/themedcomponent
+[ThemeProvider]: /docs/api/components/themeprovider

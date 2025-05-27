@@ -1,0 +1,2 @@
+- [COMPOSE](/docs/api/enums/compose) &mdash; Theme composition modes.
+- [PRIORITY](/docs/api/enums/priority) &mdash; Theme priority modes.

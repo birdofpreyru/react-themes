@@ -32,11 +32,13 @@ As the most simple example, let's consider a trivial component that just renders
 a `<div>` element wrapping the text provided via `children` prop:
 
 ```tsx title="/src/components/BasicExample/index.tsx"
+import type { FunctionComponent, ReactNode } from 'react';
+
 type PropsT = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
-const BasicExample: React.FunctionComponent<PropsT> = ({ children }) => (
+const BasicExample: FunctionComponent<PropsT> = ({ children }) => (
   <div>{children}</div>
 );
 
@@ -144,4 +146,4 @@ import Example04Code from '!!raw-loader!../../src/components/Example04';
   title="src/components/Example04/index.tsx"
 >{Example04Code}</CodeBlock>
 
-[ThemeProvider]: /docs/api/components#themeprovider
+[ThemeProvider]: /docs/api/components/themeprovider

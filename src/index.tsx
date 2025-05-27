@@ -14,7 +14,8 @@ import {
 // Note: Support of custom specifity-manipulation classes in TypeScript is too
 // cumbersome, thus although it remains a functional feature for pure JavaScript,
 // the TypeScript assumes these classes are always "ad", "hoc", and "context".
-// TODO: Revise, should we change it to type?
+// NOTE: Keep it as interface, to allow, in theory, consumer to redefine these
+// default keys.
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface ThemeI {
   ad: string;
@@ -90,10 +91,10 @@ export type ThemedComponentProps<
   children?: ReactNode;
   composeAdhocTheme?: COMPOSE;
   composeContextTheme?: COMPOSE;
+  mapThemeProps?: ThemePropsMapper<ComponentProps>;
   ref?: RefObject<unknown>;
   theme?: ComponentProps['theme'];
   themePriority?: PRIORITY;
-  mapThemeProps?: ThemePropsMapper<ComponentProps>;
 };
 
 export type ThemedComponent<
@@ -112,7 +113,7 @@ const Context = createContext<ThemeMap | undefined>(undefined);
 // -----------------------------------------------------------------------------
 // Here comes the logic.
 
-export type ThemeProviderProp = {
+export type ThemeProviderProps = {
   children?: ReactNode;
   themes?: ThemeMap;
 };
@@ -136,7 +137,7 @@ export type ThemeProviderProp = {
  * @param props.theme Fallback mapping for backward compatibility
  * with `react-css-themr` and `react-css-super-themr` libraries.
  */
-export const ThemeProvider: FunctionComponent<ThemeProviderProp> = ({
+export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
   children,
   themes,
 }) => {

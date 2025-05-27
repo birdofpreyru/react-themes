@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'react';
 import { ThemeProvider } from '@dr.pogodin/react-themes';
 
 import BasicExample from '../BasicExample';
@@ -5,7 +6,7 @@ import blueContextTheme from '../BasicExample/blue-context.module.scss';
 
 import adHocTheme from './style.module.scss';
 
-const Example02: React.FunctionComponent = () => (
+const Example04: FunctionComponent = () => (
   <ThemeProvider themes={{ BasicExample: blueContextTheme }}>
     <div style={{ background: 'blue', padding: '1em 1em 0' }}>
       <BasicExample>Hello World!</BasicExample>
@@ -15,4 +16,4 @@ const Example02: React.FunctionComponent = () => (
   </ThemeProvider>
 );
 
-export default Example02;
+export default Example04;

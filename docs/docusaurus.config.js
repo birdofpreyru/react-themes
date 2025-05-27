@@ -12,6 +12,7 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
 module.exports = {
   baseUrl: '/docs/react-themes/',
   favicon: 'img/favicon.ico',
+  onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   tagline: 'User Interface theme composition with CSS Modules and React',
@@ -49,7 +50,7 @@ module.exports = {
             items: [
               {
                 label: 'API',
-                to: '/docs/api/overview',
+                to: '/docs/api',
               },
               {
                 label: 'Tutorial',
@@ -88,7 +89,7 @@ module.exports = {
             type: 'doc',
           },
           {
-            docId: 'api/overview',
+            docId: 'api/index',
             label: 'API',
             position: 'left',
             type: 'doc',
