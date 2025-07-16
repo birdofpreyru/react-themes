@@ -1,8 +1,8 @@
 {
+  "$schema": "https://tstyche.org/schemas/config.json",
+  "checkSuppressedErrors": true,
+  "checkSourceFiles": false,
   "testFileMatch": [
-    "__tests__/ts/**/*.ts",
-    "__tests__/ts/**/*.tsx",
-    "__tests__/ts-types/**/*.ts",
-    "__tests__/ts-types/**/*.tsx"
+    "__tests__/ts*/*.{ts,tsx}"
   ]
 }
