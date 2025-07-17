@@ -107,10 +107,18 @@ function HomepageHeader() {
             </a>
           </h3>
           <a href="https://github.com/mrazauskas">
-            <img width="36" src="https://avatars.githubusercontent.com/u/72159681?v=4&s=36" />
+            <img
+              alt="avatar"
+              src="https://avatars.githubusercontent.com/u/72159681?v=4&s=36"
+              width="36"
+            />
           </a>
           <a href="https://github.com/birdofpreyru">
-            <img width="36" src="https://avatars.githubusercontent.com/u/20144632?v=4&s=36" />
+            <img
+              alt="avatar"
+              src="https://avatars.githubusercontent.com/u/20144632?v=4&s=36"
+              width="36"
+            />
           </a>
         </div>
       </div>
