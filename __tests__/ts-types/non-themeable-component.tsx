@@ -26,4 +26,4 @@ const props: ComponentPropsT = {
 
 expect<ThemeableComponentProps>().type.not.toBeAssignableWith(props);
 
-expect(themed(Component, 'Themed')).type.toRaiseError(2769);
+expect(themed).type.not.toBeCallableWith(Component, 'Themed');
