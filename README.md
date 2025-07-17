@@ -10,17 +10,21 @@ based on
 [react-css-themr](https://www.npmjs.com/package/@friendsofreactjs/react-css-themr)
 ideas.
 
+[![Sponsor](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
+
+### [Contributors](https://github.com/birdofpreyru/react-themes/graphs/contributors)
+[<img width=36 src="https://avatars.githubusercontent.com/u/72159681?v=4&s=36" />](https://github.com/mrazauskas)
+[<img width=36 src="https://avatars.githubusercontent.com/u/20144632?v=4&s=36" />](https://github.com/birdofpreyru)
+
+### [Documentation](https://dr.pogodin.studio/docs/react-themes/index.html)
+
 It allows to easily reuse the same core component inside different applications,
 and contexts, modifying its look via default, context, and _ad hoc_ themes.
 Powered by CSS modules and core HTML/CSS mechanics: it does not require any
 unstable dependencies, no restricts you from using of other (S)CSS tools of
 your choice.
 
-[>>> Documentation <<<](https://dr.pogodin.studio/docs/react-themes/index.html)
-
-[![Sponsor](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/.README/sponsor.svg)](https://github.com/sponsors/birdofpreyru)
-
 ![Library Purpose Illustration](https://raw.githubusercontent.com/birdofpreyru/react-themes/master/.README/illustration.png)
 
-[>>> Documentation <<<](https://dr.pogodin.studio/docs/react-themes/index.html)
+[>>> Full Documentation <<<](https://dr.pogodin.studio/docs/react-themes/index.html)
 

@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 // TODO: I believe, these are internally replaced by Docusaurus during
 // the compilation. We should check their docs, if there is a better way
@@ -100,6 +100,19 @@ function HomepageHeader() {
             <SponsorImg />
           </a>
         </p>
+        <div className={S.contributors}>
+          <h3>
+            <a href="https://github.com/birdofpreyru/react-themes/graphs/contributors">
+              Contributors
+            </a>
+          </h3>
+          <a href="https://github.com/mrazauskas">
+            <img width="36" src="https://avatars.githubusercontent.com/u/72159681?v=4&s=36" />
+          </a>
+          <a href="https://github.com/birdofpreyru">
+            <img width="36" src="https://avatars.githubusercontent.com/u/20144632?v=4&s=36" />
+          </a>
+        </div>
       </div>
     </header>
   );

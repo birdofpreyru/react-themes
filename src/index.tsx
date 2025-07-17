@@ -51,7 +51,6 @@ export interface ThemePropsMapper<
   // TODO: Revise.
   // eslint-disable-next-line @typescript-eslint/prefer-function-type
   (
-    // eslint-disable-next-line no-use-before-define
     props: ThemedComponentProps<ComponentProps>,
     theme: ComponentProps['theme'],
   ): ComponentProps;
