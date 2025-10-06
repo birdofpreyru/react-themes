@@ -24,12 +24,12 @@ export interface ThemeI {
 }
 
 // NOTE: KeyT should be a union of string literals - valid theme keys.
-export type Theme<KeyT extends string> =
+export type Theme<KeyT extends string>
   // NOTE: Here if KeyT is a union of string literals (e.g. 'a' | 'b'),
   // it is not extendable by a string, thus the condition will enter its
   // second branch. Otherwise, the result will be `never` - this is our
   // safeguard against incorrect usage.
-  string extends KeyT ? never : ThemeI & Partial<Record<KeyT, string>>;
+  = string extends KeyT ? never : ThemeI & Partial<Record<KeyT, string>>;
 
 // TODO: Revise, should we change it to type?
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style
@@ -102,8 +102,8 @@ export type ThemedComponent<
 
 export type ThemedComponentFactory<
   ComponentProps extends ThemeableComponentProps> = (
-    component: ComponentType<ComponentProps>,
-  ) => ThemedComponent<ComponentProps>;
+  component: ComponentType<ComponentProps>,
+) => ThemedComponent<ComponentProps>;
 
 const INVALID_COMPOSE = 'Invalid composition mode';
 
@@ -313,7 +313,7 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
 
       /* Props deduction. */
       const p: ComponentProps = mapper
-        ? mapper({ ...properties, ref }, res) : {
+        ? mapper(properties, res) : {
           ...rest as ComponentProps,
           ref,
           theme: res,

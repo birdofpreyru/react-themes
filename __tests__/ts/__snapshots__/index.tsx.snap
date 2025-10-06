@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`01 - No default theme. 01 - No options at registration. 01 - No extra themes 1`] = `
 <div>
@@ -255,7 +255,6 @@ exports[`02 - With default theme 01 - No options at registration. 06 - Theme pro
 {
   "props": {
     "mapThemeProps": [Function],
-    "ref": undefined,
   },
   "theme": {
     "ad": "theme-a__ad___qo1qO",
@@ -334,9 +333,7 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 
 exports[`02 - With default theme 02 - Options at registration 04 - Theme props mapping 2`] = `
 {
-  "props": {
-    "ref": undefined,
-  },
+  "props": {},
   "theme": {
     "ad": "theme-a__ad___qo1qO",
     "container": "theme-a__container___KKR91",
@@ -361,7 +358,6 @@ exports[`02 - With default theme 02 - Options at registration 04 - Theme props m
 {
   "props": {
     "mapThemeProps": [Function],
-    "ref": undefined,
   },
   "theme": {
     "ad": "theme-a__ad___qo1qO",
