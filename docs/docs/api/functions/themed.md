@@ -1,5 +1,18 @@
+---
+sidebar_class_name: deprecated
+---
+
 # themed()
 [themed()]: themed
+
+:::danger Deprecated
+The [themed()] function, and the old way to implement themeable components are
+deprecated in favour of the new [useTheme()] hook in the library version **v1.10.0**.
+For now, [themed()] still works, but it will be removed in future library versions.
+For migration instructions see [useTheme()] documentation.
+:::
+
+## Original Documentation
 ```tsx
 import themed from '@dr.pogodin/react-themes';
 
@@ -107,3 +120,4 @@ called right away with a single argument &mdash; the base component to wrap:
 [ThemedComponentFactory]: /docs/api/types/themedcomponentfactory
 [ThemedOptions]: /docs/api/types/themedoptions
 [ThemeProvider]: /docs/api/components/themeprovider
+[useTheme()]: /docs/api/functions/useTheme

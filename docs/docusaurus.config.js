@@ -12,9 +12,14 @@ const NPM_URL = 'https://www.npmjs.com/package/@dr.pogodin/react-themes';
 module.exports = {
   baseUrl: '/docs/react-themes/',
   favicon: 'img/favicon.ico',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownImages: 'throw',
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
   onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   tagline: 'User Interface theme composition with CSS Modules and React',
   title: 'React Themes',
   url: 'https://dr.pogodin.studio',

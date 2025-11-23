@@ -190,6 +190,8 @@ function compose<CustomTheme extends ThemeI>(
 }
 
 /**
+ * @deprecated
+ *
  * Registers a themeable component under given name, and with an optional
  * default theme.
  * @param componentName Themed component name, which should be used to
@@ -347,6 +349,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   options?: ThemedOptions<ComponentProps>,
 ): ThemedComponent<ComponentProps>;
 
+/** @deprecated */
 function themed<ComponentProps extends ThemeableComponentProps>(
   // 1st argument.
   componentOrComponentName: ComponentType<ComponentProps> | string,
@@ -413,4 +416,72 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   return component ? impl(component) : impl;
 }
 
+/** @deprecated */
 export default themed;
+
+type UseThemeOptions = {
+  // As noted above, these options are not intended for TypeScript use case,
+  // where they are assumed to be fixed at the values below; but their custom
+  // values are still supported in plain JavaScript.
+  adhocTag?: 'ad.hoc';
+  contextTag?: 'context';
+
+  composeAdhocTheme?: COMPOSE;
+  composeContextTheme?: COMPOSE;
+  themePriority?: PRIORITY;
+};
+
+/**
+ * React hook for theme composition.
+ */
+export function useTheme<ComponentTheme extends ThemeI>(
+  componentName: string,
+  defaultTheme?: ComponentTheme,
+  adHocTheme?: ComponentTheme,
+  options?: UseThemeOptions,
+): ComponentTheme {
+  const {
+    adhocTag = 'ad.hoc',
+    contextTag = 'context',
+    composeAdhocTheme = COMPOSE.DEEP,
+    composeContextTheme = COMPOSE.DEEP,
+    themePriority = PRIORITY.ADHOC_CONTEXT_DEFAULT,
+  } = options ?? {};
+
+  const aTag = adhocTag.split('.') as ['ad', 'hoc'];
+  // TODO: Should we remove this runtime safeguard, assuming by now all
+  // host projects should use TypeScript, which should prevent the error
+  // we safeguard against here?
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (aTag.length !== 2 || !aTag[0] || !aTag[1]) {
+    throw new Error('Invalid adhoc theme tag');
+  }
+
+  const context = use(Context);
+
+  const contextTheme = context?.[componentName] as ComponentTheme | undefined;
+
+  let res: ComponentTheme | undefined
+    = themePriority === PRIORITY.ADHOC_DEFAULT_CONTEXT
+      ? compose<ComponentTheme>(
+        defaultTheme,
+        contextTheme,
+        composeContextTheme,
+        contextTag,
+      )
+      : compose<ComponentTheme>(
+        contextTheme,
+        defaultTheme,
+        composeContextTheme,
+        contextTag,
+      );
+
+  res = compose<ComponentTheme>(
+    adHocTheme,
+    res,
+    composeAdhocTheme,
+    aTag,
+  ) ?? ({} as ComponentTheme);
+
+  return res;
+}

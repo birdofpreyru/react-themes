@@ -1,5 +1,7 @@
+import type { FunctionComponent } from 'react';
+
 import dayjs from 'dayjs';
-import themed, { type Theme } from '@dr.pogodin/react-themes';
+import { type Theme, useTheme } from '@dr.pogodin/react-themes';
 
 import defaultTheme from './default.module.scss';
 
@@ -15,9 +17,11 @@ type PropsT = {
   >;
 };
 
-const Calendar: React.FunctionComponent<PropsT> = ({
+const Calendar: FunctionComponent<PropsT> = ({
   theme,
 }) => {
+  const composed = useTheme('Calendar', defaultTheme, theme);
+
   const date = dayjs();
   const first = date.startOf('month');
   const last = date.endOf('month');
@@ -32,41 +36,41 @@ const Calendar: React.FunctionComponent<PropsT> = ({
 
   const dates = [];
   for (let i = 0; i < firstDateInWeek; ++i) {
-    dates.push(<div className={theme.cell} key={`front-spacer-${i}`} />);
+    dates.push(<div className={composed.cell} key={`front-spacer-${i}`} />);
   }
   for (let i = 1; i <= last.date(); ++i) {
-    let className = theme.cell;
-    if (i === date.date()) className += ` ${theme.today}`;
-    if ((firstDateInWeek + i) % 7 === 0) className += ` ${theme.sunday}`;
+    let className = composed.cell;
+    if (i === date.date()) className += ` ${composed.today}`;
+    if ((firstDateInWeek + i) % 7 === 0) className += ` ${composed.sunday}`;
     dates.push(<div className={className} key={`date-${i}`}>{i}</div>);
   }
   for (let i = lastDateInWeek; i < 6; ++i) {
-    let className = theme.cell;
+    let className = composed.cell;
     if ((firstDateInWeek + last.date() + i - lastDateInWeek + 1) % 7 === 0) {
-      className += ` ${theme.sunday}`;
+      className += ` ${composed.sunday}`;
     }
     dates.push(<div className={className} key={`end-spacer-${i}`} />);
   }
 
-  const headerClass = `${theme.cell} ${theme.headerCell}`;
+  const headerClass = `${composed.cell} ${composed.headerCell}`;
 
   return (
-    <div className={theme.container}>
-      <div className={theme.title}>
+    <div className={composed.container}>
+      <div className={composed.title}>
         {date.format('D MMM YYYY')}
       </div>
-      <div className={theme.grid}>
+      <div className={composed.grid}>
         <div className={headerClass}>M</div>
         <div className={headerClass}>T</div>
         <div className={headerClass}>W</div>
         <div className={headerClass}>T</div>
         <div className={headerClass}>F</div>
         <div className={headerClass}>S</div>
-        <div className={`${headerClass} ${theme.sunday}`}>S</div>
+        <div className={`${headerClass} ${composed.sunday}`}>S</div>
         {dates}
       </div>
     </div>
   );
 };
 
-export default themed(Calendar, 'Calendar', defaultTheme);
+export default Calendar;
