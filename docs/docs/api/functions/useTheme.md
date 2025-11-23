@@ -135,4 +135,4 @@ pass them down the [useTheme()] hook.
 [themed()]: /docs/api/functions/themed
 [Theme]: /docs/api/types/theme
 [ThemeI]: /docs/api/types/themei
-[ThemeProvider]: /docs/api/components/ThemeProvider
+[ThemeProvider]: /docs/api/components/themeprovider
