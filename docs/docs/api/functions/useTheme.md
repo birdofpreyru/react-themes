@@ -3,16 +3,19 @@
 ```tsx
 import { type ThemeI, useTheme } from '@dr.pogodin/react-themes';
 
-function useTheme<ComponentTheme extends ThemeI>(
+function useTheme<
+  ComponentTheme extends ThemeI,
+  DefaultTheme extends ComponentTheme = ComponentTheme,
+>(
   componentName: string,
-  defaultTheme?: ComponentTheme,
+  defaultTheme?: DefaultTheme,
   adHocTheme?: ComponentTheme,
-  options?: UseThemeOptionsT,
+  options?: UseThemeOptions,
 ): ComponentTheme;
 
 // Where UseThemeOptionsT is
 
-type UseThemeOptionsT = {
+type UseThemeOptions = {
   composeAdhocTheme?: COMPOSE;
   composeContextTheme?: COMPOSE;
   themePriority?: PRIORITY;
@@ -89,14 +92,17 @@ pass them down the [useTheme()] hook.
 </details>
 
 ## Generic Parameter
-- `ComponentTheme` extends [ThemeI] &mdash; Valid theme type, use [Theme]
+- `ComponentTheme` &mdash; extends [ThemeI] &mdash; Valid theme type, use [Theme]
   generic to create one from the union of valid theme key names.
+
+- `DefaultTheme` &mdash; extends, and defaults **ComponentTheme** &mdash;
+  The type of `defaultTheme` (it is expected to be auto-deduced by TypeScript).
 
 ## Arguments
 - `componentName` &mdash; **string** &mdash; Component name, it use used
   to retrieve the component's context theme from the parent [ThemeProvider].
 
-- `defaultTheme` &mdash; **ComponentTheme** | **undefined** &mdash;
+- `defaultTheme` &mdash; **DefaultTheme** | **undefined** &mdash;
   Optional. Default theme for the component.
 
 - `adHocTheme` &mdash; **ComponentTheme** | **undefined** &mdash;

@@ -434,9 +434,12 @@ type UseThemeOptions = {
 /**
  * React hook for theme composition.
  */
-export function useTheme<ComponentTheme extends ThemeI>(
+export function useTheme<
+  ComponentTheme extends ThemeI,
+  DefaultTheme extends ComponentTheme = ComponentTheme,
+>(
   componentName: string,
-  defaultTheme?: ComponentTheme,
+  defaultTheme?: DefaultTheme,
   adHocTheme?: ComponentTheme,
   options?: UseThemeOptions,
 ): ComponentTheme {
