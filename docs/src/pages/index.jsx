@@ -6,9 +6,9 @@ import { clsx } from 'clsx';
 // to configure something so that TS/ESLint find these correctly?
 /* eslint-disable import/no-unresolved */
 import Link from '@docusaurus/Link';
-import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import CodeBlock from '@theme/CodeBlock';
+import Layout from '@theme/Layout';
 /* eslint-enable import/no-unresolved */
 
 import { ThemeProvider } from '@dr.pogodin/react-themes';

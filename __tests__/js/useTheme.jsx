@@ -9,8 +9,8 @@ import {
   useTheme,
 } from '../../src';
 
-import { snapshot } from '../../jest/utils';
 import TestComponent from '../../jest/TestComponent';
+import { snapshot } from '../../jest/utils';
 
 import themeA from '../../jest/theme-a.scss';
 import themeB from '../../jest/theme-b.scss';
@@ -28,8 +28,8 @@ describe('01 - No default theme.', () => {
     function Themed({
       children,
       composeAdhocTheme,
-      theme,
       goodKey,
+      theme,
     }) {
       const t = useTheme('Themed', undefined, theme, {
         composeAdhocTheme,
@@ -144,9 +144,9 @@ describe('02 - With default theme', () => {
       children,
       composeAdhocTheme,
       composeContextTheme,
+      goodKey,
       theme,
       themePriority,
-      goodKey,
     }) {
       const t = useTheme('Themed', themeA, theme, {
         composeAdhocTheme,
@@ -284,8 +284,8 @@ describe('02 - With default theme', () => {
 
     test('03 - themePriority', () => {
       function Themed({
-        themePriority,
         theme,
+        themePriority,
       }) {
         const t = useTheme('Themed', themeA, theme, {
           // eslint-disable-next-line jest/no-conditional-in-test

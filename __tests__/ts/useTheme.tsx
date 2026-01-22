@@ -24,8 +24,8 @@ describe('01 - No default theme.', () => {
     const Themed: FunctionComponent<{
       children?: ReactNode;
       composeAdhocTheme?: COMPOSE;
-      theme?: ThemeI;
       goodKey?: string;
+      theme?: ThemeI;
     }> = ({
       children,
       composeAdhocTheme,
@@ -135,16 +135,16 @@ describe('02 - With default theme', () => {
       children?: ReactNode;
       composeAdhocTheme?: COMPOSE;
       composeContextTheme?: COMPOSE;
+      goodKey?: string;
       theme?: ThemeI;
       themePriority?: PRIORITY;
-      goodKey?: string;
     }> = ({
       children,
       composeAdhocTheme,
       composeContextTheme,
+      goodKey,
       theme,
       themePriority,
-      goodKey,
     }) => {
       const composed = useTheme('Themed', themeA, theme, {
         composeAdhocTheme,
@@ -288,11 +288,11 @@ describe('02 - With default theme', () => {
 
     test('03 - themePriority', () => {
       const Themed: FunctionComponent<{
-        themePriority?: PRIORITY;
         theme?: ThemeI;
+        themePriority?: PRIORITY;
       }> = ({
-        themePriority,
         theme,
+        themePriority,
       }) => {
         const t = useTheme('Themed', themeA, theme, {
           // eslint-disable-next-line jest/no-conditional-in-test

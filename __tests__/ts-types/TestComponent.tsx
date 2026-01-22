@@ -1,7 +1,7 @@
 import { expect } from 'tstyche';
 
-import themed from '../../src';
 import TestComponent from '../../jest/TestComponent';
+import themed from '../../src';
 
 expect(<TestComponent />).type.toRaiseError(2741);
 

@@ -1,6 +1,7 @@
 import type { FunctionComponent } from 'react';
 
 import dayjs from 'dayjs';
+
 import { type Theme, useTheme } from '@dr.pogodin/react-themes';
 
 import defaultTheme from './default.module.scss';

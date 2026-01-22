@@ -6,8 +6,8 @@ export type ComponentTheme = Theme<'container' | 'content'>;
 
 export type ComponentProps = {
   children?: React.ReactNode;
-  theme: ComponentTheme;
   goodKey?: string;
+  theme: ComponentTheme;
 };
 
 const Component: FunctionComponent<ComponentProps> = ({

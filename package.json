@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/module/index.js",
   "types": "./build/types-code/index.d.ts",
@@ -46,22 +46,22 @@
     "url": "https://github.com/sponsors/birdofpreyru"
   },
   "dependencies": {
-    "@babel/runtime": "^7.28.4"
+    "@babel/runtime": "^7.28.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.5",
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.28.6",
     "@babel/plugin-transform-runtime": "^7.28.5",
-    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@dr.pogodin/babel-plugin-react-css-modules": "^6.13.8",
-    "@dr.pogodin/eslint-configs": "^0.1.2",
+    "@dr.pogodin/eslint-configs": "^0.2.2",
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.2",
     "@tsconfig/recommended": "^1.0.13",
     "@types/jest": "^30.0.0",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.9",
     "babel-jest": "^30.2.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "jest": "^30.2.0",
@@ -69,13 +69,13 @@
     "postcss": "^8.5.6",
     "postcss-scss": "^4.0.9",
     "rimraf": "^6.1.2",
-    "sass": "^1.94.2",
-    "tstyche": "^5.0.1",
+    "sass": "^1.97.3",
+    "tstyche": "^6.0.2",
     "typed-scss-modules": "^8.1.1",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }

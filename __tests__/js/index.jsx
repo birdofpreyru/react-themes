@@ -4,8 +4,8 @@
 
 import themed, { COMPOSE, PRIORITY, ThemeProvider } from '../../src';
 
-import { snapshot } from '../../jest/utils';
 import TestComponent from '../../jest/TestComponent';
+import { snapshot } from '../../jest/utils';
 
 import themeA from '../../jest/theme-a.scss';
 import themeB from '../../jest/theme-b.scss';

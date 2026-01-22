@@ -17,7 +17,7 @@
     "@docusaurus/core": "^3.9.2",
     "@docusaurus/preset-classic": "^3.9.2",
     "@docusaurus/theme-common": "^3.9.2",
-    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.10.1.tgz",
+    "@dr.pogodin/react-themes": "file:../dr.pogodin-react-themes-1.10.2.tgz",
     "@mdx-js/react": "^3.1.1",
     "@svgr/webpack": "^8.1.0",
     "clsx": "^2.1.1",
@@ -26,9 +26,9 @@
     "file-loader": "^6.2.0",
     "prism-react-renderer": "^2.4.1",
     "raw-loader": "^4.0.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "sass": "^1.94.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "sass": "^1.97.3",
     "url-loader": "^4.1.1"
   },
   "browserslist": {
@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^19.2.7"
+    "@types/react": "^19.2.9"
   }
 }

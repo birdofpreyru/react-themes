@@ -19,8 +19,8 @@ import {
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface ThemeI {
   ad: string;
-  hoc: string;
   context: string;
+  hoc: string;
 }
 
 // NOTE: KeyT should be a union of string literals - valid theme keys.
@@ -29,7 +29,7 @@ export type Theme<KeyT extends string>
   // it is not extendable by a string, thus the condition will enter its
   // second branch. Otherwise, the result will be `never` - this is our
   // safeguard against incorrect usage.
-  = string extends KeyT ? never : ThemeI & Partial<Record<KeyT, string>>;
+  = string extends KeyT ? never : Partial<Record<KeyT, string>> & ThemeI;
 
 // TODO: Revise, should we change it to type?
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style
@@ -234,9 +234,9 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
 ) {
   const {
     adhocTag = 'ad.hoc',
-    contextTag = 'context',
     composeAdhocTheme: oComposeAdhocTheme,
     composeContextTheme: oComposeContextTheme,
+    contextTag = 'context',
     mapThemeProps: oMapThemeProps,
     themePriority: oThemePriority,
   } = options;
@@ -355,7 +355,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
   componentOrComponentName: ComponentType<ComponentProps> | string,
 
   // 2nd argument.
-  componentNameOrDefaultTheme?: string | ComponentProps['theme'],
+  componentNameOrDefaultTheme?: ComponentProps['theme'] | string,
 
   // 3rd argument.
   defaultThemeOrOptions?:
@@ -364,8 +364,7 @@ function themed<ComponentProps extends ThemeableComponentProps>(
 
   // 4th argument.
   options?: ThemedOptions<ComponentProps>,
-): ThemedComponentFactory<ComponentProps>
-  | ThemedComponent<ComponentProps> {
+): ThemedComponent<ComponentProps> | ThemedComponentFactory<ComponentProps> {
   type OpsT = ThemedOptions<ComponentProps>;
 
   let component: ComponentType<ComponentProps> | undefined;
@@ -445,9 +444,9 @@ export function useTheme<
 ): ComponentTheme {
   const {
     adhocTag = 'ad.hoc',
-    contextTag = 'context',
     composeAdhocTheme = COMPOSE.DEEP,
     composeContextTheme = COMPOSE.DEEP,
+    contextTag = 'context',
     themePriority = PRIORITY.ADHOC_CONTEXT_DEFAULT,
   } = options ?? {};
 
