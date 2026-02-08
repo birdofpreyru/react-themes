@@ -2,15 +2,15 @@
 
 /* global console */
 
+import TestComponent from '../../jest/TestComponent';
+
+import { snapshot } from '../../jest/utils';
 import {
   COMPOSE,
   PRIORITY,
   ThemeProvider,
   useTheme,
 } from '../../src';
-
-import TestComponent from '../../jest/TestComponent';
-import { snapshot } from '../../jest/utils';
 
 import themeA from '../../jest/theme-a.scss';
 import themeB from '../../jest/theme-b.scss';

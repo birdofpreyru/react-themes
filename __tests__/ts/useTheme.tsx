@@ -2,6 +2,10 @@
 
 import type { FunctionComponent, ReactNode } from 'react';
 
+import TestComponent from '../../jest/TestComponent';
+
+import { snapshot } from '../../jest/utils';
+
 import {
   COMPOSE,
   PRIORITY,
@@ -9,10 +13,6 @@ import {
   ThemeProvider,
   useTheme,
 } from '../../src';
-
-import { snapshot } from '../../jest/utils';
-
-import TestComponent from '../../jest/TestComponent';
 
 import themeA from '../../jest/theme-a.scss';
 import themeB from '../../jest/theme-b.scss';

@@ -1,30 +1,35 @@
-import { useColorMode } from '@docusaurus/theme-common';
 import { clsx } from 'clsx';
+
+// eslint-disable-next-line import/no-unresolved
+import Link from '@docusaurus/Link';
 
 // TODO: I believe, these are internally replaced by Docusaurus during
 // the compilation. We should check their docs, if there is a better way
 // to configure something so that TS/ESLint find these correctly?
 /* eslint-disable import/no-unresolved */
-import Link from '@docusaurus/Link';
+import { useColorMode } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { ThemeProvider } from '@dr.pogodin/react-themes';
 import CodeBlock from '@theme/CodeBlock';
-import Layout from '@theme/Layout';
 /* eslint-enable import/no-unresolved */
 
-import { ThemeProvider } from '@dr.pogodin/react-themes';
+// eslint-disable-next-line import/no-unresolved
+import Layout from '@theme/Layout';
 
 import Calendar from '../components/Calendar';
-import darkContextCalendarTheme
-  from '../components/Calendar/dark-context.module.scss';
-import redContextCalendarTheme
-  from '../components/Calendar/red-context.module.scss';
-import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
 // TODO: I guess, no better way to share this asset?
 // eslint-disable-next-line import/no-relative-packages
 import SponsorImg from '../../../.README/sponsor.svg';
 
 import S from './index.module.scss';
+import darkContextCalendarTheme
+  from '../components/Calendar/dark-context.module.scss';
+
+import redContextCalendarTheme
+  from '../components/Calendar/red-context.module.scss';
+
+import calendarWithGrid from '../components/Calendar/with-grid.module.scss';
 
 function HomepageHeader() {
   const isDarkTheme = useColorMode().colorMode === 'dark';

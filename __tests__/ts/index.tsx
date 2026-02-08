@@ -1,17 +1,17 @@
 /** @jest-environment jsdom */
 
+import TestComponent, {
+  type ComponentProps,
+  type ComponentTheme,
+} from '../../jest/TestComponent';
+
+import { snapshot } from '../../jest/utils';
+
 import themed, {
   COMPOSE,
   PRIORITY,
   ThemeProvider,
 } from '../../src';
-
-import { snapshot } from '../../jest/utils';
-
-import TestComponent, {
-  type ComponentProps,
-  type ComponentTheme,
-} from '../../jest/TestComponent';
 
 import themeA from '../../jest/theme-a.scss';
 import themeB from '../../jest/theme-b.scss';
