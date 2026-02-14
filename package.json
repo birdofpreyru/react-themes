@@ -1,6 +1,6 @@
 {
   "name": "@dr.pogodin/react-themes",
-  "version": "1.10.3",
+  "version": "1.10.4",
   "description": "UI theme composition with CSS Modules and React",
   "main": "./build/module/index.js",
   "types": "./build/types-code/index.d.ts",
@@ -18,7 +18,7 @@
     "jest": "npm run jest:types && npm run jest:logic",
     "jest:logic": "jest --config jest/config.json --no-cache",
     "jest:types": "tstyche",
-    "lint": "eslint",
+    "lint": "eslint --cache",
     "test": "npm run lint && npm run typecheck && npm run jest",
     "typecheck": "tsc --project __tests__/tsconfig.json"
   },
@@ -61,7 +61,7 @@
     "@testing-library/react": "^16.3.2",
     "@tsconfig/recommended": "^1.0.13",
     "@types/jest": "^30.0.0",
-    "@types/react": "^19.2.13",
+    "@types/react": "^19.2.14",
     "babel-jest": "^30.2.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "jest": "^30.2.0",

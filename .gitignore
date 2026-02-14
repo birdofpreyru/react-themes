@@ -2,3 +2,4 @@
 /build/
 /dr.pogodin-react-themes-*.tgz
 /node_modules/
+/.eslintcache
