@@ -5,7 +5,7 @@ sidebar_class_name: deprecated
 # themed()
 [themed()]: themed
 
-:::danger Deprecated
+:::danger[Deprecated]
 The [themed()] function, and the old way to implement themeable components are
 deprecated in favour of the new [useTheme()] hook in the library version **v1.10.0**.
 For now, [themed()] still works, but it will be removed in future library versions.
