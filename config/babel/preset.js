@@ -25,6 +25,7 @@ module.exports = (api, options) => {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         root: ['./src', '.'],
       }],
+      'babel-plugin-react-compiler',
       '@babel/plugin-transform-runtime',
     ],
     presets: [

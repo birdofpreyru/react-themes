@@ -326,7 +326,7 @@ function themedImpl<ComponentProps extends ThemeableComponentProps>(
       /* eslint-enable react/jsx-props-no-spreading */
     };
 
-    return (Component as unknown) as CustomThemedComponent;
+    return Component;
   };
 }
 
