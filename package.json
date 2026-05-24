@@ -18,7 +18,7 @@
     "jest": "npm run jest:types && npm run jest:logic",
     "jest:logic": "jest --config jest/config.json --no-cache",
     "jest:types": "tstyche",
-    "lint": "eslint --cache",
+    "lint": "eslint --cache --cache-strategy content",
     "test": "npm run lint && npm run typecheck && npm run jest",
     "typecheck": "tsc --project __tests__/tsconfig.json"
   },

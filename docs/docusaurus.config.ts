@@ -53,7 +53,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     footer: {
-      copyright: `Copyright © 2019–${new Date().getFullYear()}
+      copyright: `Copyright © 2019&ndash;${new Date().getFullYear()}
         <a href="https://dr.pogodin.studio" target="_blank">Dr. Pogodin Studio</a>
       `,
       links: [{
