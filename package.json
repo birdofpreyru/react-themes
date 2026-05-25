@@ -71,7 +71,7 @@
     "postcss-scss": "^4.0.9",
     "rimraf": "^6.1.3",
     "sass": "^1.100.0",
-    "tstyche": "^7.1.0",
+    "tstyche": "^7.2.0",
     "typed-scss-modules": "^8.1.1",
     "typescript": "^5.9.3"
   },
