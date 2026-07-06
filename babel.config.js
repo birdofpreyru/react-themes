@@ -12,7 +12,6 @@ export default {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       root: ['./src', '.'],
     }],
-    '@babel/plugin-transform-runtime',
   ],
   presets: [
     '@babel/env',
