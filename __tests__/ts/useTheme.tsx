@@ -2,6 +2,8 @@
 
 import type { FunctionComponent, ReactNode } from 'react';
 
+import { describe, test } from '@jest/globals';
+
 import TestComponent from '../../jest/TestComponent';
 
 import { snapshot } from '../../jest/utils';

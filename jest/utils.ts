@@ -2,11 +2,10 @@
  * A few utils for Jest testing.
  */
 
-/* global expect */
-
 import { act } from 'react';
 
 /* eslint-disable import/no-extraneous-dependencies */
+import { expect } from '@jest/globals';
 import { type RenderResult, render } from '@testing-library/react';
 /* eslint-enable import/no-extraneous-dependencies */
 

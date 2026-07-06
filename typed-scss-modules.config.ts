@@ -1,3 +1,3 @@
 export default {
-  outputFolder: 'build/scss-types',
+  outputFolder: 'build/types-scss',
 };

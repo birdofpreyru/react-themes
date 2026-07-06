@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "rootDirs": [
-      "../build/scss-types/docs/src",
+      "../build/types-scss/docs/src",
       "src"
     ],
     "strict": true

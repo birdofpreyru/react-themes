@@ -4,6 +4,7 @@
 [![NPM monthly downloads](https://img.shields.io/npm/dm/@dr.pogodin/react-themes)](https://www.npmjs.com/package/@dr.pogodin/react-themes)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/birdofpreyru/react-themes/tree/master.svg?style=shield)](https://app.circleci.com/pipelines/github/birdofpreyru/react-themes)
 [![GitHub Repo stars](https://img.shields.io/github/stars/birdofpreyru/react-themes?style=social)](https://github.com/birdofpreyru/react-themes)
+[![Dr. Pogodin Studio](.README/logo-dr-pogodin-studio.svg)](https://dr.pogodin.studio/docs/react-themes)
 
 Themeable UI styling of React components, with theme composition features,
 based on

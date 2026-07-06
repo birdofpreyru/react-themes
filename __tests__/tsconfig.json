@@ -8,10 +8,10 @@
     "jsx": "react-jsx",
     "noEmit": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "rootDirs": [
-      "../build/scss-types/docs",
-      "../build/scss-types/jest",
+      "../build/types-scss/docs",
+      "../build/types-scss/jest",
       "../docs",
       "../jest"
     ],

@@ -1,5 +1,7 @@
 /** @jest-environment jsdom */
 
+import { describe, expect, test } from '@jest/globals';
+
 import TestComponent, {
   type ComponentProps,
   type ComponentTheme,

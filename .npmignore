@@ -3,9 +3,14 @@
 /__tests__/
 /babel.*config.js
 /bin/
-/build/scss-types/
+/build/types-scss/
 /config/
 /docs/
 /dr.pogodin-react-themes-*.tgz
+eslint.config.mjs
 /jest/
 /src/
+tsconfig*.json
+tstyche.json
+typed-scss-modules.config.ts
+typings.d.ts

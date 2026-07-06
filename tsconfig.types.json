@@ -7,8 +7,9 @@
     "emitDeclarationOnly": true,
     "jsx": "react-jsx",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "outDir": "build/types-code",
+    "moduleResolution": "bundler",
+    "outDir": "build/types",
+    "rootDir": "./src",
     "strict": true,
     "verbatimModuleSyntax": true,
   }

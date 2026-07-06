@@ -9,8 +9,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "rootDirs": [
-      "build/scss-types/docs",
-      "build/scss-types/jest",
+      "build/types-scss/docs",
+      "build/types-scss/jest",
       "docs",
       "jest"
     ],
