@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "rimraf build && npm run build:types && npm run build:types-scss && npm run build:logic",
-    "build:logic": "rimraf build/logic && babel src -x .ts,.tsx --out-dir build/logic --source-maps",
+    "build:logic": "rimraf build/logic && NODE_ENV=production babel src -x .ts,.tsx --out-dir build/logic --source-maps",
     "build:types": "rimraf build/types && tsc --project tsconfig.types.json",
     "build:types-scss": "rimraf build/types-scss && typed-scss-modules .",
     "jest": "npm run jest:types && npm run jest:logic",

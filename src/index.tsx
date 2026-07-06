@@ -142,6 +142,11 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
 }) => {
   const contextThemes = use(Context);
 
+  // NOTE: Now that we use React Compiler, the explicit useMemo() is not needed
+  // below - I have checked, the generated code is the same with, or without it,
+  // as expected from the compiler. However, as our ESLint config warns that
+  // useMemo() is needed here, let's keep explicit useMemo() call for now.
+  //
   // useMemo() ensures we don't generate a new "value" on each render when both
   // "contextThemes" and "themes" are defined.
   const value: ThemeMap = useMemo(() => (
